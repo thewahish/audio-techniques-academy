@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاستشارات الصوتية المهنية - دراسة حالة منشأة حكومية | محفظة أعمال 2025</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .language-toggle:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+        
+        .language-toggle a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+        
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .pricing-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.2);
+            border-color: #3498db;
+        }
+        
+        .pricing-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        
+        .features {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .features li:before {
+            content: "✅ ";
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .shipping-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left: 5px solid #5a67d8;
+        }
+        
+        .shipping-info h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        
+        .shipping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .shipping-option {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .export-compliance {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            color: white;
+            border-left: 5px solid #27ae60;
+        }
+        
+        .export-compliance h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        
+        .compliance-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .compliance-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline {
+            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+            color: white;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .timeline h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        
+        .timeline-steps {
+            margin: 2rem 0;
+        }
+        
+        .timeline-step {
+            background: rgba(255,255,255,0.1);
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid rgba(255,255,255,0.5);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%);
+            color: white;
+            text-align: center;
+            border-left: 5px solid #34495e;
+        }
+        
+        .contact-section h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .update-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .case-study-badge {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 10px;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .language-toggle {
+                position: static;
+                margin: 1rem auto;
+                display: block;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="language-toggle">
+            <a href="index-ar.html" style="opacity: 0.7;">🇸🇾 العربية</a> | 
+            <a href="index-en.html">🇺🇸 English</a>
+        </div>
+        <div class="container">
+            <h1>🎤 الاستشارات الصوتية المهنية</h1>
+            <p class="subtitle">دراسة حالة منشأة حكومية - محفظة أعمال</p>
+            <span class="case-study-badge">تصميم لسعة 3000 شخص</span>
+            <span class="update-badge">تحليل السوق 2025</span>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="container">
+            
+            <!-- Project Overview Section -->
+            <div class="section">
+                <h2>📋 نظرة عامة على دراسة الحالة</h2>
+                <p><strong>نوع العميل:</strong> منشأة حكومية كبيرة | <strong>السعة:</strong> 3000 شاغل | <strong>الموقع:</strong> دولي</p>
+                
+                <div class="features" style="margin: 2rem 0;">
+                    <li><strong>نطاق المشروع:</strong> تصميم ومواصفات نظام صوتي مهني كامل</li>
+                    <li><strong>التحدي الفريد:</strong> إدارة النظام عن بُعد عبر القارات</li>
+                    <li><strong>الابتكار التقني:</strong> مصفوفة خطية موزعة مع تعويض التأخير</li>
+                    <li><strong>تحسين الميزانية:</strong> حل فعال من حيث التكلفة لـ 3000 شخص ضمن القيود</li>
+                    <li><strong>اللوجستيات الدولية:</strong> تنسيق الشحن بالحاويات والامتثال</li>
+                    <li><strong>التسليم ثنائي اللغة:</strong> وثائق كاملة باللغتين الإنجليزية والعربية</li>
+                </div>
+            </div>
+            
+            <!-- Equipment Pricing Section -->
+            <div class="section">
+                <h2>🎵 معدات الصوت المهنية - تحليل الأسعار 2025</h2>
+                <p>تُظهر أبحاث السوق حلولاً فعالة من حيث التكلفة للتركيبات واسعة النطاق</p>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>QSC K12.2 سماعة نشطة</h3>
+                        <div class="price">$1,750</div>
+                        <div class="price-note">لكل وحدة (دولار أمريكي)</div>
+                        <ul class="features">
+                            <li>وحدة طاقة 2000 واط من الفئة D</li>
+                            <li>مكبر صوت عالي الأداء 12 بوصة</li>
+                            <li>محرك ضغط مهني</li>
+                            <li>خزانة مركبة خفيفة الوزن</li>
+                            <li>خلاط ومعالج رقمي متكامل</li>
+                            <li>ضمان دولي لمدة سنتين</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3>Sennheiser لاسلكي رقمي</h3>
+                        <div class="price">$849</div>
+                        <div class="price-note">لكل نظام (دولار أمريكي)</div>
+                        <ul class="features">
+                            <li>نظام XS اللاسلكي الرقمي</li>
+                            <li>جهاز إرسال محمول</li>
+                            <li>مستقبل مهني</li>
+                            <li>النطاق A (548-572MHz)</li>
+                            <li>صوت رقمي واضح تماماً</li>
+                            <li>إعداد بلمسة واحدة سهل</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3>Audio-Technica حزمة مهنية</h3>
+                        <div class="price">$1,250</div>
+                        <div class="price-note">نظام ميكروفون كامل</div>
+                        <ul class="features">
+                            <li>ميكروفون استوديو AT4050</li>
+                            <li>ميكروفون مشبك ATM355VF</li>
+                            <li>ميكروفون عنق الأوزة المهني</li>
+                            <li>حزمة إكسسوارات كاملة</li>
+                            <li>حقيبة نقل مهنية</li>
+                            <li>ضمان ممتد 5 سنوات</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="pricing-card" style="margin: 2rem auto; max-width: 600px;">
+                    <h3>🎯 حزمة كاملة لـ 3000 شخص</h3>
+                    <div class="price">$51,420</div>
+                    <div class="price-note">تكلفة النظام المحسن (باستثناء الشحن والتركيب)</div>
+                    <ul class="features">
+                        <li>12× عنصر مصفوفة خطية QSC KLA12</li>
+                        <li>8× سماعات أبراج التأخير QSC K12.2</li>
+                        <li>6× أنظمة Sennheiser EW-D اللاسلكية</li>
+                        <li>حزمة Audio-Technica الكاملة</li>
+                        <li>كابلات وإكسسوارات مهنية</li>
+                        <li>دعم فني عن بُعد (سنة واحدة)</li>
+                        <li>وثائق التركيب</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Shipping Information -->
+            <div class="section shipping-info">
+                <h2>🚢 الشحن واللوجستيات الدولية (تحليل 2025)</h2>
+                <p>خدمات الشحن البحري المهنية مع التتبع الكامل والتأمين</p>
+                
+                <div class="shipping-grid">
+                    <div class="shipping-option">
+                        <h3>🚛 حاوية 20 قدم</h3>
+                        <p><strong>التكلفة:</strong> 4,200$ - 5,500$ دولار أمريكي</p>
+                        <p><strong>وقت العبور:</strong> 35-45 يوم</p>
+                        <p><strong>السعة:</strong> حتى 28,000 كيلو</p>
+                        <p><strong>المسار:</strong> ميناء رئيسي ← وجهة</p>
+                    </div>
+                    
+                    <div class="shipping-option">
+                        <h3>📦 حاوية 40 قدم</h3>
+                        <p><strong>التكلفة:</strong> 7,200$ - 8,800$ دولار أمريكي</p>
+                        <p><strong>وقت العبور:</strong> 35-45 يوم</p>
+                        <p><strong>السعة:</strong> حتى 26,500 كيلو</p>
+                        <p><strong>المسار:</strong> مباشر أو توجيه عبر الشحن</p>
+                    </div>
+                    
+                    <div class="shipping-option">
+                        <h3>🎯 الحل الموصى به</h3>
+                        <p><strong>الحل:</strong> حاوية 20 قدم (كافية)</p>
+                        <p><strong>الحماية:</strong> تغليف مهني مشمول</p>
+                        <p><strong>التأمين:</strong> تغطية كاملة بقيمة الاستبدال</p>
+                        <p><strong>إجمالي الشحن:</strong> ~5,000$ دولار أمريكي</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Export Compliance -->
+            <div class="section export-compliance">
+                <h2>✅ الامتثال واللوائح للتصدير 2025</h2>
+                <p>لوائح التجارة الدولية الحالية للمعدات الصوتية المهنية</p>
+                
+                <div class="compliance-points">
+                    <div class="compliance-card">
+                        <h3>🟢 تصنيف المعدات</h3>
+                        <p>عادة ما تؤهل المعدات الصوتية المهنية للتصدير التجاري القياسي</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>✅ تصنيف EAR99</li>
+                            <li>✅ وثائق قياسية</li>
+                            <li>✅ معالجة مبسطة</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compliance-card">
+                        <h3>📋 الوثائق المطلوبة</h3>
+                        <p>حزمة وثائق التصدير التجاري القياسية</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>✅ فاتورة تجارية</li>
+                            <li>✅ بوليصة الشحن</li>
+                            <li>✅ قائمة التعبئة</li>
+                            <li>✅ شهادة المستخدم النهائي</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compliance-card">
+                        <h3>⚡ الجدولة الزمنية للمعالجة</h3>
+                        <p>أوقات المعالجة النموذجية للمعدات الصوتية المهنية</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>✅ 5-10 أيام عمل</li>
+                            <li>✅ الاستخدام التجاري مُوافق عليه</li>
+                            <li>✅ المنشأة الحكومية مناسبة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Timeline -->
+            <div class="section timeline">
+                <h2>📅 الجدولة الزمنية لتنفيذ المشروع</h2>
+                <p>الجدولة الزمنية المقدرة من موافقة الطلب إلى التركيب الكامل</p>
+                
+                <div class="timeline-steps">
+                    <div class="timeline-step">
+                        <h3>الأسبوع 1-2: معالجة الطلبات ووثائق التصدير</h3>
+                        <p>أوامر الشراء، وثائق التصدير، وتنسيق الموردين</p>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <h3>الأسبوع 3-4: إعداد المعدات والتغليف</h3>
+                        <p>التغليف المهني، اختبار مراقبة الجودة، وإعداد الشحن</p>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <h3>الأسبوع 5-10: الشحن البحري الدولي</h3>
+                        <p>شحن الحاويات مع التتبع الكامل وتغطية التأمين</p>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <h3>الأسبوع 11-12: التخليص الجمركي والتسليم</h3>
+                        <p>معالجة الجمارك في الوجهة والتسليم النهائي للمنشأة</p>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <h3>الأسبوع 13-14: التركيب والاختبار</h3>
+                        <p>التركيب المهني، اختبار النظام، وتدريب الموظفين (دعم عن بُعد)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Section -->
+            <div class="section contact-section">
+                <h2>📞 المحفظة والاستشارة</h2>
+                <p>خدمات الاستشارة الفنية المهنية وإدارة المشاريع</p>
+                
+                <div style="margin: 2rem 0;">
+                    <a href="mailto:obai@obaisukar.com" class="contact-button">
+                        📧 البريد الإلكتروني: obai@obaisukar.com
+                    </a>
+                    <a href="technical-study-ar.html" class="contact-button">
+                        📋 عرض الدراسة الفنية
+                    </a>
+                    <a href="shipping-guide-ar.html" class="contact-button">
+                        🚢 تحليل الشحن
+                    </a>
+                </div>
+                
+                <p><strong>الدعم الفني عن بُعد:</strong> إرشادات التركيب الكاملة عبر استشارة الفيديو</p>
+                <p><strong>إدارة المشاريع الدولية:</strong> التنسيق والدعم عبر القارات</p>
+                <p><strong>الحلول المخصصة:</strong> الخدمات المهنية قابلة للتكيف مع أي متطلبات منشأة</p>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <p>© 2025 دراسة حالة الاستشارات الصوتية المهنية | محفظة نظام الصوت للمنشأة الحكومية</p>
+            <p>موقع المحفظة: obaisukar.com | الاستشارة الفنية: obai@obaisukar.com</p>
+        </div>
+    </div>
+</body>
+</html>

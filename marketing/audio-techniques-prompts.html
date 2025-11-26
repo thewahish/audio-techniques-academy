@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banana Prompts - أكاديمية تقنيات الصوت الاحترافية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #667eea;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #667eea;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .copy-all-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .copy-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content {
+            padding: 3rem;
+        }
+        
+        .tier-section {
+            margin: 4rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+        }
+        
+        .tier-bronze {
+            background: #CD7F32;
+        }
+        
+        .tier-silver {
+            background: #6b7280;
+        }
+        
+        .tier-gold {
+            background: #f59e0b;
+        }
+        
+        .tier-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+        
+        .tier-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .prompt-section {
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .prompt-section.bronze {
+            border-right-color: #CD7F32;
+        }
+        
+        .prompt-section.silver {
+            border-right-color: #6b7280;
+        }
+        
+        .prompt-section.gold {
+            border-right-color: #f59e0b;
+        }
+        
+        .prompt-section:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .prompt-section h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .prompt-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: white;
+        }
+        
+        .prompt-number.bronze {
+            background: #CD7F32;
+        }
+        
+        .prompt-number.silver {
+            background: #6b7280;
+        }
+        
+        .prompt-number.gold {
+            background: #f59e0b;
+        }
+        
+        .prompt-box {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .prompt-box:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .prompt-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid;
+        }
+        
+        .prompt-text.bronze {
+            border-right-color: #CD7F32;
+        }
+        
+        .prompt-text.silver {
+            border-right-color: #6b7280;
+        }
+        
+        .prompt-text.gold {
+            border-right-color: #f59e0b;
+        }
+        
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .copy-btn.copied {
+            background: #059669;
+        }
+        
+        .instruction-banner {
+            background: #dc2626;
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .instruction-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .instruction-banner p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .save-path {
+            background: #059669;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .guidelines-section {
+            background: #667eea;
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+        
+        .guidelines-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .guideline-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .guideline-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        /* CHECKLIST STYLES - Core Rule Applied */
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 0.8rem 0;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-left: 12px;
+            cursor: pointer;
+            accent-color: #f59e0b;
+        }
+        
+        .checklist-label {
+            flex: 1;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .checklist-date {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-right: 10px;
+            min-width: 140px;
+            text-align: left;
+        }
+        
+        .checklist-item.completed {
+            background: rgba(5, 150, 105, 0.2);
+        }
+        
+        .checklist-item.completed .checklist-label {
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        .main-checklist {
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .main-checklist h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .main-checklist .checklist-item {
+            background: rgba(102, 126, 234, 0.05);
+            border-left: 3px solid #667eea;
+        }
+
+        .main-checklist .checklist-label {
+            color: #2c3e50;
+        }
+
+        .main-checklist .checklist-date {
+            color: #6b7280;
+        }
+
+        .main-checklist .checklist-item.completed {
+            background: rgba(5, 150, 105, 0.1);
+            border-left-color: #059669;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 2rem 1rem;
+            }
+            
+            .prompt-section {
+                padding: 2rem 1rem;
+            }
+            
+            .guidelines-section {
+                padding: 2rem 1rem;
+            }
+            
+            .checklist-date {
+                min-width: 100px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-images" style="margin-left: 1rem;"></i>Nano Banana Prompts</h1>
+            <div class="subtitle">أكاديمية تقنيات الصوت الاحترافية - 3 مستويات</div>
+            <button class="copy-all-btn" onclick="copyAllPrompts()">
+                <i class="fas fa-copy" style="margin-left: 0.5rem;"></i>
+                نسخ جميع الـ Prompts (12 صورة)
+            </button>
+        </div>
+        
+        <div class="content">
+            <div class="instruction-banner">
+                <h3><i class="fas fa-exclamation-triangle" style="margin-left: 1rem;"></i>تعليمات مهمة</h3>
+                <p>انسخ كل prompt منفرداً وألصقه في Nano Banana لإنتاج الصور. احفظ الصور النتيجة في المجلدات التالية:</p>
+                <div class="save-path">
+                    📁 assets/images/ أو website/assets/images/
+                </div>
+                <p><strong>ملاحظة:</strong> يحتوي هذا الملف على 12 prompt مقسمة على 3 مستويات × 4 صور لكل مستوى</p>
+            </div>
+
+            <!-- Main Progress Checklist -->
+            <div class="main-checklist">
+                <h3><i class="fas fa-tasks"></i> قائمة مراجعة التقدم الرئيسية</h3>
+                <ul class="checklist">
+                    <li class="checklist-item">
+                        <input type="checkbox" id="copy-all-prompts" onchange="updateChecklistDate(this)">
+                        <label for="copy-all-prompts" class="checklist-label">نسخ جميع الـ 12 Prompts</label>
+                        <span class="checklist-date">[تاريخ الإنجاز: ___]</span>
+                    </li>
+                    <li class="checklist-item">
+                        <input type="checkbox" id="generate-bronze" onchange="updateChecklistDate(this)">
+                        <label for="generate-bronze" class="checklist-label">إنتاج 4 صور المستوى البرونزي</label>
+                        <span class="checklist-date">[تاريخ الإنجاز: ___]</span>
+                    </li>
+                    <li class="checklist-item">
+                        <input type="checkbox" id="generate-silver" onchange="updateChecklistDate(this)">
+                        <label for="generate-silver" class="checklist-label">إنتاج 4 صور المستوى الفضي</label>
+                        <span class="checklist-date">[تاريخ الإنجاز: ___]</span>
+                    </li>
+                    <li class="checklist-item">
+                        <input type="checkbox" id="generate-gold" onchange="updateChecklistDate(this)">
+                        <label for="generate-gold" class="checklist-label">إنتاج 4 صور المستوى الذهبي</label>
+                        <span class="checklist-date">[تاريخ الإنجاز: ___]</span>
+                    </li>
+                    <li class="checklist-item">
+                        <input type="checkbox" id="save-images" onchange="updateChecklistDate(this)">
+                        <label for="save-images" class="checklist-label">حفظ جميع الصور في assets/images/</label>
+                        <span class="checklist-date">[تاريخ الإنجاز: ___]</span>
+                    </li>
+                    <li class="checklist-item">
+                        <input type="checkbox" id="integrate-website" onchange="updateChecklistDate(this)">
+                        <label for="integrate-website" class="checklist-label">دمج الصور في الموقع</label>
+                        <span class="checklist-date">[تاريخ الإنجاز: ___]</span>
+                    </li>
+                    <li class="checklist-item">
+                        <input type="checkbox" id="test-deployment" onchange="updateChecklistDate(this)">
+                        <label for="test-deployment" class="checklist-label">اختبار ونشر الموقع</label>
+                        <span class="checklist-date">[تاريخ الإنجاز: ___]</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Bronze Tier Section -->
+            <div class="tier-section tier-bronze">
+                <h2><i class="fas fa-medal" style="margin-left: 1rem;"></i>المستوى البرونزي - أساسيات تقنيات الصوت</h2>
+                <p>4 صور للمستوى التأسيسي - الألوان: برونزي (#CD7F32) وذهبي نحاسي (#B8860B)</p>
+            </div>
+            
+            <div class="prompt-section bronze">
+                <h3>
+                    <div class="prompt-number bronze">1</div>
+                    Bronze Level - Hero Image
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text bronze" id="prompt1">
+                        Professional audio fundamentals course cover, elegant bronze microphone surrounded by basic sound waves and audio equipment, warm bronze and copper gradient background, Arabic calligraphy elements, simple home studio setup, warm ambient lighting, beginner-friendly aesthetic, high resolution, educational and welcoming feel
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt1', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt1-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt1-copy" class="checklist-label">نسخ Prompt 1</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt1-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt1-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt1-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt1-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section bronze">
+                <h3>
+                    <div class="prompt-number bronze">2</div>
+                    Bronze Level - Basic Studio Setup
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text bronze" id="prompt2">
+                        Simple home studio setup for beginners, basic audio interface, entry-level microphone, headphones on desk, warm bronze lighting, copper accents, Arabic text overlay 'الأساسيات الصوتية', welcoming and accessible atmosphere, clean and organized, budget-friendly equipment showcase
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt2', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt2-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt2-copy" class="checklist-label">نسخ Prompt 2</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt2-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt2-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt2-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt2-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section bronze">
+                <h3>
+                    <div class="prompt-number bronze">3</div>
+                    Bronze Level - Learning Environment
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text bronze" id="prompt3">
+                        Beginner-friendly learning environment, student with headphones at computer, audio editing software on screen, bronze and copper color scheme, encouraging atmosphere, Arabic elements integrated naturally, educational setting, basic audio equipment visible, warm and supportive feel
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt3', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt3-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt3-copy" class="checklist-label">نسخ Prompt 3</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt3-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt3-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt3-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt3-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section bronze">
+                <h3>
+                    <div class="prompt-number bronze">4</div>
+                    Bronze Level - Foundation Concepts
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text bronze" id="prompt4">
+                        Abstract representation of basic audio concepts, simple sound waves visualization, bronze geometric shapes, fundamental audio principles illustrated, Arabic numerals and text spaces, clean educational design, copper accents, beginner-level complexity, inspiring and clear presentation
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt4', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt4-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt4-copy" class="checklist-label">نسخ Prompt 4</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt4-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt4-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt4-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt4-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Silver Tier Section -->
+            <div class="tier-section tier-silver">
+                <h2><i class="fas fa-trophy" style="margin-left: 1rem;"></i>المستوى الفضي - تقنيات الصوت المتوسطة</h2>
+                <p>4 صور للمستوى المتوسط - الألوان: فضي (#6b7280) ورمادي احترافي</p>
+            </div>
+            
+            <div class="prompt-section silver">
+                <h3>
+                    <div class="prompt-number silver">5</div>
+                    Silver Level - Professional Studio
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text silver" id="prompt5">
+                        Professional recording studio interior, advanced audio equipment, mixing console with silver accents, multiple monitors, acoustic treatment panels, silver and grey color palette, sophisticated lighting, Arabic text overlay 'التقنيات المتوسطة', premium professional atmosphere, detailed equipment showcase
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt5', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt5-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt5-copy" class="checklist-label">نسخ Prompt 5</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt5-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt5-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt5-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt5-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section silver">
+                <h3>
+                    <div class="prompt-number silver">6</div>
+                    Silver Level - Advanced Recording
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text silver" id="prompt6">
+                        Advanced recording session in progress, professional microphone setup, audio engineer at mixing board, silver studio monitors, complex waveforms on screens, grey and silver gradient background, intermediate-level complexity, Arabic elements, technical precision and professionalism
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt6', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt6-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt6-copy" class="checklist-label">نسخ Prompt 6</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt6-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt6-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt6-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt6-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section silver">
+                <h3>
+                    <div class="prompt-number silver">7</div>
+                    Silver Level - Broadcast Production
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text silver" id="prompt7">
+                        Professional broadcast studio setup, radio/podcast production environment, 'ON AIR' sign illuminated, silver broadcast equipment, professional broadcaster at work, metallic silver and grey design, Arabic text elements, intermediate broadcast techniques visualization, polished production quality
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt7', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt7-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt7-copy" class="checklist-label">نسخ Prompt 7</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt7-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt7-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt7-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt7-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section silver">
+                <h3>
+                    <div class="prompt-number silver">8</div>
+                    Silver Level - Audio Processing
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text silver" id="prompt8">
+                        Advanced audio processing visualization, complex frequency analysis displays, silver and grey interface elements, professional audio software, detailed waveforms and spectrograms, intermediate-level technical concepts, Arabic typography integration, sophisticated digital audio workstation environment
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt8', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt8-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt8-copy" class="checklist-label">نسخ Prompt 8</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt8-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt8-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt8-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt8-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gold Tier Section -->
+            <div class="tier-section tier-gold">
+                <h2><i class="fas fa-crown" style="margin-left: 1rem;"></i>المستوى الذهبي - خبير تقنيات الصوت</h2>
+                <p>4 صور للمستوى المتقدم - الألوان: ذهبي احترافي (#f59e0b)</p>
+            </div>
+            
+            <div class="prompt-section gold">
+                <h3>
+                    <div class="prompt-number gold">9</div>
+                    Gold Level - Master Studio Complex
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text gold" id="prompt9">
+                        Luxury master studio complex, premium gold-accented equipment, state-of-the-art mixing console, multiple control rooms, golden lighting throughout, warm professional gold backgrounds, Arabic text overlay 'الخبرة المهنية', ultimate professional atmosphere, cutting-edge technology showcase, expert-level sophistication
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt9', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt9-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt9-copy" class="checklist-label">نسخ Prompt 9</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt9-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt9-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt9-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt9-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section gold">
+                <h3>
+                    <div class="prompt-number gold">10</div>
+                    Gold Level - Mastering Suite
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text gold" id="prompt10">
+                        Professional mastering suite, high-end golden monitoring system, expert audio engineer at work, premium studio monitors with gold accents, advanced mastering software interfaces, warm golden ambient lighting, Arabic elements, master-level expertise representation, luxury audio production environment
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt10', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt10-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt10-copy" class="checklist-label">نسخ Prompt 10</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt10-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt10-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt10-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt10-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section gold">
+                <h3>
+                    <div class="prompt-number gold">11</div>
+                    Gold Level - Industry Leadership
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text gold" id="prompt11">
+                        Industry leadership scene, expert consultant in premium studio environment, golden awards and certifications on walls, luxury audio equipment, business meeting setup with audio industry professionals, professional gold color scheme, Arabic text elements, authority and expertise visualization, high-end professional atmosphere
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt11', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt11-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt11-copy" class="checklist-label">نسخ Prompt 11</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt11-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt11-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt11-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt11-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-section gold">
+                <h3>
+                    <div class="prompt-number gold">12</div>
+                    Gold Level - Success Achievement
+                </h3>
+                <div class="prompt-box">
+                    <div class="prompt-text gold" id="prompt12">
+                        Success achievement celebration, graduation ceremony for audio experts, golden certificates and trophies, premium studio background, students and instructor celebrating, warm golden lighting, Arabic celebration text elements, luxury achievement atmosphere, professional milestone recognition, expert-level accomplishment
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt12', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                    <div class="main-checklist" style="margin-top: 1rem; padding: 1rem;">
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt12-copy" onchange="updateChecklistDate(this)">
+                                <label for="prompt12-copy" class="checklist-label">نسخ Prompt 12</label>
+                                <span class="checklist-date">[تاريخ النسخ: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt12-generate" onchange="updateChecklistDate(this)">
+                                <label for="prompt12-generate" class="checklist-label">إنتاج الصورة في Nano Banana</label>
+                                <span class="checklist-date">[تاريخ الإنتاج: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="prompt12-save" onchange="updateChecklistDate(this)">
+                                <label for="prompt12-save" class="checklist-label">حفظ الصورة في المجلد</label>
+                                <span class="checklist-date">[تاريخ الحفظ: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guidelines-section">
+                <h2><i class="fas fa-palette" style="margin-left: 1rem;"></i>دليل التصميم المحدث للمستويات الثلاثة</h2>
+                <div class="guidelines-grid">
+                    <div class="guideline-card">
+                        <h3>المستوى البرونزي</h3>
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="bronze-primary" onchange="updateChecklistDate(this)">
+                                <label for="bronze-primary" class="checklist-label">الأساسي: برونزي (#CD7F32)</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="bronze-secondary" onchange="updateChecklistDate(this)">
+                                <label for="bronze-secondary" class="checklist-label">الثانوي: ذهبي نحاسي (#B8860B)</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="bronze-tone" onchange="updateChecklistDate(this)">
+                                <label for="bronze-tone" class="checklist-label">الطابع: ودود ومرحب</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="bronze-equipment" onchange="updateChecklistDate(this)">
+                                <label for="bronze-equipment" class="checklist-label">المعدات: أساسية ومنزلية</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <h3>المستوى الفضي</h3>
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="silver-primary" onchange="updateChecklistDate(this)">
+                                <label for="silver-primary" class="checklist-label">الأساسي: فضي احترافي (#6b7280)</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="silver-tone" onchange="updateChecklistDate(this)">
+                                <label for="silver-tone" class="checklist-label">الطابع: احترافي وتقني</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="silver-equipment" onchange="updateChecklistDate(this)">
+                                <label for="silver-equipment" class="checklist-label">المعدات: متوسطة ومهنية</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="silver-target" onchange="updateChecklistDate(this)">
+                                <label for="silver-target" class="checklist-label">الهدف: المتخصصين المتوسطين</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <h3>المستوى الذهبي</h3>
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="gold-primary" onchange="updateChecklistDate(this)">
+                                <label for="gold-primary" class="checklist-label">الأساسي: ذهبي احترافي (#f59e0b)</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="gold-tone" onchange="updateChecklistDate(this)">
+                                <label for="gold-tone" class="checklist-label">الطابع: فاخر وخبير</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="gold-equipment" onchange="updateChecklistDate(this)">
+                                <label for="gold-equipment" class="checklist-label">المعدات: متقدمة وراقية</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="gold-target" onchange="updateChecklistDate(this)">
+                                <label for="gold-target" class="checklist-label">الهدف: الخبراء والقادة</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <h3>المواصفات العامة</h3>
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="spec-resolution" onchange="updateChecklistDate(this)">
+                                <label for="spec-resolution" class="checklist-label">دقة عالية (حد أدنى 2048px)</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="spec-color" onchange="updateChecklistDate(this)">
+                                <label for="spec-color" class="checklist-label">مساحة لون RGB</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="spec-arabic" onchange="updateChecklistDate(this)">
+                                <label for="spec-arabic" class="checklist-label">تركيب متوازن للنص العربي</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="spec-lighting" onchange="updateChecklistDate(this)">
+                                <label for="spec-lighting" class="checklist-label">إضاءة دافئة ومهنية</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="spec-design" onchange="updateChecklistDate(this)">
+                                <label for="spec-design" class="checklist-label">تصميم عصري وأنيق</label>
+                                <span class="checklist-date">[مطبق: ___]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyPrompt(promptId, button) {
+            const promptText = document.getElementById(promptId).textContent.trim();
+            
+            navigator.clipboard.writeText(promptText).then(function() {
+                const icon = button.querySelector('i');
+                const originalText = button.innerHTML;
+                
+                button.innerHTML = '<i class="fas fa-check"></i>تم النسخ';
+                button.classList.add('copied');
+                
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+                
+                showNotification('تم نسخ الـ Prompt بنجاح!', 'success');
+            }).catch(function(err) {
+                showNotification('خطأ في النسخ. يرجى المحاولة مرة أخرى.', 'error');
+            });
+        }
+        
+        function copyAllPrompts() {
+            let allPrompts = '';
+            for (let i = 1; i <= 12; i++) {
+                const promptElement = document.getElementById('prompt' + i);
+                if (promptElement) {
+                    const tierLevel = i <= 4 ? 'Bronze' : i <= 8 ? 'Silver' : 'Gold';
+                    allPrompts += (i > 1 ? '\n\n---\n\n' : '') + tierLevel + ' Tier - Prompt ' + i + ':\n' + promptElement.textContent.trim();
+                }
+            }
+            
+            navigator.clipboard.writeText(allPrompts).then(function() {
+                showNotification('تم نسخ جميع الـ Prompts بنجاح! (12 prompt للمستويات الثلاثة)', 'success');
+            }).catch(function(err) {
+                showNotification('خطأ في النسخ. يرجى المحاولة مرة أخرى.', 'error');
+            });
+        }
+
+        // NEW FUNCTION: Update checklist with date/timestamp
+        function updateChecklistDate(checkbox) {
+            const checklistItem = checkbox.closest('.checklist-item');
+            const dateSpan = checklistItem.querySelector('.checklist-date');
+            
+            if (checkbox.checked) {
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('ar-SA') + ' ' + now.toLocaleTimeString('ar-SA', {hour: '2-digit', minute:'2-digit'});
+                dateSpan.textContent = `[تم في: ${dateStr}]`;
+                checklistItem.classList.add('completed');
+                
+                // Save to localStorage
+                localStorage.setItem(checkbox.id, dateStr);
+            } else {
+                dateSpan.textContent = '[تاريخ الإنجاز: ___]';
+                checklistItem.classList.remove('completed');
+                
+                // Remove from localStorage
+                localStorage.removeItem(checkbox.id);
+            }
+        }
+
+        // Load saved checklist states on page load
+        function loadChecklistStates() {
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                const savedDate = localStorage.getItem(checkbox.id);
+                if (savedDate) {
+                    checkbox.checked = true;
+                    const checklistItem = checkbox.closest('.checklist-item');
+                    const dateSpan = checklistItem.querySelector('.checklist-date');
+                    dateSpan.textContent = `[تم في: ${savedDate}]`;
+                    checklistItem.classList.add('completed');
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadChecklistStates);
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'success' ? '#059669' : '#dc2626'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideDown 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(function() {
+                notification.style.animation = 'slideUp 0.3s ease';
+                setTimeout(function() {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

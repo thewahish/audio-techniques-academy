@@ -1,0 +1,45 @@
+# Audio Academy .gitignore
+
+# Large audio files
+*.wav
+*.mp3
+*.aiff
+*.m4a
+*.flac
+
+# Large video files  
+*.mp4
+*.mov
+*.avi
+
+# Large image originals (keep compressed versions)
+*.psd
+*.ai
+*.svg.orig
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Node modules (if any web components added)
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Cache
+.cache/
+
+# Build outputs
+dist/
+build/

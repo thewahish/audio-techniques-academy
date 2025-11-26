@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banana Prompts - دورة الإذاعة وتقنيات الاستوديو الاحترافية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .copy-all-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .copy-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content {
+            padding: 3rem;
+        }
+        
+        .prompt-section {
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid #3498db;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .prompt-section:hover {
+            border-right-color: #e74c3c;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .prompt-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .prompt-section .prompt-number {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .prompt-box {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .prompt-box:hover {
+            border-color: #3498db;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .prompt-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid #f39c12;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .copy-btn.copied {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+        
+        .guidelines-section {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+        
+        .guidelines-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .guideline-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .guideline-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .guideline-card ul {
+            list-style: none;
+        }
+        
+        .guideline-card li {
+            margin: 0.8rem 0;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+        
+        .guideline-card li::before {
+            content: '▸';
+            position: absolute;
+            right: 0;
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .instruction-banner {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .instruction-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .instruction-banner p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .save-path {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 2rem 1rem;
+            }
+            
+            .prompt-section {
+                padding: 2rem 1rem;
+            }
+            
+            .guidelines-section {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.05);
+            font-size: 4rem;
+            animation: float 25s infinite ease-in-out;
+        }
+        
+        .floating-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 20%; left: 80%; animation-delay: 8s; }
+        .floating-icon:nth-child(3) { top: 60%; left: 15%; animation-delay: 16s; }
+        .floating-icon:nth-child(4) { top: 80%; left: 70%; animation-delay: 24s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-40px) rotate(5deg); }
+            50% { transform: translateY(-80px) rotate(-5deg); }
+            75% { transform: translateY(-40px) rotate(3deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-icon">🎙️</div>
+        <div class="floating-icon">📻</div>
+        <div class="floating-icon">🔊</div>
+        <div class="floating-icon">📡</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-images" style="margin-left: 1rem;"></i>Nano Banana Prompts</h1>
+            <div class="subtitle">أكاديمية تقنيات الصوت الاحترافية - 3 مستويات</div>
+            <button class="copy-all-btn" onclick="copyAllPrompts()">
+                <i class="fas fa-copy" style="margin-left: 0.5rem;"></i>
+                نسخ جميع الـ Prompts
+            </button>
+        </div>
+        
+        <div class="content">
+            <div class="instruction-banner">
+                <h3><i class="fas fa-exclamation-triangle" style="margin-left: 1rem;"></i>تعليمات مهمة</h3>
+                <p>انسخ كل prompt منفرداً وألصقه في Nano Banana لإنتاج الصور. احفظ الصور النتيجة في المجلدات التالية:</p>
+                <div class="save-path">
+                    📁 assets/images/ أو website/assets/images/
+                </div>
+                <p><strong>ملاحظة:</strong> يحتوي هذا الملف على 12 prompt مقسمة على 3 مستويات × 4 صور لكل مستوى</p>
+            </div>
+            
+            <!-- Bronze Tier Section -->
+            <div style="background: linear-gradient(135deg, #CD7F32, #B8860B); color: white; padding: 2rem; border-radius: 15px; margin: 3rem 0; text-align: center;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-medal" style="margin-left: 1rem;"></i>المستوى البرونزي - أساسيات تقنيات الصوت</h2>
+                <p style="font-size: 1.2rem;">4 صور للمستوى التأسيسي - الألوان: برونزي وذهبي نحاسي</p>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">1</div>
+                    Course Hero Image / Cover Photo
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt1">
+                        Professional broadcast studio course cover, elegant golden radio microphone surrounded by floating radio waves and broadcast signals, luxurious navy blue and gold gradient background, Arabic calligraphy elements, modern radio station setup with broadcast console, warm ambient lighting, premium aesthetic, 4K high resolution, cinematic quality
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt1', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">2</div>
+                    Broadcast Studio Equipment
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt2">
+                        Elegant broadcast studio workspace, professional radio mixing console with glowing buttons and faders, multiple monitors displaying audio waveforms and broadcast schedules, golden radio waves floating in the air, warm studio lighting, deep blue and gold color scheme, Arabic text overlay 'تقنيات الإذاعة', sophisticated and premium feel, ultra-detailed
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt2', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">3</div>
+                    Radio Broadcasting Scene
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt3">
+                        Professional radio broadcaster at work, elegant broadcast studio interior, vintage radio microphone in spotlight, on-air sign glowing, acoustic foam panels with golden accents, professional broadcast board, warm ambient lighting, navy blue and gold color palette, Arabic elements integrated naturally, premium atmosphere
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt3', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">4</div>
+                    Audio Waves & Frequencies Visualization
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt4">
+                        Abstract representation of radio waves and broadcast frequencies, 3D visualization of audio spectrum, golden broadcast signals flowing through dark space, professional broadcast headphones floating, digital radio interface, futuristic yet elegant design, navy blue background with gold accents, radio tower silhouettes
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt4', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">5</div>
+                    Radio Station Control Room
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt5">
+                        Luxurious radio station control room interior, multiple broadcast monitors, professional mixing board with golden accents, warm ambient lighting, modern broadcast equipment, elegant Arabic calligraphy on walls, premium broadcast atmosphere, architectural photography style, navy blue and gold theme
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt5', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">6</div>
+                    Instructor Portrait Background
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt6">
+                        Professional educator portrait background, elegant broadcast studio setting, blurred radio console and monitors, warm golden lighting, navy blue and gold color scheme, sophisticated academic atmosphere, premium quality, suitable for instructor photo overlay
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt6', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">7</div>
+                    Course Features Icons Set
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt7">
+                        Set of elegant icons for broadcast course: golden radio microphone icon, broadcast headphones icon, radio tower icon, mixing console icon, all in minimalist luxury style, navy blue backgrounds with gold details, Arabic typography integration, consistent design language, vector-style illustration
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt7', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">8</div>
+                    Success Stories / Testimonials Background
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt8">
+                        Abstract background for testimonials, flowing golden radio waves, broadcast signal lines, elegant typography space, navy blue gradient background, premium feel, professional yet artistic, suitable for text overlay, warm and inspiring atmosphere
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt8', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">9</div>
+                    Call-to-Action Section Background
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt9">
+                        Dynamic promotional background, burst of golden radio waves, energetic broadcast signal patterns, navy blue to gold gradient, modern and exciting design, space for text overlay, premium aesthetic, motivational and inspiring feel, high contrast for readability
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt9', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">10</div>
+                    Course Timeline / Progress Visualization
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt10">
+                        Elegant timeline design with broadcast theme, golden connecting lines between course milestones, radio tower markers, navy blue background with subtle texture, Arabic numerals and text spaces, professional infographic style, clean and sophisticated layout
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt10', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">11</div>
+                    Broadcast Equipment Showcase
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt11">
+                        Collection of professional broadcast equipment arranged artistically, radio microphones, broadcast headphones, audio interfaces, mixing boards, all in golden lighting, dark premium background, elegant product photography style, luxury feel, detailed and crisp, suitable for broadcast course equipment section
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt11', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">12</div>
+                    Course Benefits Infographic Background
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt12">
+                        Modern infographic background with broadcast elements, geometric shapes in gold and navy blue, space for benefit icons and text, professional design, Arabic typography friendly layout, clean and organized aesthetic, premium corporate style
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt12', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">13</div>
+                    Social Media Post Templates
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt13">
+                        Square format social media template design, elegant course branding, golden radio microphone with broadcast waves, navy blue background, space for course information text in Arabic, Instagram-ready format, premium and eye-catching design
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt13', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">14</div>
+                    Radio Station Exterior
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt14">
+                        Professional radio station building exterior, modern architecture, radio transmission towers, golden sunset lighting, corporate professional style, navy blue and gold accent colors, Arabic signage visible, premium broadcast facility appearance
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt14', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">15</div>
+                    Podcast Studio Setup
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt15">
+                        Modern podcast studio interior, professional microphone setup, acoustic treatment, warm lighting, multiple camera angles, navy blue and gold color scheme, Arabic elements, premium broadcasting environment, suitable for course promotion
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt15', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">16</div>
+                    Live Broadcasting Scene
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt16">
+                        Dynamic live radio broadcasting scene, professional broadcaster speaking into microphone, 'ON AIR' sign illuminated, studio monitors visible, warm golden lighting, navy blue studio environment, professional broadcast atmosphere
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt16', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="prompt-section">
+                <h2>
+                    <div class="prompt-number">17</div>
+                    Student Success Graduation
+                </h2>
+                <div class="prompt-box">
+                    <div class="prompt-text" id="prompt17">
+                        Broadcast course graduation ceremony, students with certificates, professional broadcast studio background, golden lighting, navy blue and gold ceremonial elements, Arabic text elements, celebration atmosphere, premium academic achievement feel
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt('prompt17', this)">
+                        <i class="fas fa-copy"></i>نسخ
+                    </button>
+                </div>
+            </div>
+            
+            <div class="guidelines-section">
+                <h2><i class="fas fa-palette" style="margin-left: 1rem;"></i>دليل التصميم لجميع الصور</h2>
+                <div class="guidelines-grid">
+                    <div class="guideline-card">
+                        <h3>نظام الألوان</h3>
+                        <ul>
+                            <li>الأساسي: أزرق داكن (#1e3c72, #2a5298)</li>
+                            <li>الثانوي: ذهبي (#f39c12, #d4af37)</li>
+                            <li>المكمل: أبيض ورمادي فاتح</li>
+                            <li>الخلفية: أزرق داكن مع لمسات ذهبية</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <h3>متطلبات الأسلوب</h3>
+                        <ul>
+                            <li>جمالية أنيقة ومهنية</li>
+                            <li>إحساس فاخر ومميز</li>
+                            <li>تكامل الخط العربي حسب الحاجة</li>
+                            <li>عناصر تسويقية متسقة</li>
+                            <li>تفاصيل عالية الجودة وواضحة</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <h3>المواصفات التقنية</h3>
+                        <ul>
+                            <li>دقة عالية (حد أدنى 2048px عرض)</li>
+                            <li>مساحة لون RGB</li>
+                            <li>مناسب للاستخدام على الويب والطباعة</li>
+                            <li>نقاط تركيز واضحة لتراكب النص</li>
+                            <li>تركيب متوازن للقراءة</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <h3>تكامل النص العربي</h3>
+                        <ul>
+                            <li>مساحة للنص العربي من اليمين إلى اليسار</li>
+                            <li>النظر في عناصر الخط العربي</li>
+                            <li>تخطيطات مناسبة للطباعة العربية الأنيقة</li>
+                            <li>الحساسية الثقافية في عناصر التصميم</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyPrompt(promptId, button) {
+            const promptText = document.getElementById(promptId).textContent.trim();
+            
+            navigator.clipboard.writeText(promptText).then(function() {
+                // Change button appearance
+                const icon = button.querySelector('i');
+                const originalText = button.innerHTML;
+                
+                button.innerHTML = '<i class="fas fa-check"></i>تم النسخ';
+                button.classList.add('copied');
+                
+                // Reset after 2 seconds
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+                
+                // Show success notification
+                showNotification('تم نسخ الـ Prompt بنجاح!', 'success');
+            }).catch(function(err) {
+                showNotification('خطأ في النسخ. يرجى المحاولة مرة أخرى.', 'error');
+            });
+        }
+        
+        function copyAllPrompts() {
+            let allPrompts = '';
+            for (let i = 1; i <= 17; i++) {
+                const promptElement = document.getElementById('prompt' + i);
+                if (promptElement) {
+                    allPrompts += (i > 1 ? '\n\n---\n\n' : '') + 'Prompt ' + i + ':\n' + promptElement.textContent.trim();
+                }
+            }
+            
+            navigator.clipboard.writeText(allPrompts).then(function() {
+                showNotification('تم نسخ جميع الـ Prompts بنجاح! (17 prompt)', 'success');
+            }).catch(function(err) {
+                showNotification('خطأ في النسخ. يرجى المحاولة مرة أخرى.', 'error');
+            });
+        }
+        
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideDown 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(function() {
+                notification.style.animation = 'slideUp 0.3s ease';
+                setTimeout(function() {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

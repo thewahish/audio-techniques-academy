@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دورة الإنتاج الموسيقي الاحترافية - أ. عبي سكر</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="دورة شاملة في الإنتاج الموسيقي وتصميم الصوت مع المهندس عبي سكر - خبرة 15+ عاماً في الإنتاج الموسيقي">
+    <meta name="keywords" content="دورة موسيقى, إنتاج موسيقي, تصميم صوت, عبي سكر, دورات تدريبية">
+    <meta name="author" content="Obai Sukar">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="دورة الإنتاج الموسيقي الاحترافية">
+    <meta property="og:description" content="تعلم فنون الإنتاج الموسيقي من الصفر إلى الاحتراف مع المهندس عبي سكر">
+    <meta property="og:image" content="./assets/course-cover.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="دورة الإنتاج الموسيقي الاحترافية">
+    <meta property="twitter:description" content="تعلم فنون الإنتاج الموسيقي من الصفر إلى الاحتراف">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .instructor {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #f39c12;
+            font-weight: 600;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .feature-card p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .course-overview {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 4rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-overview h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .course-overview h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .module-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .module-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .module-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .module-card ul {
+            list-style: none;
+        }
+        
+        .module-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .module-card li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .expectations {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 4rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .expectations h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .expectations h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+        
+        .expectations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .expectation-card {
+            padding: 2rem;
+            border-right: 4px solid #e74c3c;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .expectation-card:hover {
+            transform: translateX(-5px);
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .expectation-card h3 {
+            color: #e74c3c;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .instructor-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 4rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .instructor-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero .instructor {
+                font-size: 1.5rem;
+            }
+            
+            .feature-card,
+            .course-overview,
+            .expectations,
+            .instructor-section {
+                margin: 2rem 0;
+                padding: 2rem 1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-note {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 2rem;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .floating-note:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-note:nth-child(2) { top: 20%; left: 80%; animation-delay: 3s; }
+        .floating-note:nth-child(3) { top: 60%; left: 15%; animation-delay: 6s; }
+        .floating-note:nth-child(4) { top: 80%; left: 70%; animation-delay: 9s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-40px) rotate(-5deg); }
+            75% { transform: translateY(-20px) rotate(3deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/50/3498db/ffffff?text=OS" alt="أ. عبي سكر">
+                    <div class="logo-text">أكاديمية عبي سكر</div>
+                </div>
+                <nav>
+                    <div style="font-weight: 600; color: #3498db;">دورة الإنتاج الموسيقي الاحترافية</div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="floating-elements">
+                <div class="floating-note">♪</div>
+                <div class="floating-note">♫</div>
+                <div class="floating-note">♪</div>
+                <div class="floating-note">♫</div>
+            </div>
+            <div class="container" style="position: relative; z-index: 2;">
+                <h1>دورة الإنتاج الموسيقي الاحترافية</h1>
+                <div class="subtitle">من البداية إلى الاحتراف في عالم الإنتاج الموسيقي</div>
+                <div class="instructor">مع المهندس عبي سكر</div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-music"></i></div>
+                        <h3>إنتاج موسيقي شامل</h3>
+                        <p>تعلم كافة مراحل الإنتاج الموسيقي من التسجيل إلى الماسترينغ</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-headphones"></i></div>
+                        <h3>تصميم الصوت الاحترافي</h3>
+                        <p>تقنيات متقدمة في تصميم الصوت والمؤثرات الصوتية</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-microphone"></i></div>
+                        <h3>تسجيل وميكسينغ</h3>
+                        <p>أسرار التسجيل الاحترافي وتقنيات المزج المتقدمة</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="course-overview">
+            <div class="container">
+                <h2>محتوى الدورة</h2>
+                <div class="modules-grid">
+                    <div class="module-card">
+                        <h3>المرحلة 5: الإنتاج الموسيقي</h3>
+                        <ul>
+                            <li>تصميم الصوت والآلات الافتراضية</li>
+                            <li>ترتيب الأغاني والهيكل الموسيقي</li>
+                            <li>دمج الأصوات والتسجيلات</li>
+                            <li>تقنيات التحرير المتقدمة</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <h3>المرحلة 6: المشاريع النهائية</h3>
+                        <ul>
+                            <li>إنشاء مشروع كامل من الصفر</li>
+                            <li>العمل مع الفنانين والعملاء</li>
+                            <li>إعداد البورتفوليو والمسار المهني</li>
+                            <li>التقييم النهائي وتوزيع الشهادات</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <h3>التقنيات المتقدمة</h3>
+                        <ul>
+                            <li>الماسترينغ الاحترافي</li>
+                            <li>الصوت المحيطي والثلاثي الأبعاد</li>
+                            <li>التوزيع الرقمي والنشر</li>
+                            <li>حقوق الطبع والنشر الموسيقي</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <h3>الأدوات والبرمجيات</h3>
+                        <ul>
+                            <li>Pro Tools و Logic Pro</li>
+                            <li>Ableton Live و FL Studio</li>
+                            <li>البرمجيات المساعدة والإضافات</li>
+                            <li>العتاد الصوتي المهني</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="expectations">
+            <div class="container">
+                <h2>ماذا ستتعلم؟</h2>
+                <div class="expectations-grid">
+                    <div class="expectation-card">
+                        <h3>مهارات تقنية متقدمة</h3>
+                        <p>ستكتسب خبرة عملية في استخدام أحدث التقنيات والبرمجيات المهنية في الإنتاج الموسيقي</p>
+                    </div>
+                    <div class="expectation-card">
+                        <h3>فهم الصناعة الموسيقية</h3>
+                        <p>ستتعرف على كيفية عمل الصناعة الموسيقية ومتطلبات السوق والفرص المهنية المتاحة</p>
+                    </div>
+                    <div class="expectation-card">
+                        <h3>مشاريع عملية</h3>
+                        <p>ستعمل على مشاريع حقيقية تساعدك في بناء بورتفوليو قوي يؤهلك لدخول سوق العمل</p>
+                    </div>
+                    <div class="expectation-card">
+                        <h3>شبكة مهنية</h3>
+                        <p>ستكوّن علاقات مهنية مع زملاء ومتخصصين في المجال تساعدك في مسيرتك المهنية</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="instructor-section">
+            <div class="container">
+                <div class="instructor-photo">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2 style="color: #2c3e50; margin-bottom: 1rem;">المهندس عبي سكر</h2>
+                <p style="font-size: 1.2rem; color: #7f8c8d; margin-bottom: 2rem;">
+                    مهندس صوت ومنتج موسيقي بخبرة تزيد عن 15 عاماً في الصناعة الموسيقية
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: right;">
+                    <div>
+                        <h4 style="color: #3498db; margin-bottom: 0.5rem;">الخبرة العملية</h4>
+                        <ul style="list-style: none; color: #7f8c8d;">
+                            <li>15+ سنة في الإنتاج الموسيقي</li>
+                            <li>العمل مع فنانين عالميين</li>
+                            <li>مهندس صوت معتمد</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #3498db; margin-bottom: 0.5rem;">التخصصات</h4>
+                        <ul style="list-style: none; color: #7f8c8d;">
+                            <li>الإنتاج الموسيقي</li>
+                            <li>تصميم الصوت</li>
+                            <li>الماسترينغ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="color: white; margin-bottom: 2rem; font-size: 2.5rem;">ابدأ رحلتك الموسيقية اليوم</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.3rem; margin-bottom: 3rem;">
+                    انضم إلى المئات من المنتجين الذين غيّروا مسيرتهم المهنية معنا
+                </p>
+                <a href="#register" class="cta-button">
+                    <i class="fas fa-play" style="margin-left: 10px;"></i>
+                    سجل الآن
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@obaisukar.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@obaisukar</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-youtube"></i>
+                    <span>قناة عبي سكر</span>
+                </div>
+            </div>
+            <p>&copy; 2024 أكاديمية عبي سكر للإنتاج الموسيقي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // إضافة تأثيرات تفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير النقر على الكروت
+            const cards = document.querySelectorAll('.feature-card, .module-card, .expectation-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // تأثير التمرير السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // تحريك العناصر عند التمرير
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.floating-elements');
+                if (parallax) {
+                    const speed = scrolled * 0.5;
+                    parallax.style.transform = 'translateY(' + speed + 'px)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

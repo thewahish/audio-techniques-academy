@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقنيات الصوت المتوسطة - المستوى الفضي | أ. أبي سكر</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --silver-primary: #C0C0C0;
+            --silver-secondary: #A9A9A9;
+            --silver-light: #D3D3D3;
+            --navy: #292663;
+            --blue: #00AEEF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--navy);
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, var(--silver-primary), var(--silver-secondary));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .tier-badge {
+            background: linear-gradient(135deg, var(--silver-primary), var(--silver-secondary));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            color: var(--silver-light);
+        }
+        
+        .hero .description {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.98);
+            margin: 3rem 0;
+            padding: 4rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--navy);
+            font-weight: 900;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--silver-primary), var(--silver-secondary));
+            border-radius: 2px;
+        }
+        
+        .course-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--silver-primary), var(--silver-secondary));
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .module-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .module-card:hover {
+            border-color: var(--silver-primary);
+            box-shadow: 0 15px 35px rgba(192, 192, 192, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .module-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--silver-primary), var(--silver-secondary));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+        
+        .module-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+        
+        .module-content {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .module-lessons {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .module-lessons li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-right: 2rem;
+        }
+        
+        .module-lessons li::before {
+            content: '▶';
+            position: absolute;
+            right: 0;
+            color: var(--silver-primary);
+            font-size: 0.8rem;
+        }
+        
+        .learning-outcomes {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 15px;
+            border-right: 5px solid var(--silver-primary);
+        }
+        
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .outcome-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-right: 3px solid var(--silver-primary);
+            position: relative;
+        }
+        
+        .outcome-item::before {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--silver-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .outcome-item h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            margin-right: 2rem;
+        }
+        
+        .outcome-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .pricing-section {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--silver-primary), var(--silver-secondary));
+            border-radius: 20px;
+            color: white;
+            margin: 3rem 0;
+        }
+        
+        .pricing-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+        
+        .price {
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 1rem 0;
+        }
+        
+        .price-note {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .enroll-btn {
+            background: white;
+            color: var(--silver-primary);
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .enroll-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .prerequisite-banner {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .content-section { padding: 2rem; }
+            .modules-grid { grid-template-columns: 1fr; }
+            .course-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="./website/Logo White/Logo_White.png" alt="أ. أبي سكر">
+                    <div class="logo-text">أكاديمية تقنيات الصوت</div>
+                </div>
+                <a href="./audio-techniques-course-index.html" class="back-btn">
+                    <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                    العودة للرئيسية
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="tier-badge">المستوى الثاني - الفضي</div>
+                <h1>تقنيات الصوت المتوسطة</h1>
+                <div class="subtitle">تطوير المهارات وبناء الخبرة العملية</div>
+                <div class="description">
+                    مستوى متقدم لتطوير مهاراتك في تقنيات الصوت المتخصصة، مع التركيز على الجوانب الاحترافية 
+                    في الإنتاج والتسجيل والعمل مع العملاء
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="prerequisite-banner">
+                    <h3><i class="fas fa-info-circle" style="margin-left: 1rem;"></i>متطلبات الالتحاق</h3>
+                    <p>يتطلب إتمام المستوى البرونزي أو خبرة معادلة في أساسيات التسجيل والبرمجيات الصوتية</p>
+                </div>
+                
+                <h2 class="section-title">نظرة عامة على الدورة</h2>
+                
+                <div class="course-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">12</span>
+                        <div class="stat-label">وحدة متخصصة</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">36</span>
+                        <div class="stat-label">ساعة تدريبية</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">25</span>
+                        <div class="stat-label">تطبيق عملي</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">شهادة</span>
+                        <div class="stat-label">تخصص معتمدة</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">المحتوى التعليمي المتخصص</h2>
+                
+                <div class="modules-grid">
+                    <div class="module-card">
+                        <div class="module-number">1</div>
+                        <h3>تقنيات التسجيل الاحترافية</h3>
+                        <div class="module-content">
+                            إتقان التقنيات المتقدمة للتسجيل في بيئات مختلفة ومع مصادر صوتية متنوعة
+                        </div>
+                        <ul class="module-lessons">
+                            <li>التسجيل متعدد المسارات</li>
+                            <li>تقنيات تسجيل الآلات الموسيقية</li>
+                            <li>التسجيل في الاستوديو مقابل الموقع</li>
+                            <li>استخدام الضاغطات والمحددات</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">2</div>
+                        <h3>معالجة الصوت والمؤثرات</h3>
+                        <div class="module-content">
+                            تطبيق المؤثرات الصوتية والمعالجات لتحسين جودة التسجيلات
+                        </div>
+                        <ul class="module-lessons">
+                            <li>EQ المتقدم وتشكيل الترددات</li>
+                            <li>تقنيات الضغط والتوسع</li>
+                            <li>المؤثرات الزمنية والمكانية</li>
+                            <li>تقنيات إزالة الضوضاء</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">3</div>
+                        <h3>الإنتاج الإذاعي المتقدم</h3>
+                        <div class="module-content">
+                            إنتاج برامج إذاعية احترافية مع الموسيقى والمؤثرات والإعلانات
+                        </div>
+                        <ul class="module-lessons">
+                            <li>تصميم البرامج الإذاعية</li>
+                            <li>دمج الموسيقى والمؤثرات</li>
+                            <li>إنتاج الإعلانات الإذاعية</li>
+                            <li>تقنيات البث المباشر</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">4</div>
+                        <h3>البودكاست المتقدم</h3>
+                        <div class="module-content">
+                            إنتاج بودكاست احترافي متعدد المضيفين مع جودة إذاعية عالية
+                        </div>
+                        <ul class="module-lessons">
+                            <li>تسجيل المقابلات عن بُعد</li>
+                            <li>البودكاست متعدد المضيفين</li>
+                            <li>إنتاج السلاسل المواضيعية</li>
+                            <li>استراتيجيات التوزيع والتسويق</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">5</div>
+                        <h3>إدارة الاستوديوهات المهنية</h3>
+                        <div class="module-content">
+                            تشغيل وإدارة استوديوهات التسجيل الاحترافية والعمل مع الفرق
+                        </div>
+                        <ul class="module-lessons">
+                            <li>إعداد الاستوديو للجلسات</li>
+                            <li>إدارة سير العمل</li>
+                            <li>التعامل مع الأجهزة الاحترافية</li>
+                            <li>ضمان الجودة والمعايير</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">6</div>
+                        <h3>العمل مع العملاء والفنانين</h3>
+                        <div class="module-content">
+                            مهارات التعامل المهني مع العملاء وتوجيه الفنانين أثناء التسجيل
+                        </div>
+                        <ul class="module-lessons">
+                            <li>مهارات التواصل المهني</li>
+                            <li>إدارة جلسات التسجيل</li>
+                            <li>توجيه الأداء الصوتي</li>
+                            <li>حل المشاكل التقنية</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">7</div>
+                        <h3>الصوت المحيطي والسينمائي</h3>
+                        <div class="module-content">
+                            تقنيات إنتاج الصوت للأفلام والألعاب والمحتوى المرئي
+                        </div>
+                        <ul class="module-lessons">
+                            <li>تصميم المؤثرات الصوتية</li>
+                            <li>مزج الصوت مع الفيديو</li>
+                            <li>تقنيات الصوت المحيطي</li>
+                            <li>الدوبلاج والتعليق الصوتي</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">8</div>
+                        <h3>تسجيل الفعاليات الحية</h3>
+                        <div class="module-content">
+                            تقنيات تسجيل العروض والحفلات والفعاليات المباشرة
+                        </div>
+                        <ul class="module-lessons">
+                            <li>إعداد أنظمة التسجيل المحمولة</li>
+                            <li>التعامل مع التحديات الصوتية</li>
+                            <li>تسجيل متعدد المسارات في الموقع</li>
+                            <li>المزج المباشر والتسجيل</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">9</div>
+                        <h3>الصوت الرقمي المتقدم</h3>
+                        <div class="module-content">
+                            تقنيات متقدمة في الصوت الرقمي والبروتوكولات الاحترافية
+                        </div>
+                        <ul class="module-lessons">
+                            <li>فهم تنسيقات الملفات المختلفة</li>
+                            <li>تقنيات الضغط والتشفير</li>
+                            <li>نقل الصوت عبر الشبكات</li>
+                            <li>معايير الصوت الرقمي</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">10</div>
+                        <h3>إنتاج الموسيقى الأساسية</h3>
+                        <div class="module-content">
+                            أساسيات إنتاج الموسيقى وتسجيل الآلات والأصوات
+                        </div>
+                        <ul class="module-lessons">
+                            <li>ترتيب وهيكلة المقطوعات</li>
+                            <li>تسجيل الآلات المختلفة</li>
+                            <li>استخدام المكتبات الصوتية</li>
+                            <li>أساسيات الميكس والماسترينغ</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">11</div>
+                        <h3>أساسيات ريادة الأعمال الصوتية</h3>
+                        <div class="module-content">
+                            مبادئ إنشاء وإدارة مشروع في مجال الخدمات الصوتية
+                        </div>
+                        <ul class="module-lessons">
+                            <li>تحديد نموذج العمل</li>
+                            <li>التسعير والعروض</li>
+                            <li>التسويق للخدمات الصوتية</li>
+                            <li>بناء قاعدة العملاء</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">12</div>
+                        <h3>مشاريع متعددة التخصصات</h3>
+                        <div class="module-content">
+                            مشاريع عملية شاملة تدمج جميع المهارات المكتسبة في بيئة احترافية
+                        </div>
+                        <ul class="module-lessons">
+                            <li>مشروع إنتاج برنامج إذاعي</li>
+                            <li>مشروع بودكاست متكامل</li>
+                            <li>مشروع تسجيل فعالية حية</li>
+                            <li>العرض النهائي والتقييم</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="learning-outcomes">
+                    <h2 class="section-title">إنجازاتك في نهاية هذا المستوى</h2>
+                    
+                    <div class="outcomes-grid">
+                        <div class="outcome-item">
+                            <h4>إتقان التسجيل الاحترافي</h4>
+                            <p>ستتمكن من التسجيل بجودة احترافية في أي بيئة وتحت أي ظروف</p>
+                        </div>
+                        
+                        <div class="outcome-item">
+                            <h4>معالجة صوتية متقدمة</h4>
+                            <p>ستتقن استخدام جميع أنواع المعالجات والمؤثرات الصوتية الاحترافية</p>
+                        </div>
+                        
+                        <div class="outcome-item">
+                            <h4>الإنتاج الإذاعي الكامل</h4>
+                            <p>ستتمكن من إنتاج برامج إذاعية متكاملة بمعايير احترافية عالية</p>
+                        </div>
+                        
+                        <div class="outcome-item">
+                            <h4>إدارة الاستوديوهات</h4>
+                            <p>ستكتسب مهارات إدارة وتشغيل الاستوديوهات الاحترافية بكفاءة</p>
+                        </div>
+                        
+                        <div class="outcome-item">
+                            <h4>العمل مع العملاء</h4>
+                            <p>ستطور مهارات التعامل المهني مع العملاء وإدارة المشاريع</p>
+                        </div>
+                        
+                        <div class="outcome-item">
+                            <h4>ريادة الأعمال</h4>
+                            <p>ستكون قادراً على بدء مشروعك الخاص في مجال الخدمات الصوتية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section">
+            <div class="container">
+                <h2>استثمار في التخصص المهني</h2>
+                <div class="price">2,400 ريال</div>
+                <div class="price-note">شامل جميع المواد التعليمية والمشاريع العملية والشهادة المتخصصة</div>
+                <a href="#contact" class="enroll-btn">
+                    سجل الآن في المستوى الفضي
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: rgba(0, 0, 0, 0.95); color: white; text-align: center; padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <h3 style="margin-bottom: 2rem; font-size: 2rem;">تواصل مع أ. أبي سكر</h3>
+            <div style="display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 1rem; font-size: 1.2rem;">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@obaisukar.com</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem; font-size: 1.2rem;">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/obaisukar</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem; font-size: 1.2rem;">
+                    <i class="fas fa-globe"></i>
+                    <span>www.obaisukar.com</span>
+                </div>
+            </div>
+            <p style="margin-top: 2rem;">&copy; 2024 أكاديمية تقنيات الصوت - أبي سكر. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+</body>
+</html>
