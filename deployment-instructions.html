@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Techniques Academy - Deployment Instructions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            color: #333;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        .step { 
+            background: #f8f9fa; 
+            border-left: 4px solid #007bff; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 0 5px 5px 0;
+        }
+        .checkbox-item {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .command {
+            background: #2d3748;
+            color: #f7fafc;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 5px 0;
+        }
+        .note {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio Techniques Academy - Deployment Guide</h1>
+    <p><strong>Target:</strong> DigitalOcean Hosting + Squarespace Domain</p>
+
+    <div class="warning">
+        <strong>⚠️ Prerequisites:</strong> Ensure you have your DigitalOcean account credentials and Squarespace domain admin access ready.
+    </div>
+
+    <h2>Phase 1: DigitalOcean Droplet Setup</h2>
+    <div class="step">
+        <h3>1.1 Create Droplet</h3>
+        <div class="checkbox-item"><input type="checkbox"> Log into DigitalOcean dashboard</div>
+        <div class="checkbox-item"><input type="checkbox"> Click "Create" → "Droplets"</div>
+        <div class="checkbox-item"><input type="checkbox"> Choose Ubuntu 22.04 LTS</div>
+        <div class="checkbox-item"><input type="checkbox"> Select Basic plan ($6/month minimum recommended)</div>
+        <div class="checkbox-item"><input type="checkbox"> Choose datacenter region closest to your audience</div>
+        <div class="checkbox-item"><input type="checkbox"> Add SSH key (or use password authentication)</div>
+        <div class="checkbox-item"><input type="checkbox"> Name your droplet: "audio-academy"</div>
+        <div class="checkbox-item"><input type="checkbox"> Click "Create Droplet"</div>
+        <div class="checkbox-item"><input type="checkbox"> Wait for droplet to be ready (2-3 minutes)</div>
+        <div class="checkbox-item"><input type="checkbox"> Copy the droplet's IP address</div>
+    </div>
+
+    <h2>Phase 2: Server Configuration</h2>
+    <div class="step">
+        <h3>2.1 Connect to Server</h3>
+        <div class="checkbox-item"><input type="checkbox"> Open terminal/command prompt</div>
+        <div class="checkbox-item"><input type="checkbox"> Connect via SSH:</div>
+        <div class="command">ssh root@YOUR_DROPLET_IP</div>
+        <div class="checkbox-item"><input type="checkbox"> Accept the connection (type "yes")</div>
+        <div class="checkbox-item"><input type="checkbox"> Enter password if prompted</div>
+    </div>
+
+    <div class="step">
+        <h3>2.2 Install Web Server</h3>
+        <div class="checkbox-item"><input type="checkbox"> Update system packages:</div>
+        <div class="command">apt update && apt upgrade -y</div>
+        <div class="checkbox-item"><input type="checkbox"> Install Nginx:</div>
+        <div class="command">apt install nginx -y</div>
+        <div class="checkbox-item"><input type="checkbox"> Start and enable Nginx:</div>
+        <div class="command">systemctl start nginx && systemctl enable nginx</div>
+        <div class="checkbox-item"><input type="checkbox"> Test: Open browser, visit http://YOUR_DROPLET_IP</div>
+        <div class="checkbox-item"><input type="checkbox"> Verify you see "Welcome to nginx!" page</div>
+    </div>
+
+    <div class="step">
+        <h3>2.3 Configure Firewall</h3>
+        <div class="checkbox-item"><input type="checkbox"> Enable UFW firewall:</div>
+        <div class="command">ufw enable</div>
+        <div class="checkbox-item"><input type="checkbox"> Allow SSH:</div>
+        <div class="command">ufw allow ssh</div>
+        <div class="checkbox-item"><input type="checkbox"> Allow HTTP:</div>
+        <div class="command">ufw allow 'Nginx Full'</div>
+        <div class="checkbox-item"><input type="checkbox"> Check status:</div>
+        <div class="command">ufw status</div>
+    </div>
+
+    <h2>Phase 3: SSL Certificate Setup</h2>
+    <div class="step">
+        <h3>3.1 Install Certbot</h3>
+        <div class="checkbox-item"><input type="checkbox"> Install Certbot:</div>
+        <div class="command">apt install certbot python3-certbot-nginx -y</div>
+        <div class="checkbox-item"><input type="checkbox"> Verify installation:</div>
+        <div class="command">certbot --version</div>
+    </div>
+
+    <h2>Phase 4: Domain Configuration (Squarespace)</h2>
+    <div class="step">
+        <h3>4.1 Configure DNS in Squarespace</h3>
+        <div class="checkbox-item"><input type="checkbox"> Log into Squarespace dashboard</div>
+        <div class="checkbox-item"><input type="checkbox"> Go to Settings → Domains</div>
+        <div class="checkbox-item"><input type="checkbox"> Click on your domain name</div>
+        <div class="checkbox-item"><input type="checkbox"> Navigate to "DNS Settings" or "Advanced DNS"</div>
+        <div class="checkbox-item"><input type="checkbox"> Add A Record:</div>
+        <div class="note">
+            <strong>A Record Settings:</strong><br>
+            • Host: @ (or leave blank)<br>
+            • Points to: YOUR_DROPLET_IP<br>
+            • TTL: 3600 (or default)
+        </div>
+        <div class="checkbox-item"><input type="checkbox"> Add WWW CNAME Record:</div>
+        <div class="note">
+            <strong>CNAME Record Settings:</strong><br>
+            • Host: www<br>
+            • Points to: yourdomain.com<br>
+            • TTL: 3600 (or default)
+        </div>
+        <div class="checkbox-item"><input type="checkbox"> Save DNS changes</div>
+        <div class="checkbox-item"><input type="checkbox"> Wait 10-60 minutes for DNS propagation</div>
+    </div>
+
+    <h2>Phase 5: File Upload Preparation</h2>
+    <div class="step">
+        <h3>5.1 Prepare Local Files</h3>
+        <div class="checkbox-item"><input type="checkbox"> Open file explorer to audio-techniques-academy folder</div>
+        <div class="checkbox-item"><input type="checkbox"> Create a ZIP file of the entire folder</div>
+        <div class="checkbox-item"><input type="checkbox"> Name it: audio-academy.zip</div>
+        <div class="checkbox-item"><input type="checkbox"> Verify ZIP contains all HTML files and assets</div>
+    </div>
+
+    <div class="step">
+        <h3>5.2 Upload Files via SCP</h3>
+        <div class="checkbox-item"><input type="checkbox"> Open new terminal/command prompt</div>
+        <div class="checkbox-item"><input type="checkbox"> Navigate to folder containing audio-academy.zip</div>
+        <div class="checkbox-item"><input type="checkbox"> Upload ZIP to server:</div>
+        <div class="command">scp audio-academy.zip root@YOUR_DROPLET_IP:/tmp/</div>
+        <div class="checkbox-item"><input type="checkbox"> Enter password when prompted</div>
+        <div class="checkbox-item"><input type="checkbox"> Wait for upload to complete</div>
+    </div>
+
+    <h2>Phase 6: Server File Setup</h2>
+    <div class="step">
+        <h3>6.1 Extract and Deploy Files</h3>
+        <div class="checkbox-item"><input type="checkbox"> Return to SSH session with server</div>
+        <div class="checkbox-item"><input type="checkbox"> Install unzip:</div>
+        <div class="command">apt install unzip -y</div>
+        <div class="checkbox-item"><input type="checkbox"> Navigate to web directory:</div>
+        <div class="command">cd /var/www/html</div>
+        <div class="checkbox-item"><input type="checkbox"> Remove default nginx page:</div>
+        <div class="command">rm index.nginx-debian.html</div>
+        <div class="checkbox-item"><input type="checkbox"> Extract your files:</div>
+        <div class="command">unzip /tmp/audio-academy.zip -d .</div>
+        <div class="checkbox-item"><input type="checkbox"> Move files from subfolder to root:</div>
+        <div class="command">mv audio-techniques-academy/* . && rmdir audio-techniques-academy</div>
+        <div class="checkbox-item"><input type="checkbox"> Set proper permissions:</div>
+        <div class="command">chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html</div>
+    </div>
+
+    <h2>Phase 7: Nginx Configuration</h2>
+    <div class="step">
+        <h3>7.1 Configure Virtual Host</h3>
+        <div class="checkbox-item"><input type="checkbox"> Create site configuration:</div>
+        <div class="command">nano /etc/nginx/sites-available/audio-academy</div>
+        <div class="checkbox-item"><input type="checkbox"> Paste this configuration (replace YOURDOMAIN.com):</div>
+        <div class="command">server {
+    listen 80;
+    server_name YOURDOMAIN.com www.YOURDOMAIN.com;
+    root /var/www/html;
+    index index.html unified-audio-academy.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}</div>
+        <div class="checkbox-item"><input type="checkbox"> Save file (Ctrl+X, Y, Enter)</div>
+        <div class="checkbox-item"><input type="checkbox"> Enable site:</div>
+        <div class="command">ln -s /etc/nginx/sites-available/audio-academy /etc/nginx/sites-enabled/</div>
+        <div class="checkbox-item"><input type="checkbox"> Test Nginx configuration:</div>
+        <div class="command">nginx -t</div>
+        <div class="checkbox-item"><input type="checkbox"> Reload Nginx:</div>
+        <div class="command">systemctl reload nginx</div>
+    </div>
+
+    <h2>Phase 8: SSL Certificate Installation</h2>
+    <div class="step">
+        <h3>8.1 Generate SSL Certificate</h3>
+        <div class="checkbox-item"><input type="checkbox"> Run Certbot (replace YOURDOMAIN.com):</div>
+        <div class="command">certbot --nginx -d YOURDOMAIN.com -d www.YOURDOMAIN.com</div>
+        <div class="checkbox-item"><input type="checkbox"> Enter email address for notifications</div>
+        <div class="checkbox-item"><input type="checkbox"> Agree to Terms of Service (A)</div>
+        <div class="checkbox-item"><input type="checkbox"> Choose whether to share email (Y/N)</div>
+        <div class="checkbox-item"><input type="checkbox"> Select option 2 (redirect HTTP to HTTPS)</div>
+        <div class="checkbox-item"><input type="checkbox"> Wait for certificate generation</div>
+    </div>
+
+    <h2>Phase 9: Final Testing</h2>
+    <div class="step">
+        <h3>9.1 Verify Deployment</h3>
+        <div class="checkbox-item"><input type="checkbox"> Open browser</div>
+        <div class="checkbox-item"><input type="checkbox"> Visit https://YOURDOMAIN.com</div>
+        <div class="checkbox-item"><input type="checkbox"> Verify site loads with green lock icon</div>
+        <div class="checkbox-item"><input type="checkbox"> Test main pages work correctly</div>
+        <div class="checkbox-item"><input type="checkbox"> Check that images load properly</div>
+        <div class="checkbox-item"><input type="checkbox"> Test both Arabic and English versions</div>
+        <div class="checkbox-item"><input type="checkbox"> Verify mobile responsiveness</div>
+    </div>
+
+    <div class="step">
+        <h3>9.2 Setup Auto-Renewal</h3>
+        <div class="checkbox-item"><input type="checkbox"> Test certificate renewal:</div>
+        <div class="command">certbot renew --dry-run</div>
+        <div class="checkbox-item"><input type="checkbox"> Verify "Congratulations" message appears</div>
+        <div class="checkbox-item"><input type="checkbox"> Auto-renewal is now configured</div>
+    </div>
+
+    <h2>Phase 10: Maintenance Setup</h2>
+    <div class="step">
+        <h3>10.1 Create Update Script</h3>
+        <div class="checkbox-item"><input type="checkbox"> Create update script:</div>
+        <div class="command">nano /root/update-site.sh</div>
+        <div class="checkbox-item"><input type="checkbox"> Add content:</div>
+        <div class="command">#!/bin/bash
+cd /var/www/html
+# Backup current site
+tar -czf /root/backups/site-$(date +%Y%m%d-%H%M%S).tar.gz .
+# Your update commands here
+systemctl reload nginx</div>
+        <div class="checkbox-item"><input type="checkbox"> Make executable:</div>
+        <div class="command">chmod +x /root/update-site.sh</div>
+        <div class="checkbox-item"><input type="checkbox"> Create backups directory:</div>
+        <div class="command">mkdir -p /root/backups</div>
+    </div>
+
+    <div class="warning">
+        <strong>✅ Deployment Complete!</strong><br>
+        Your Audio Techniques Academy is now live at https://YOURDOMAIN.com<br>
+        Certificate auto-renewal is configured.<br>
+        Use the update script for future changes.
+    </div>
+
+    <div class="note">
+        <strong>📝 Future Updates:</strong><br>
+        • Upload new files via SCP to /tmp/<br>
+        • Extract to /var/www/html/<br>
+        • Run: systemctl reload nginx<br>
+        • Always backup before major changes
+    </div>
+</body>
+</html>

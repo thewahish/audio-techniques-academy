@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأكاديمية المهنية لتقنيات الصوت - منهج شامل 2024 | أ. أبي سكر</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #2c3e50;
+            --success: #27ae60;
+            --border: #e1e8ed;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 24px 0;
+            text-align: center;
+        }
+        
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+        
+        .industry-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero-description {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+        
+        .stat-card {
+            background: var(--white);
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 64px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .level-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+            margin-bottom: 48px;
+            border: 2px solid var(--border);
+        }
+        
+        .level-header {
+            padding: 32px;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .level-foundation {
+            background: linear-gradient(135deg, var(--bronze), #B8860B);
+        }
+        
+        .level-intermediate {
+            background: linear-gradient(135deg, var(--silver), #A9A9A9);
+        }
+        
+        .level-professional {
+            background: linear-gradient(135deg, var(--gold), #DAA520);
+        }
+        
+        .level-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .level-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        .level-content {
+            padding: 40px;
+        }
+        
+        .sessions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        
+        .session-card {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 24px;
+            border-right: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .session-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .session-number {
+            background: var(--accent);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .session-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .session-focus {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .session-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .hands-on-hours {
+            background: var(--success);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .equipment-section {
+            background: var(--light-gray);
+            padding: 64px 0;
+        }
+        
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .equipment-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        .equipment-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .equipment-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .equipment-list {
+            list-style: none;
+        }
+        
+        .equipment-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            padding-right: 24px;
+        }
+        
+        .equipment-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .pricing-section {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .pricing-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 48px;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            color: var(--dark-gray);
+            padding: 40px 32px;
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .badge-foundation { background: var(--bronze); color: var(--white); }
+        .badge-intermediate { background: var(--silver); color: var(--white); }
+        .badge-professional { background: var(--gold); color: var(--primary); }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 24px 0;
+            color: var(--primary);
+        }
+        
+        .price-note {
+            font-size: 1rem;
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            background: var(--accent);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .contact-section {
+            background: var(--light-gray);
+            padding: 64px 0;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+        }
+        
+        .contact-icon {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section { padding: 48px 0; }
+            .sessions-grid { grid-template-columns: 1fr; }
+            .equipment-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="header-title">الأكاديمية المهنية لتقنيات الصوت</h1>
+            <div class="header-subtitle">منهج شامل معتمد على معايير الصناعة العالمية</div>
+            <div class="industry-badges">
+                <div class="badge">معايير Berklee College</div>
+                <div class="badge">منهج SAE Institute</div>
+                <div class="badge">تقنيات Full Sail University</div>
+                <div class="badge">Pro Tools معتمد</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>برنامج هندسة الصوت الشامل</h1>
+            <p class="hero-description">
+                منهج مصمم بعناية ليعكس أحدث معايير الصناعة العالمية، يجمع بين النظرية المتقدمة والتطبيق العملي المكثف 
+                لإعداد مهندسي صوت محترفين قادرين على العمل في جميع مجالات الصناعة الصوتية
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">24</span>
+                    <div class="stat-label">جلسة تدريبية شاملة</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">85</span>
+                    <div class="stat-label">ساعة تطبيق عملي</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <div class="stat-label">جاهزية لسوق العمل</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">6</span>
+                    <div class="stat-label">مسارات تخصصية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">المنهج التدريبي الشامل</h2>
+            <p class="section-subtitle">ثلاث مراحل متدرجة تغطي جميع جوانب هندسة الصوت المعاصرة</p>
+
+            <!-- Foundation Level -->
+            <div class="level-card">
+                <div class="level-header level-foundation">
+                    <h3 class="level-title">🥉 المرحلة التأسيسية</h3>
+                    <p class="level-description">بناء المهارات الأساسية لمهندسي الصوت المحترفين (الجلسات 1-8)</p>
+                </div>
+                <div class="level-content">
+                    <div class="sessions-grid">
+                        <div class="session-card">
+                            <div class="session-number">1</div>
+                            <h4 class="session-title">فيزياء الصوت والأكوستيك</h4>
+                            <div class="session-focus">النظرية + المختبر</div>
+                            <p class="session-description">إتقان فيزياء الصوت والمبادئ الأكوستيكية التي تحكم جميع أعمال الصوت</p>
+                            <span class="hands-on-hours">💪 2 ساعة تطبيق عملي</span>
+                        </div>
+                        
+                        <div class="session-card">
+                            <div class="session-number">2</div>
+                            <h4 class="session-title">مبادئ الصوت الرقمي وإتقان DAW</h4>
+                            <div class="session-focus">تكنولوجيا التسجيل</div>
+                            <p class="session-description">فهم شامل للصوت الرقمي وإتقان Pro Tools على مستوى الشهادة المهنية</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">3</div>
+                            <h4 class="session-title">تكنولوجيا Microphones ووضعها</h4>
+                            <div class="session-focus">التسجيل</div>
+                            <p class="session-description">اختيار وتوضيب Microphones على مستوى الخبير لأي سيناريو تسجيل</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">4</div>
+                            <h4 class="session-title">Signal Flow وتشغيل Console</h4>
+                            <div class="session-focus">الخلط</div>
+                            <p class="session-description">إتقان تشغيل وحدات التحكم التناظرية والرقمية وتوجيه الإشارات</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">5</div>
+                            <h4 class="session-title">تقنيات التسجيل وإدارة الجلسات</h4>
+                            <div class="session-focus">الإنتاج</div>
+                            <p class="session-description">إدارة جلسات تسجيل احترافية وتقنيات تتبع متقدمة</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">6</div>
+                            <h4 class="session-title">التحرير الأساسي واستعادة الصوت</h4>
+                            <div class="session-focus">ما بعد الإنتاج</div>
+                            <p class="session-description">تقنيات تحرير واستعادة الصوت المهنية للتسجيلات التالفة</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">7</div>
+                            <h4 class="session-title">مقدمة في فلسفة الخلط</h4>
+                            <div class="session-focus">الخلط</div>
+                            <p class="session-description">فهم النهج الفني والتقني للخلط المهني</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">8</div>
+                            <h4 class="session-title">مشروع التأسيس: تسجيل كامل</h4>
+                            <div class="session-focus">التكامل</div>
+                            <p class="session-description">دمج جميع مهارات التأسيس في مشروع تسجيل كامل</p>
+                            <span class="hands-on-hours">💪 3.5 ساعة تطبيق عملي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intermediate Level -->
+            <div class="level-card">
+                <div class="level-header level-intermediate">
+                    <h3 class="level-title">🥈 المرحلة المتوسطة</h3>
+                    <p class="level-description">تقنيات الإنتاج المهنية (الجلسات 9-16)</p>
+                </div>
+                <div class="level-content">
+                    <div class="sessions-grid">
+                        <div class="session-card">
+                            <div class="session-number">9</div>
+                            <h4 class="session-title">تقنيات التسجيل المتقدمة</h4>
+                            <div class="session-focus">الإنتاج</div>
+                            <p class="session-description">إتقان نهج التسجيل المتطورة المستخدمة من قبل كبار المهندسين</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">10</div>
+                            <h4 class="session-title">تصميم الصوت و Audio Synthesis</h4>
+                            <div class="session-focus">الإبداع</div>
+                            <p class="session-description">إنشاء أصوات أصلية لإنتاج الموسيقى وأعمال ما بعد الإنتاج</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">11</div>
+                            <h4 class="session-title">تحرير Multi-Track و Comping</h4>
+                            <div class="session-focus">ما بعد الإنتاج</div>
+                            <p class="session-description">تقنيات تحرير متقدمة للمشاريع المعقدة</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">12</div>
+                            <h4 class="session-title">Static Mix & Panning العملي</h4>
+                            <div class="session-focus">الخلط</div>
+                            <p class="session-description">إتقان تقنيات توزيع الأصوات في المساحة الصوتية وإنشاء mix متوازن ومهني</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">13</div>
+                            <h4 class="session-title">EQ - Equalization التطبيقية</h4>
+                            <div class="session-focus">المعالجة</div>
+                            <p class="session-description">إتقان استخدام EQ لتشكيل الصوت وحل المشاكل الترددية بطريقة مهنية</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">14</div>
+                            <h4 class="session-title">Compression Basics</h4>
+                            <div class="session-focus">المعالجة</div>
+                            <p class="session-description">تعلم أساسيات الضغط وتطبيقه لتحسين ديناميكية الصوت وثباته</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">15</div>
+                            <h4 class="session-title">Advanced Dynamics</h4>
+                            <div class="session-focus">المعالجة</div>
+                            <p class="session-description">تقنيات متقدمة في معالجة الديناميكية للحصول على صوت احترافي متميز</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">16</div>
+                            <h4 class="session-title">Reverb & Delay</h4>
+                            <div class="session-focus">المؤثرات</div>
+                            <p class="session-description">إضافة عمق ومساحة للصوت باستخدام التأثيرات الزمنية بطريقة إبداعية</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Level -->
+            <div class="level-card">
+                <div class="level-header level-professional">
+                    <h3 class="level-title">🥇 المرحلة المهنية</h3>
+                    <p class="level-description">التخصصات الجاهزة للصناعة (الجلسات 17-24)</p>
+                </div>
+                <div class="level-content">
+                    <div class="sessions-grid">
+                        <div class="session-card">
+                            <div class="session-number">17</div>
+                            <h4 class="session-title">PA Systems (أنظمة الصوت الحي)</h4>
+                            <div class="session-focus">الصوت الحي</div>
+                            <p class="session-description">تصميم وتنفيذ أنظمة التعزيز الصوتي الكاملة</p>
+                            <span class="hands-on-hours">💪 3 ساعات تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">18</div>
+                            <h4 class="session-title">Live Mixing Workflow</h4>
+                            <div class="session-focus">الصوت الحي</div>
+                            <p class="session-description">إتقان خلط الصوت الحي تحت الضغط مع اتخاذ قرارات في الوقت الفعلي</p>
+                            <span class="hands-on-hours">💪 3 ساعات تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">19</div>
+                            <h4 class="session-title">Broadcast Audio وإنتاج الإذاعة</h4>
+                            <div class="session-focus">الإذاعة</div>
+                            <p class="session-description">تلبية معايير البث وإنشاء محتوى جاهز للراديو</p>
+                            <span class="hands-on-hours">💪 3 ساعات تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">20</div>
+                            <h4 class="session-title">Automation وإنهاء Mix</h4>
+                            <div class="session-focus">الخلط</div>
+                            <p class="session-description">تقنيات الأتمتة المتقدمة لإكمال الخلط المهني</p>
+                            <span class="hands-on-hours">💪 2.5 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">21</div>
+                            <h4 class="session-title">Mastering وتسليم الصوت</h4>
+                            <div class="session-focus">الماسترينج</div>
+                            <p class="session-description">معالجة الصوت النهائية والتسليم لجميع صيغ التوزيع</p>
+                            <span class="hands-on-hours">💪 3 ساعات تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">22</div>
+                            <h4 class="session-title">الصوت للفيلم والتلفزيون</h4>
+                            <div class="session-focus">ما بعد الإنتاج</div>
+                            <p class="session-description">ما بعد إنتاج الصوت المتخصصة للوسائط المرئية</p>
+                            <span class="hands-on-hours">💪 3 ساعات تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">23</div>
+                            <h4 class="session-title">تطوير المهنة ومعايير الصناعة</h4>
+                            <div class="session-focus">مهني</div>
+                            <p class="session-description">التطوير المهني والشبكات الصناعية</p>
+                            <span class="hands-on-hours">💪 2 ساعة تطبيق عملي</span>
+                        </div>
+
+                        <div class="session-card">
+                            <div class="session-number">24</div>
+                            <h4 class="session-title">مشروع التخرج: تطوير Portfolio</h4>
+                            <div class="session-focus">التكامل</div>
+                            <p class="session-description">دمج جميع المهارات في مشروع portfolio مهني</p>
+                            <span class="hands-on-hours">💪 5 ساعات تطبيق عملي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="equipment-section">
+        <div class="container">
+            <h2 class="section-title">متطلبات المعدات والمرافق</h2>
+            <p class="section-subtitle">مواصفات شاملة للمؤسسات المستضيفة لضمان أعلى جودة تدريبية</p>
+
+            <div class="equipment-grid">
+                <div class="equipment-card">
+                    <h3 class="equipment-title">
+                        <i class="fas fa-microphone equipment-icon"></i>
+                        استوديوهات التسجيل
+                    </h3>
+                    <ul class="equipment-list">
+                        <li>وحدة تحكم SSL أو Neve كبيرة الحجم</li>
+                        <li>Pro Tools Ultimate مع I/O 32+</li>
+                        <li>مراقبات مهنية (Genelec, Focal)</li>
+                        <li>كابينة عزل مع نافذة</li>
+                        <li>غرفة حية مع أكوستيك متغير</li>
+                    </ul>
+                </div>
+
+                <div class="equipment-card">
+                    <h3 class="equipment-title">
+                        <i class="fas fa-headphones equipment-icon"></i>
+                        معدات التسجيل
+                    </h3>
+                    <ul class="equipment-list">
+                        <li>مجموعة Microphones مهنية</li>
+                        <li>معالجات إشارة خارجية</li>
+                        <li>نظام توزيع سماعات رأس</li>
+                        <li>أجهزة Direct Box عالية الجودة</li>
+                        <li>كابلات وحوامل احترافية</li>
+                    </ul>
+                </div>
+
+                <div class="equipment-card">
+                    <h3 class="equipment-title">
+                        <i class="fas fa-volume-up equipment-icon"></i>
+                        معدات الصوت الحي
+                    </h3>
+                    <ul class="equipment-list">
+                        <li>نظام PA متنقل (Line Array)</li>
+                        <li>وحدة تحكم رقمية للخلط</li>
+                        <li>أنظمة Microphone لاسلكية</li>
+                        <li>أدوات قياس النظام</li>
+                        <li>مضخمات ومعالجات الصوت</li>
+                    </ul>
+                </div>
+
+                <div class="equipment-card">
+                    <h3 class="equipment-title">
+                        <i class="fas fa-laptop equipment-icon"></i>
+                        أجهزة الكمبيوتر والبرمجيات
+                    </h3>
+                    <ul class="equipment-list">
+                        <li>أجهزة كمبيوتر عالية المواصفات</li>
+                        <li>تراخيص Pro Tools Ultimate</li>
+                        <li>مجموعة iZotope للإنتاج</li>
+                        <li>Native Instruments Komplete</li>
+                        <li>تراخيص DAW إضافية</li>
+                    </ul>
+                </div>
+
+                <div class="equipment-card">
+                    <h3 class="equipment-title">
+                        <i class="fas fa-chalkboard-teacher equipment-icon"></i>
+                        قاعات الدراسة
+                    </h3>
+                    <ul class="equipment-list">
+                        <li>سعة 40 طالب</li>
+                        <li>نظام عرض للصوت/الفيديو</li>
+                        <li>محطات عمل صوتية فردية</li>
+                        <li>نظام مراقبة عالي الجودة</li>
+                        <li>معالجة أكوستيكية مثلى</li>
+                    </ul>
+                </div>
+
+                <div class="equipment-card">
+                    <h3 class="equipment-title">
+                        <i class="fas fa-tools equipment-icon"></i>
+                        الدعم التقني
+                    </h3>
+                    <ul class="equipment-list">
+                        <li>منسق تقني بدوام كامل</li>
+                        <li>مساعد لصيانة المعدات</li>
+                        <li>دعم IT للأنظمة</li>
+                        <li>برنامج صيانة وقائية</li>
+                        <li>معدات احتياطية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="pricing-title">استثمر في مستقبلك المهني</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-badge badge-foundation">المرحلة التأسيسية</div>
+                    <div class="price">$899</div>
+                    <p class="price-note">8 جلسات شاملة + 20 ساعة تطبيق عملي</p>
+                    <a href="#contact" class="cta-button">ابدأ التأسيس</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-badge badge-intermediate">المرحلة المتوسطة</div>
+                    <div class="price">$1,299</div>
+                    <p class="price-note">8 جلسات متخصصة + 20 ساعة تطبيق عملي</p>
+                    <a href="#contact" class="cta-button">طور مهاراتك</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-badge badge-professional">المرحلة المهنية</div>
+                    <div class="price">$1,799</div>
+                    <p class="price-note">8 جلسات احترافية + 22 ساعة تطبيق عملي</p>
+                    <a href="#contact" class="cta-button">احترف الصناعة</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 48px; font-size: 1.2rem;">
+                <strong>الباقة الكاملة: $3,299</strong> (توفير $598)
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">تواصل معنا</h2>
+            <p class="section-subtitle">ابدأ رحلتك المهنية في عالم هندسة الصوت اليوم</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>info@obaisukar.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <span>linkedin.com/in/obaisukar</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe contact-icon"></i>
+                    <span>www.obaisukar.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <span>للاستفسار حول الدورات</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary); color: var(--white); text-align: center; padding: 40px 0;">
+        <div class="container">
+            <p>&copy; 2024 الأكاديمية المهنية لتقنيات الصوت - أ. أبي سكر. جميع الحقوق محفوظة.</p>
+            <p style="margin-top: 16px; opacity: 0.8;">منهج معتمد على معايير الصناعة العالمية</p>
+        </div>
+    </footer>
+</body>
+</html>
