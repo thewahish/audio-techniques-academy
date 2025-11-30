@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" id="main-content">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obai Sukar Professional Audio Engineering Academy - Government Training Programs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-cyan: #00AEEF;
+            --primary-orange: #FBB04C;
+            --primary-navy: #292663;
+            --primary-magenta: #EC008C;
+            --primary-purple: #92278F;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --border-radius: 15px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--white);
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 15px;
+            border: 2px solid var(--primary-cyan);
+            background: var(--white);
+            color: var(--primary-cyan);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary-cyan);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: var(--white);
+            padding: 15px 0;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            margin-top: 60px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--primary-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-cyan);
+            color: white;
+        }
+
+        .syria-flag {
+            width: 45px;
+            height: 30px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCA0NSAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ1IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA3QTNEIi8+CjxyZWN0IHk9IjEwIiB3aWR0aD0iNDUiIGhlaWdodD0iMTAiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHk9IjIwIiB3aWR0aD0iNDUiIGhlaWdodD0iMTAiIGZpbGw9ImJsYWNrIi8+Cjx0ZXh0IHg9IjIyLjUiIHk9IjE4IiBmaWxsPSIjQ0UxMTI2IiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4q2Q4q2Q4q2QPC90ZXh0Pgo8L3N2Zz4=');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .main-title {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+        }
+
+        .main-title .highlight {
+            color: var(--primary-cyan);
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: var(--primary-magenta);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .credentials {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 20px 40px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px 0;
+            box-shadow: var(--shadow);
+            font-size: 1.1em;
+        }
+
+        /* Statistics Bar */
+        .stats-banner {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 30px 0;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: var(--primary-orange);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        /* Course Overview */
+        .course-overview {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .overview-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .overview-card {
+            border: 2px solid var(--primary-cyan);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            background: var(--bg-light);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .bronze .card-icon { color: #cd7f32; }
+        .silver .card-icon { color: #c0c0c0; }
+        .gold .card-icon { color: #ffd700; }
+
+        .card-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .course-details {
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .detail-value {
+            color: var(--primary-magenta);
+            font-weight: bold;
+        }
+
+        .curriculum-list {
+            margin-top: 20px;
+            list-style: none;
+        }
+
+        .curriculum-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .curriculum-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-cyan);
+            font-weight: bold;
+        }
+
+        /* Government Benefits Section */
+        .government-benefits {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .benefits-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .benefit-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-magenta);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5em;
+            color: var(--primary-cyan);
+            margin-bottom: 15px;
+        }
+
+        .benefit-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonials-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: var(--border-radius);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-orange);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.5em;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-icon {
+            font-size: 2.5em;
+            color: var(--primary-cyan);
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-title {
+                font-size: 2.5em;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-20 { margin-bottom: 20px; }
+        .mb-30 { margin-bottom: 30px; }
+        
+        /* Hidden class for language switching */
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <a href="#" class="lang-btn active" onclick="switchLanguage('en')">English</a>
+        <a href="#" class="lang-btn" onclick="switchLanguage('ar')">العربية</a>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <img src="../assets/logo/obai_sukar_logo.png" alt="Obai Sukar Logo" class="logo-img">
+                <div class="brand-text">Audio Academy</div>
+            </div>
+            <nav class="nav-links">
+                <a href="#overview" class="nav-link">Course Overview</a>
+                <a href="#curriculum" class="nav-link">Curriculum</a>
+                <a href="#benefits" class="nav-link">Government Benefits</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="syria-flag"></div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">
+                <span class="highlight">OBAI SUKAR</span><br>
+                Professional Audio Engineering Academy
+            </h1>
+            <div class="subtitle">Comprehensive Government Training Programs</div>
+            <div class="credentials">
+                25+ Years Experience • Syria's Premier Sound Engineer • International Certification
+            </div>
+        </div>
+
+        <!-- Statistics Banner -->
+        <div class="stats-banner">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Students Trained</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Government Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Institutions Served</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Certification Rate</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Overview -->
+        <div class="course-overview" id="overview">
+            <h2 class="overview-title">Comprehensive Three-Tier Certification Program</h2>
+            
+            <div class="overview-grid">
+                <!-- Bronze Level -->
+                <div class="overview-card bronze">
+                    <div class="card-header">
+                        <span class="card-icon">🥉</span>
+                        <h3 class="card-title">BRONZE LEVEL<br>Audio Fundamentals</h3>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">4 Weeks (80 Hours)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Lessons:</span>
+                            <span class="detail-value">16 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Practical Hours:</span>
+                            <span class="detail-value">40 Hours Lab Work</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Certification:</span>
+                            <span class="detail-value">Government Recognized</span>
+                        </div>
+                    </div>
+
+                    <ul class="curriculum-list">
+                        <li>Basic Audio Physics & Acoustics</li>
+                        <li>Microphone Types & Applications</li>
+                        <li>Recording Equipment Operation</li>
+                        <li>Signal Flow & Cable Management</li>
+                        <li>Digital Audio Basics</li>
+                        <li>Live Sound Setup Fundamentals</li>
+                        <li>Government PA System Basics</li>
+                        <li>Safety Protocols & Maintenance</li>
+                    </ul>
+                </div>
+
+                <!-- Silver Level -->
+                <div class="overview-card silver">
+                    <div class="card-header">
+                        <span class="card-icon">🥈</span>
+                        <h3 class="card-title">SILVER LEVEL<br>Intermediate Techniques</h3>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">6 Weeks (120 Hours)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Lessons:</span>
+                            <span class="detail-value">24 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Practical Hours:</span>
+                            <span class="detail-value">60 Hours Lab Work</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Prerequisite:</span>
+                            <span class="detail-value">Bronze Certification</span>
+                        </div>
+                    </div>
+
+                    <ul class="curriculum-list">
+                        <li>Advanced Mixing Techniques</li>
+                        <li>Digital Audio Workstations (DAW)</li>
+                        <li>EQ, Compression & Effects</li>
+                        <li>Multi-track Recording</li>
+                        <li>Broadcast Audio Standards</li>
+                        <li>Government Meeting Room Setup</li>
+                        <li>Remote Audio Management</li>
+                        <li>Audio Network Systems</li>
+                        <li>Crisis Communication Audio</li>
+                        <li>Live Streaming for Government</li>
+                    </ul>
+                </div>
+
+                <!-- Gold Level -->
+                <div class="overview-card gold">
+                    <div class="card-header">
+                        <span class="card-icon">🥇</span>
+                        <h3 class="card-title">GOLD LEVEL<br>Advanced Mastery</h3>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">8 Weeks (160 Hours)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Lessons:</span>
+                            <span class="detail-value">32 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Practical Hours:</span>
+                            <span class="detail-value">80 Hours Advanced Labs</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Prerequisite:</span>
+                            <span class="detail-value">Silver Certification</span>
+                        </div>
+                    </div>
+
+                    <ul class="curriculum-list">
+                        <li>Architectural Acoustics Design</li>
+                        <li>Large Venue Sound Systems</li>
+                        <li>Government Facility Audio Design</li>
+                        <li>Advanced Measurement & Analysis</li>
+                        <li>System Integration & Automation</li>
+                        <li>Multi-zone Audio Distribution</li>
+                        <li>Emergency Broadcast Systems</li>
+                        <li>Advanced Troubleshooting</li>
+                        <li>Project Management for Audio</li>
+                        <li>Team Leadership & Training</li>
+                        <li>Budget Planning & Procurement</li>
+                        <li>International Standards Compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Government Benefits -->
+        <div class="government-benefits" id="benefits">
+            <h2 class="benefits-title">Why Government Institutions Choose Our Program</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏛️</div>
+                    <h3 class="benefit-title">Specialized Government Training</h3>
+                    <p>Curriculum specifically designed for government facilities, meeting rooms, press conferences, and public address systems.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📜</div>
+                    <h3 class="benefit-title">Official Certification</h3>
+                    <p>Government-recognized certifications that meet international standards for professional audio engineering competency.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Cost-Effective Training</h3>
+                    <p>Comprehensive program that saves money compared to sending staff abroad while maintaining international quality standards.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔧</div>
+                    <h3 class="benefit-title">Hands-On Practical Experience</h3>
+                    <p>Real-world training with actual government-grade equipment and scenarios your staff will encounter daily.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3 class="benefit-title">Ongoing Support</h3>
+                    <p>24/7 technical support and consultation services for your government facilities after certification completion.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🇸🇾</div>
+                    <h3 class="benefit-title">Local Expertise</h3>
+                    <p>Training by Syria's most experienced sound engineer who understands local needs and international requirements.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials">
+            <h2 class="testimonials-title">Government Institution Testimonials</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-quote">"Obai Sukar's training program transformed our conference facilities. Our staff now handle all audio requirements professionally and confidently."</p>
+                    <p class="testimonial-author">- Ministry of Information Technical Director</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-quote">"The comprehensive curriculum covered exactly what we needed for our broadcasting requirements. Excellent return on investment."</p>
+                    <p class="testimonial-author">- Government Broadcasting Authority</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-quote">"Professional, thorough, and perfectly tailored to government needs. Our meeting rooms now operate flawlessly."</p>
+                    <p class="testimonial-author">- Parliamentary Technical Services</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="contact">
+            <h2 class="contact-title">Partner with Syria's Leading Audio Expert</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Consultation</h3>
+                    <p>Get detailed program proposals and custom training plans for your government institution.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🤝</div>
+                    <h3>Partnership Programs</h3>
+                    <p>Long-term training partnerships with ongoing support and equipment consultation services.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored training programs designed specifically for your government facility's unique requirements.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🎓</div>
+                    <h3>Group Discounts</h3>
+                    <p>Special pricing for government institutions training multiple staff members simultaneously.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: var(--bg-light); border-radius: var(--border-radius);">
+                <h3 style="color: var(--primary-navy); margin-bottom: 20px; text-align: center;">Ready to Transform Your Government Audio Capabilities?</h3>
+                <p style="font-size: 1.2em; text-align: center; color: var(--text-dark);">
+                    Contact us today for a comprehensive consultation and custom training proposal.<br>
+                    <strong style="color: var(--primary-magenta);">Obai Sukar - 25 Years of Professional Excellence</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            if (lang === 'ar') {
+                // Redirect to Arabic version or show Arabic content
+                window.location.href = 'audio-engineering-glossary-ar.html';
+            } else {
+                // Keep English version
+                document.documentElement.lang = 'en';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.overview-card, .benefit-card, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

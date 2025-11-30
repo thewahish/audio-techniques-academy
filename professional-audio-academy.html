@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en" id="main-content">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obai Sukar Professional Audio Engineering Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-cyan: #00AEEF;
+            --primary-orange: #FBB04C;
+            --primary-navy: #292663;
+            --primary-magenta: #EC008C;
+            --primary-purple: #92278F;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--white);
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary-cyan);
+            background: var(--white);
+            color: var(--primary-cyan);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary-cyan);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: var(--white);
+            padding: 20px 0;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 70px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-img {
+            height: 65px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-size: 1.9em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .brand-subtext {
+            font-size: 0.8em;
+            color: var(--primary-cyan);
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-cyan);
+            color: white;
+        }
+
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 3.2em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .main-title .highlight {
+            color: var(--primary-cyan);
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            color: var(--primary-magenta);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .credentials {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: var(--shadow);
+        }
+
+        /* Professional Qualifications */
+        .qualifications {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .qualifications-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+        }
+
+        .qualifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .qualification-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-cyan);
+        }
+
+        .qualification-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .qualification-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .qualification-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Course Overview */
+        .course-overview {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .overview-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+        }
+
+        .course-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .course-type-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--primary-magenta);
+        }
+
+        .course-type-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .course-type-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            border: 2px solid var(--primary-cyan);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            background: var(--white);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .course-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .course-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .bronze .course-icon { filter: sepia(1) saturate(2) hue-rotate(15deg); }
+        .silver .course-icon { filter: grayscale(0.3) brightness(1.1); }
+        .gold .course-icon { filter: sepia(1) saturate(3) hue-rotate(35deg) brightness(1.2); }
+
+        .course-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .course-subtitle {
+            color: var(--primary-cyan);
+            font-weight: 500;
+        }
+
+        .course-details {
+            margin: 20px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .detail-value {
+            color: var(--primary-magenta);
+            font-weight: 600;
+        }
+
+        .curriculum-section {
+            margin-top: 20px;
+        }
+
+        .curriculum-title {
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .curriculum-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .curriculum-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: var(--primary-cyan);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Professional Glossary */
+        .glossary {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .glossary-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+        }
+
+        .glossary-category {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border-left: 4px solid var(--primary-cyan);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-cyan);
+        }
+
+        .category-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+        .category-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .glossary-term {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: var(--white);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-magenta);
+        }
+
+        .term-name {
+            font-weight: bold;
+            color: var(--primary-magenta);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .term-definition {
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .technical-term {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: var(--primary-cyan);
+            background: rgba(0, 174, 239, 0.1);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.3em;
+            margin-bottom: 30px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--primary-orange);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+
+        .contact-card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-title {
+                font-size: 2.2em;
+            }
+
+            .course-grid,
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-toggle {
+                position: static;
+                margin: 20px auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <a href="#" class="lang-btn active" onclick="switchLanguage('en')">English</a>
+        <a href="#" class="lang-btn" onclick="switchLanguage('ar')">العربية</a>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <img src="../assets/logo/obai_sukar_logo.png" alt="Obai Sukar Logo" class="logo-img">
+                <div>
+                    <div class="brand-text">Professional Audio Academy</div>
+                    <div class="brand-subtext">Government & Private Training</div>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#qualifications" class="nav-link">Qualifications</a>
+                <a href="#courses" class="nav-link">Training Programs</a>
+                <a href="#glossary" class="nav-link">Technical Reference</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">
+                <span class="highlight">OBAI SUKAR</span><br>
+                Professional Audio Engineering Academy
+            </h1>
+            <div class="subtitle">Specialized Training for Government & Private Institutions</div>
+            <div class="credentials">
+                25+ Years Professional Experience • Syria's Leading Audio Engineer
+            </div>
+        </div>
+
+        <!-- Professional Qualifications -->
+        <div class="qualifications" id="qualifications">
+            <h2 class="qualifications-title">Professional Expertise & Experience</h2>
+            
+            <div class="qualifications-grid">
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/certificate.png" alt="25+ Years Experience" class="qualification-icon">
+                    <h3 class="qualification-title">25+ Years Professional Experience</h3>
+                    <p class="qualification-description">
+                        Extensive experience in professional audio engineering, system design, and acoustic consultation across various industries and project scales.
+                    </p>
+                </div>
+
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/globe.png" alt="International Projects" class="qualification-icon">
+                    <h3 class="qualification-title">International Project Experience</h3>
+                    <p class="qualification-description">
+                        Successfully completed audio engineering projects internationally, bringing global best practices and standards to local implementations.
+                    </p>
+                </div>
+
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/audio-wave.png" alt="Technical Audio Systems" class="qualification-icon">
+                    <h3 class="qualification-title">Technical Systems Expertise</h3>
+                    <p class="qualification-description">
+                        Specialized expertise in complex audio systems, architectural acoustics, and professional equipment integration for institutional applications.
+                    </p>
+                </div>
+
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/training.png" alt="Professional Training" class="qualification-icon">
+                    <h3 class="qualification-title">Training & Consultation</h3>
+                    <p class="qualification-description">
+                        Proven ability to design and deliver professional training programs tailored to institutional needs and technical requirements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Overview -->
+        <div class="course-overview" id="courses">
+            <h2 class="overview-title">Professional Training Programs</h2>
+            
+            <!-- Course Types -->
+            <div class="course-types">
+                <div class="course-type-card">
+                    <img src="https://img.icons8.com/fluency/96/government-building.png" alt="Government Training" class="course-type-icon">
+                    <h3 class="course-type-title">Government Institution Training</h3>
+                    <p>Specialized programs designed for government facilities, meeting rooms, press centers, and public address systems. Curriculum focuses on institutional needs, official protocols, and professional standards required for government operations.</p>
+                </div>
+
+                <div class="course-type-card">
+                    <img src="https://img.icons8.com/fluency/96/business-building.png" alt="Private Sector Training" class="course-type-icon">
+                    <h3 class="course-type-title">Private Sector Training</h3>
+                    <p>Comprehensive audio engineering education for private companies, educational institutions, and commercial facilities. Covers studio design, live sound, broadcast applications, and business-focused audio solutions.</p>
+                </div>
+            </div>
+
+            <!-- Course Levels -->
+            <div class="course-grid">
+                <!-- Bronze Level -->
+                <div class="course-card bronze">
+                    <div class="course-header">
+                        <img src="https://img.icons8.com/fluency/96/3rd-place-ribbon.png" alt="Bronze Level" class="course-icon">
+                        <h3 class="course-title">BRONZE LEVEL</h3>
+                        <p class="course-subtitle">Audio Fundamentals</p>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">4 Weeks (80 Hours)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Sessions:</span>
+                            <span class="detail-value">16 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Practical Work:</span>
+                            <span class="detail-value">40 Hours Hands-On</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Certification:</span>
+                            <span class="detail-value">Professional Certificate</span>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-section">
+                        <div class="curriculum-title">Core Curriculum:</div>
+                        <ul class="curriculum-list">
+                            <li>Basic Audio Physics & Sound Principles</li>
+                            <li>Microphone Types & Selection Criteria</li>
+                            <li>Audio Equipment Operation & Setup</li>
+                            <li>Signal Flow & System Architecture</li>
+                            <li>Digital Audio Fundamentals</li>
+                            <li>Live Sound System Basics</li>
+                            <li>Installation & Safety Protocols</li>
+                            <li>Basic Troubleshooting Techniques</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Silver Level -->
+                <div class="course-card silver">
+                    <div class="course-header">
+                        <img src="https://img.icons8.com/fluency/96/2nd-place-ribbon.png" alt="Silver Level" class="course-icon">
+                        <h3 class="course-title">SILVER LEVEL</h3>
+                        <p class="course-subtitle">Intermediate Techniques</p>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">6 Weeks (120 Hours)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Sessions:</span>
+                            <span class="detail-value">24 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Practical Work:</span>
+                            <span class="detail-value">60 Hours Advanced Labs</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Prerequisite:</span>
+                            <span class="detail-value">Bronze Level Certification</span>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-section">
+                        <div class="curriculum-title">Advanced Curriculum:</div>
+                        <ul class="curriculum-list">
+                            <li>Professional Mixing Techniques</li>
+                            <li>Digital Audio Workstation Mastery</li>
+                            <li>Audio Processing & Effects</li>
+                            <li>Multi-track Recording Systems</li>
+                            <li>Broadcast Audio Standards</li>
+                            <li>Conference Room Audio Design</li>
+                            <li>Remote Audio Management</li>
+                            <li>Network Audio Systems</li>
+                            <li>Quality Control & Testing</li>
+                            <li>System Integration Projects</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Gold Level -->
+                <div class="course-card gold">
+                    <div class="course-header">
+                        <img src="https://img.icons8.com/fluency/96/1st-place-ribbon.png" alt="Gold Level" class="course-icon">
+                        <h3 class="course-title">GOLD LEVEL</h3>
+                        <p class="course-subtitle">Expert Mastery</p>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">8 Weeks (160 Hours)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Sessions:</span>
+                            <span class="detail-value">32 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Practical Work:</span>
+                            <span class="detail-value">80 Hours Expert Projects</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Prerequisite:</span>
+                            <span class="detail-value">Silver Level Certification</span>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-section">
+                        <div class="curriculum-title">Expert Curriculum:</div>
+                        <ul class="curriculum-list">
+                            <li>Architectural Acoustics & Room Design</li>
+                            <li>Large Scale System Design</li>
+                            <li>Advanced Measurement & Analysis</li>
+                            <li>Custom System Integration</li>
+                            <li>Project Management & Leadership</li>
+                            <li>Advanced Troubleshooting</li>
+                            <li>Budget Planning & Procurement</li>
+                            <li>Team Training & Management</li>
+                            <li>Quality Assurance Systems</li>
+                            <li>International Standards Compliance</li>
+                            <li>Consultant-Level Expertise</li>
+                            <li>Independent Project Delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Glossary -->
+        <div class="glossary" id="glossary">
+            <h2 class="glossary-title">Professional Audio Engineering Reference</h2>
+            
+            <div class="glossary-grid">
+                <!-- Basic Audio Concepts -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/speaker.png" alt="Audio Fundamentals" class="category-icon">
+                        <h3 class="category-title">Fundamental Concepts</h3>
+                    </div>
+                    
+                    <div class="glossary-term">
+                        <div class="term-name">Frequency (Hz)</div>
+                        <div class="term-definition">
+                            Number of sound wave cycles per second, measured in <span class="technical-term">Hertz</span>. 
+                            Determines pitch: low frequencies (20-200 Hz) produce bass, mid frequencies (200-2000 Hz) carry speech clarity, 
+                            high frequencies (2000-20000 Hz) provide brightness and definition.
+                        </div>
+                    </div>
+                    
+                    <div class="glossary-term">
+                        <div class="term-name">Amplitude</div>
+                        <div class="term-definition">
+                            Strength or intensity of a sound wave, directly related to perceived loudness. 
+                            Measured in <span class="technical-term">decibels (dB)</span>. Professional audio systems 
+                            must maintain proper amplitude levels for optimal clarity and equipment protection.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Dynamic Range</div>
+                        <div class="term-definition">
+                            Difference between the loudest and quietest sounds in an audio system, measured in <span class="technical-term">dB</span>. 
+                            Professional systems require sufficient dynamic range to handle peak signals without distortion 
+                            while maintaining quiet background noise levels.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Equipment -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/audio-console.png" alt="Professional Equipment" class="category-icon">
+                        <h3 class="category-title">Professional Equipment</h3>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Condenser Microphone</div>
+                        <div class="term-definition">
+                            High-sensitivity <span class="technical-term">microphone</span> requiring 
+                            <span class="technical-term">phantom power (+48V)</span>. Ideal for detailed recording 
+                            in controlled environments such as conference rooms, studios, and broadcast facilities.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Mixing Console</div>
+                        <div class="term-definition">
+                            Central control interface for combining, routing, and processing multiple audio signals. 
+                            Professional consoles feature <span class="technical-term">EQ</span>, dynamics processing, 
+                            routing capabilities, and often include digital processing and automation features.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Line Array System</div>
+                        <div class="term-definition">
+                            <span class="technical-term">Speaker</span> configuration using multiple drivers 
+                            in vertical alignment for enhanced directional control and even coverage. 
+                            Essential for large venues and government assembly halls.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Audio Technology -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/laptop.png" alt="Digital Audio Technology" class="category-icon">
+                        <h3 class="category-title">Digital Audio Technology</h3>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Sample Rate</div>
+                        <div class="term-definition">
+                            Number of digital samples captured per second during analog-to-digital conversion. 
+                            Professional standards: <span class="technical-term">48kHz for broadcast/video, 
+                            44.1kHz for music, 96kHz+ for high-resolution applications</span>.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Bit Depth</div>
+                        <div class="term-definition">
+                            Number of <span class="technical-term">bits</span> used to represent each audio sample, 
+                            determining available dynamic range. <span class="technical-term">16-bit provides 96dB range, 
+                            24-bit provides 144dB range</span>. Professional recording typically uses 24-bit or higher.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Audio Network</div>
+                        <div class="term-definition">
+                            Digital audio distribution system using <span class="technical-term">Ethernet</span> or 
+                            specialized protocols like <span class="technical-term">Dante, AVB, or CobraNet</span>. 
+                            Enables centralized control and distribution for large institutional installations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architectural Acoustics -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/blueprint.png" alt="Architectural Acoustics" class="category-icon">
+                        <h3 class="category-title">Architectural Acoustics</h3>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Reverberation Time (RT60)</div>
+                        <div class="term-definition">
+                            Time required for sound to decay by 60 <span class="technical-term">decibels</span> 
+                            in a space. Critical for room design: <span class="technical-term">speech rooms require 
+                            ~0.6s, music venues ~1.8s, conference rooms ~0.8s</span>.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Speech Intelligibility</div>
+                        <div class="term-definition">
+                            Measure of spoken word clarity in a space, quantified by 
+                            <span class="technical-term">Speech Transmission Index (STI)</span> from 0-1. 
+                            Essential for government facilities where clear communication is critical.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Sound Masking</div>
+                        <div class="term-definition">
+                            Controlled background sound used to reduce speech intelligibility in adjacent areas. 
+                            Important for privacy in government offices and confidential meeting spaces.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="contact">
+            <h2 class="contact-title">Professional Training Consultation</h2>
+            <p class="contact-subtitle">Discover how professional audio training can enhance your institutional capabilities</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/consultation.png" alt="Program Consultation" class="contact-icon">
+                    <h3 class="contact-card-title">Program Consultation</h3>
+                    <p>Custom training program design based on your specific institutional requirements and technical needs.</p>
+                </div>
+
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/inspection.png" alt="Technical Assessment" class="contact-icon">
+                    <h3 class="contact-card-title">Technical Assessment</h3>
+                    <p>Professional evaluation of your current audio systems and recommendations for training focus areas.</p>
+                </div>
+
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/diploma.png" alt="Certification Programs" class="contact-icon">
+                    <h3 class="contact-card-title">Certification Programs</h3>
+                    <p>Professional certification development aligned with institutional standards and career advancement needs.</p>
+                </div>
+
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/support.png" alt="Ongoing Support" class="contact-icon">
+                    <h3 class="contact-card-title">Ongoing Support</h3>
+                    <p>Professional consultation and technical support services to ensure continued success after training completion.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius);">
+                <h3 style="margin-bottom: 15px;">Contact Obai Sukar</h3>
+                <p style="font-size: 1.1em;">
+                    Professional Audio Engineering Consultation<br>
+                    <strong style="color: var(--primary-orange);">25+ Years of Technical Excellence</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            if (lang === 'ar') {
+                window.location.href = 'audio-engineering-glossary-ar.html';
+            } else {
+                document.documentElement.lang = 'en';
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.qualification-card, .course-card, .glossary-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

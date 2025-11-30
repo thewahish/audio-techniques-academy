@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Audio Engineering Academy - Obai Sukar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-cyan: #00AEEF;
+            --primary-orange: #FBB04C;
+            --primary-navy: #292663;
+            --primary-magenta: #EC008C;
+            --primary-purple: #92278F;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --gradient-main: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+            --gradient-secondary: linear-gradient(45deg, var(--primary-orange), var(--primary-purple));
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--gradient-main);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-size: 1.8em;
+            font-weight: bold;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--gradient-main);
+            color: white;
+        }
+
+        .syria-flag {
+            width: 40px;
+            height: 27px;
+            display: inline-block;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .syria-flag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 33.33%;
+            background: #CE1126;
+        }
+
+        .syria-flag::after {
+            content: '⭐⭐';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #007A3D;
+            font-size: 8px;
+            z-index: 3;
+        }
+
+        .syria-flag .middle {
+            position: absolute;
+            top: 33.33%;
+            left: 0;
+            width: 100%;
+            height: 33.33%;
+            background: white;
+        }
+
+        .syria-flag .bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 33.33%;
+            background: #000000;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .main-title {
+            font-size: 3em;
+            font-weight: bold;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .credentials {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px 0;
+            box-shadow: var(--shadow);
+        }
+
+        /* Course Tiers */
+        .course-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .course-tier {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-tier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-main);
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .course-tier:hover::before {
+            left: 0;
+        }
+
+        .course-tier:hover {
+            transform: translateY(-10px);
+            color: white;
+        }
+
+        .course-tier .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tier-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .tier-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tier-description {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .bronze { border-left: 5px solid #cd7f32; }
+        .silver { border-left: 5px solid #c0c0c0; }
+        .gold { border-left: 5px solid #ffd700; }
+
+        /* Main Content */
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: var(--gradient-main);
+            color: white;
+            border-radius: 20px;
+        }
+
+        .intro-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .intro-description {
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Glossary Grid */
+        .glossary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .glossary-section {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .glossary-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-cyan);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-cyan);
+        }
+
+        .section-icon {
+            font-size: 2em;
+            color: var(--primary-cyan);
+        }
+
+        .section-title {
+            color: var(--primary-navy);
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .term {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-magenta);
+            transition: all 0.3s ease;
+        }
+
+        .term:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .term-name {
+            font-weight: bold;
+            color: var(--primary-magenta);
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .term-definition {
+            color: var(--text-dark);
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .english-term {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: var(--primary-cyan);
+            background: rgba(0, 174, 239, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--primary-navy);
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background: var(--gradient-secondary);
+            color: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .glossary-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-title {
+                font-size: 2em;
+            }
+        }
+
+        /* Animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glossary-section {
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .glossary-section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .glossary-section:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <img src="../assets/logo/obai_sukar_logo.png" alt="Obai Sukar Logo" class="logo-img">
+                <div class="brand-text">Audio Academy</div>
+            </div>
+            <nav class="nav-links">
+                <a href="#glossary" class="nav-link">Glossary</a>
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="syria-flag">
+                    <div class="middle"></div>
+                    <div class="bottom"></div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">🎵 OBAI SUKAR AUDIO ACADEMY</h1>
+            <div class="subtitle">Professional Audio Engineering Training for Government Institutions</div>
+            <div class="credentials">
+                Syria's Premier Sound Engineer • International Expertise • Government Certified
+            </div>
+        </div>
+
+        <!-- Course Navigation -->
+        <div class="course-navigation" id="courses">
+            <div class="course-tier bronze" onclick="scrollToSection('fundamentals')">
+                <div class="content">
+                    <div class="tier-icon">🥉</div>
+                    <div class="tier-title">BRONZE LEVEL</div>
+                    <div class="tier-description">Audio Fundamentals<br>Basic concepts, equipment, and recording techniques</div>
+                </div>
+            </div>
+            <div class="course-tier silver" onclick="scrollToSection('intermediate')">
+                <div class="content">
+                    <div class="tier-icon">🥈</div>
+                    <div class="tier-title">SILVER LEVEL</div>
+                    <div class="tier-description">Intermediate Techniques<br>Mixing, mastering, and digital audio processing</div>
+                </div>
+            </div>
+            <div class="course-tier gold" onclick="scrollToSection('advanced')">
+                <div class="content">
+                    <div class="tier-icon">🥇</div>
+                    <div class="tier-title">GOLD LEVEL</div>
+                    <div class="tier-description">Advanced Mastery<br>Architectural acoustics and professional systems</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Technical Terms</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Certification Levels</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="glossary">
+            <div class="intro-section">
+                <h2 class="intro-title">
+                    <i class="fas fa-book-open"></i>
+                    Comprehensive Audio Engineering Glossary
+                </h2>
+                <p class="intro-description">
+                    Master the language of professional audio with Syria's most experienced sound engineer. 
+                    This comprehensive glossary covers essential terminology across our three-tier certification program, 
+                    designed specifically for government and institutional training programs.
+                </p>
+            </div>
+
+            <!-- Glossary Container -->
+            <div class="glossary-container">
+                <!-- Basic Audio Concepts -->
+                <div class="glossary-section" id="fundamentals">
+                    <div class="section-header">
+                        <i class="fas fa-volume-up section-icon"></i>
+                        <h3 class="section-title">Basic Audio Concepts</h3>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Frequency (Hz)</div>
+                        <div class="term-definition">
+                            The number of sound wave cycles per second, measured in <span class="english-term">Hertz</span>. 
+                            Determines pitch - low frequencies (20-200 Hz) create bass sounds, mid frequencies (200-2000 Hz) 
+                            carry most vocal content, and high frequencies (2000-20000 Hz) create treble and brightness.
+                        </div>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Amplitude</div>
+                        <div class="term-definition">
+                            The strength or intensity of a sound wave, directly related to perceived loudness. 
+                            Measured in <span class="english-term">decibels (dB)</span>. Higher amplitude equals louder sound, 
+                            but the relationship is logarithmic, not linear.
+                        </div>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Dynamic Range</div>
+                        <div class="term-definition">
+                            The difference between the loudest and quietest parts of an audio signal. 
+                            Measured in <span class="english-term">dB</span>. Professional audio typically requires 
+                            96+ dB of dynamic range for high-quality reproduction.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Signal-to-Noise Ratio (SNR)</div>
+                        <div class="term-definition">
+                            The ratio between the desired audio signal and background noise, expressed in <span class="english-term">dB</span>. 
+                            Higher SNR (typically >90 dB) means cleaner, more professional sound with less audible noise floor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recording Technology -->
+                <div class="glossary-section">
+                    <div class="section-header">
+                        <i class="fas fa-microphone section-icon"></i>
+                        <h3 class="section-title">Recording Technology</h3>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Condenser Microphone</div>
+                        <div class="term-definition">
+                            Highly sensitive <span class="english-term">microphone</span> ideal for <span class="english-term">studio</span> recording, 
+                            requiring <span class="english-term">phantom power (+48V)</span>. Excellent for capturing detail and nuance in 
+                            vocals, acoustic instruments, and ambient sound. Common in government broadcasting facilities.
+                        </div>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Dynamic Microphone</div>
+                        <div class="term-definition">
+                            Robust <span class="english-term">microphone</span> perfect for live sound and high-volume sources. 
+                            No external power required, very durable. Ideal for press conferences, public addresses, 
+                            and outdoor government events where reliability is crucial.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Audio Interface</div>
+                        <div class="term-definition">
+                            Device that converts analog audio signals to digital for computer recording and digital back to analog for playback. 
+                            Essential for professional <span class="english-term">DAW (Digital Audio Workstation)</span> integration in modern studios.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Phantom Power (+48V)</div>
+                        <div class="term-definition">
+                            <span class="english-term">DC power</span> supplied through <span class="english-term">microphone</span> cables 
+                            to operate <span class="english-term">condenser microphones</span> and active <span class="english-term">DI boxes</span>. 
+                            Standard in professional mixing consoles and audio interfaces.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mixing & Mastering -->
+                <div class="glossary-section" id="intermediate">
+                    <div class="section-header">
+                        <i class="fas fa-sliders-h section-icon"></i>
+                        <h3 class="section-title">Mixing & Mastering</h3>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Equalizer (EQ)</div>
+                        <div class="term-definition">
+                            Tool for adjusting the balance of different frequency ranges in audio. 
+                            <span class="english-term">Parametric EQ</span> allows precise control of frequency, gain, and bandwidth. 
+                            Essential for shaping tone, removing unwanted frequencies, and enhancing clarity.
+                        </div>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Compression</div>
+                        <div class="term-definition">
+                            Dynamic range control technique that reduces the difference between loud and quiet parts of audio. 
+                            Key parameters include <span class="english-term">threshold, ratio, attack, release</span>. 
+                            Critical for consistent levels in broadcast and live sound applications.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Reverb</div>
+                        <div class="term-definition">
+                            Acoustic effect that simulates the reflection of sound in different environments. 
+                            <span class="english-term">Convolution reverb</span> uses actual room recordings for realistic spatial effects. 
+                            Adds depth, space, and ambiance to recordings.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Stereo Imaging</div>
+                        <div class="term-definition">
+                            Techniques for positioning audio elements across the <span class="english-term">stereo field</span> 
+                            from left to right. Includes <span class="english-term">panning</span>, width control, and 
+                            <span class="english-term">mid-side processing</span> for creating spacious, professional mixes.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Equipment -->
+                <div class="glossary-section">
+                    <div class="section-header">
+                        <i class="fas fa-cogs section-icon"></i>
+                        <h3 class="section-title">Professional Equipment</h3>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Mixing Console</div>
+                        <div class="term-definition">
+                            Central control surface for combining, routing, and processing multiple audio signals in live or studio environments. 
+                            Modern consoles often feature <span class="english-term">digital processing</span>, 
+                            <span class="english-term">recall capabilities</span>, and <span class="english-term">remote control</span>.
+                        </div>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Monitor Speakers</div>
+                        <div class="term-definition">
+                            Specialized <span class="english-term">speakers</span> designed for accurate audio reproduction 
+                            in studios and control rooms. <span class="english-term">Near-field monitors</span> for close listening, 
+                            <span class="english-term">far-field monitors</span> for larger spaces.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Line Array System</div>
+                        <div class="term-definition">
+                            <span class="english-term">Speaker</span> system configuration using multiple drivers in a vertical line 
+                            for enhanced directional control and coverage. Ideal for large venues, outdoor events, 
+                            and government ceremonies requiring wide, even coverage.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">DI Box (Direct Injection)</div>
+                        <div class="term-definition">
+                            Device that converts high-impedance instrument signals to low-impedance <span class="english-term">microphone</span> 
+                            level signals for <span class="english-term">mixing consoles</span>. Essential for connecting electric instruments, 
+                            keyboards, and computers to professional audio systems.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Audio -->
+                <div class="glossary-section">
+                    <div class="section-header">
+                        <i class="fas fa-digital-tachograph section-icon"></i>
+                        <h3 class="section-title">Digital Audio Technology</h3>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Sample Rate</div>
+                        <div class="term-definition">
+                            Number of digital samples taken per second during analog-to-digital conversion. 
+                            Professional standards: <span class="english-term">48kHz for video/broadcast, 44.1kHz for music, 
+                            96kHz+ for high-resolution audio</span>. Higher rates capture more frequency detail.
+                        </div>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Bit Depth</div>
+                        <div class="term-definition">
+                            Number of <span class="english-term">bits</span> used to represent each audio sample, determining dynamic range. 
+                            <span class="english-term">16-bit = 96dB dynamic range, 24-bit = 144dB, 32-bit float = virtually unlimited</span>. 
+                            Professional recording typically uses 24-bit or higher.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Latency</div>
+                        <div class="term-definition">
+                            Delay between audio input and output in digital systems, measured in milliseconds. 
+                            Critical for <span class="english-term">real-time monitoring</span> and live performance. 
+                            Professional systems require <10ms latency for comfortable monitoring.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Audio Codec</div>
+                        <div class="term-definition">
+                            Algorithm for compressing and decompressing audio data. 
+                            <span class="english-term">Lossless codecs (FLAC, ALAC)</span> preserve original quality, 
+                            <span class="english-term">lossy codecs (MP3, AAC)</span> reduce file size with some quality loss.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architectural Acoustics -->
+                <div class="glossary-section" id="advanced">
+                    <div class="section-header">
+                        <i class="fas fa-building section-icon"></i>
+                        <h3 class="section-title">Architectural Acoustics</h3>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Reverberation Time (RT60)</div>
+                        <div class="term-definition">
+                            Time required for sound to decay by 60 <span class="english-term">decibels</span> in a room. 
+                            Critical measurement for acoustic design. Optimal RT60 varies by room purpose: 
+                            <span class="english-term">speech rooms ~0.6s, music halls ~1.8s, theaters ~1.2s</span>.
+                        </div>
+                    </div>
+                    
+                    <div class="term">
+                        <div class="term-name">Sound Absorption</div>
+                        <div class="term-definition">
+                            Process of converting sound energy to heat through materials, reducing reflections and controlling 
+                            <span class="english-term">acoustics</span>. Measured by <span class="english-term">absorption coefficient (0-1)</span>. 
+                            Essential for government meeting rooms and broadcast studios.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Speech Intelligibility</div>
+                        <div class="term-definition">
+                            Measure of how clearly spoken words can be understood in a space. 
+                            Quantified by <span class="english-term">STI (Speech Transmission Index)</span> from 0-1. 
+                            Critical for government facilities, courtrooms, and public assembly spaces.
+                        </div>
+                    </div>
+
+                    <div class="term">
+                        <div class="term-name">Critical Distance</div>
+                        <div class="term-definition">
+                            Point where direct sound from <span class="english-term">source</span> equals reflected sound from room surfaces. 
+                            Important for <span class="english-term">microphone</span> placement and <span class="english-term">speaker</span> positioning. 
+                            Closer than critical distance = more direct sound, farther = more room sound.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section" id="contact">
+                <h3 class="contact-title">
+                    <i class="fas fa-trophy"></i>
+                    Training by Syria's Leading Audio Expert
+                </h3>
+                <div class="contact-info">
+                    <p><strong>Obai Sukar</strong> - International Sound Engineer & Acoustician</p>
+                    <p>🎓 Specialized Government Training Programs</p>
+                    <p>🏛️ State-of-the-Art Facilities</p>
+                    <p>📜 Internationally Certified Instruction</p>
+                    <p>📧 Contact for institutional partnerships and custom training solutions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.course-tier').forEach(tier => {
+            tier.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            tier.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

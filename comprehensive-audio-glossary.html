@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en" id="main-content">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obai Sukar Audio Engineering Glossary & Training Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-cyan: #00AEEF;
+            --primary-orange: #FBB04C;
+            --primary-navy: #292663;
+            --primary-magenta: #EC008C;
+            --primary-purple: #92278F;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #f5f7fa;
+            min-height: 100vh;
+            transition: direction 0.3s ease;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--white);
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 5px;
+            transition: left 0.3s ease, right 0.3s ease;
+        }
+
+        body[dir="rtl"] .language-toggle {
+            left: 20px;
+            right: auto;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary-cyan);
+            background: var(--white);
+            color: var(--primary-cyan);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary-cyan);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .main-title .highlight {
+            color: var(--primary-cyan);
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: var(--primary-magenta);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .credentials {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: var(--shadow);
+        }
+
+        /* Navigation within page */
+        .nav-links {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background: var(--primary-cyan);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-navy);
+            transform: translateY(-2px);
+        }
+
+        /* Content sections */
+        .content-section {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-cyan);
+            padding-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Glossary term cards */
+        .glossary-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-magenta);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body[dir="rtl"] .glossary-card {
+            border-left: none;
+            border-right: 4px solid var(--primary-magenta);
+        }
+
+        .glossary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .term-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            color: white;
+        }
+
+        .term-category {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+        }
+
+        .term-entry {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-cyan);
+        }
+
+        body[dir="rtl"] .term-entry {
+            border-left: none;
+            border-right: 3px solid var(--primary-cyan);
+        }
+
+        .term-name {
+            font-weight: bold;
+            color: var(--primary-magenta);
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .term-definition {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .technical-term {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: var(--primary-cyan);
+            background: rgba(0, 174, 239, 0.1);
+            padding: 1px 4px;
+            border-radius: 3px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* Training tier sections */
+        .tier-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--primary-orange);
+        }
+
+        .tier-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tier-icon {
+            width: 80px;
+            height: 80px;
+            font-size: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .bronze .tier-icon {
+            background: #cd7f32;
+            color: white;
+        }
+
+        .silver .tier-icon {
+            background: #c0c0c0;
+            color: #333;
+        }
+
+        .gold .tier-icon {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .tier-title {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .tier-subtitle {
+            color: var(--primary-cyan);
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .tier-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .detail-box {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-cyan);
+        }
+
+        body[dir="rtl"] .detail-box {
+            border-left: none;
+            border-right: 4px solid var(--primary-cyan);
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            color: var(--primary-magenta);
+            font-weight: 600;
+        }
+
+        .curriculum-section {
+            margin-top: 30px;
+        }
+
+        .curriculum-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .curriculum-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .curriculum-list li {
+            padding: 12px 15px 12px 35px;
+            position: relative;
+            color: var(--text-dark);
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--primary-orange);
+        }
+
+        body[dir="rtl"] .curriculum-list li {
+            padding: 12px 35px 12px 15px;
+            border-left: none;
+            border-right: 3px solid var(--primary-orange);
+        }
+
+        .curriculum-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 10px;
+            top: 12px;
+            color: var(--primary-cyan);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        body[dir="rtl"] .curriculum-list li::before {
+            right: 10px;
+            left: auto;
+        }
+
+        /* Experience section */
+        .experience-section {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .experience-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            color: white;
+        }
+
+        .experience-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary-orange);
+        }
+
+        /* Contact section */
+        .contact-section {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            color: white;
+            margin: 0 auto 15px;
+        }
+
+        /* Language switching */
+        .lang-content {
+            display: block;
+        }
+
+        .lang-content.hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5em;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .language-toggle {
+                position: static;
+                margin: 20px auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">
+                <span class="highlight">Obai Sukar</span><br>
+                <span data-en="Professional Audio Engineering Glossary & Training Guide" data-ar="دليل ومسرد هندسة الصوت المهنية">Professional Audio Engineering Glossary & Training Guide</span>
+            </h1>
+            <div class="subtitle" data-en="Comprehensive Technical Reference & Certification Programs" data-ar="مرجع تقني شامل وبرامج الشهادات">Comprehensive Technical Reference & Certification Programs</div>
+            <div class="credentials" data-en="25+ Years Experience • Syria's Leading Audio Engineer" data-ar="خبرة +25 سنة • كبير مهندسي الصوت في سوريا">25+ Years Experience • Syria's Leading Audio Engineer</div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="nav-links">
+            <a href="#experience" class="nav-link" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</a>
+            <a href="#glossary" class="nav-link" data-en="Technical Glossary" data-ar="المسرد التقني">Technical Glossary</a>
+            <a href="#tiers" class="nav-link" data-en="Training Tiers" data-ar="مستويات التدريب">Training Tiers</a>
+            <a href="#contact" class="nav-link" data-en="Contact" data-ar="التواصل">Contact</a>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="experience-section" id="experience">
+            <h2 class="section-title" style="color: var(--primary-orange); border-color: var(--primary-orange);" data-en="Professional Experience & Expertise" data-ar="الخبرة والمؤهلات المهنية">Professional Experience & Expertise</h2>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">🏆</div>
+                    <h3 class="experience-title" data-en="25+ Years Professional Experience" data-ar="خبرة مهنية تزيد عن 25 سنة">25+ Years Professional Experience</h3>
+                    <p data-en="Extensive experience in professional audio engineering, system design, and acoustic consultation across various industries and project scales." data-ar="خبرة واسعة في هندسة الصوت المهنية وتصميم الأنظمة والاستشارات الصوتية عبر صناعات متنوعة ومقاييس مشاريع مختلفة.">
+                        Extensive experience in professional audio engineering, system design, and acoustic consultation across various industries and project scales.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">🌍</div>
+                    <h3 class="experience-title" data-en="International Project Experience" data-ar="خبرة في المشاريع الدولية">International Project Experience</h3>
+                    <p data-en="Successfully completed audio engineering projects internationally, bringing global best practices and standards to local implementations." data-ar="تنفيذ ناجح لمشاريع هندسة الصوت دولياً، جلب أفضل الممارسات والمعايير العالمية للتطبيقات المحلية.">
+                        Successfully completed audio engineering projects internationally, bringing global best practices and standards to local implementations.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">🎵</div>
+                    <h3 class="experience-title" data-en="Technical Systems Expertise" data-ar="خبرة في الأنظمة التقنية">Technical Systems Expertise</h3>
+                    <p data-en="Specialized expertise in complex audio systems, architectural acoustics, and professional equipment integration for institutional applications." data-ar="خبرة متخصصة في أنظمة الصوت المعقدة والصوتيات المعمارية وتكامل المعدات المهنية للتطبيقات المؤسسية.">
+                        Specialized expertise in complex audio systems, architectural acoustics, and professional equipment integration for institutional applications.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">📚</div>
+                    <h3 class="experience-title" data-en="Training & Consultation" data-ar="التدريب والاستشارات">Training & Consultation</h3>
+                    <p data-en="Proven ability to design and deliver professional training programs tailored to institutional needs and technical requirements." data-ar="قدرة مثبتة على تصميم وتقديم برامج تدريبية مهنية مصممة خصيصاً لتلبية احتياجات المؤسسات والمتطلبات التقنية.">
+                        Proven ability to design and deliver professional training programs tailored to institutional needs and technical requirements.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">🏛️</div>
+                    <h3 class="experience-title" data-en="Government Institution Specialization" data-ar="التخصص في المؤسسات الحكومية">Government Institution Specialization</h3>
+                    <p data-en="Specialized programs designed for government facilities, meeting rooms, press centers, and public address systems with focus on institutional needs and official protocols." data-ar="برامج متخصصة مصممة للمرافق الحكومية وقاعات الاجتماعات ومراكز الصحافة وأنظمة الخطابة العامة مع التركيز على احتياجات المؤسسات والبروتوكولات الرسمية.">
+                        Specialized programs designed for government facilities, meeting rooms, press centers, and public address systems with focus on institutional needs and official protocols.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">🏢</div>
+                    <h3 class="experience-title" data-en="Private Sector Solutions" data-ar="حلول القطاع الخاص">Private Sector Solutions</h3>
+                    <p data-en="Comprehensive audio engineering education for private companies, educational institutions, and commercial facilities covering studio design, live sound, and broadcast applications." data-ar="تعليم شامل لهندسة الصوت للشركات الخاصة والمؤسسات التعليمية والمرافق التجارية يغطي تصميم Studio والصوت المباشر وتطبيقات الإذاعة.">
+                        Comprehensive audio engineering education for private companies, educational institutions, and commercial facilities covering studio design, live sound, and broadcast applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Audio Engineering Glossary -->
+        <div class="content-section" id="glossary">
+            <h2 class="section-title" data-en="Professional Audio Engineering Glossary" data-ar="مسرد هندسة الصوت المهنية">Professional Audio Engineering Glossary</h2>
+            
+            <div class="grid-container">
+                <!-- Fundamental Audio Concepts -->
+                <div class="glossary-card">
+                    <div class="term-icon">🎵</div>
+                    <h3 class="term-category" data-en="Fundamental Audio Concepts" data-ar="المفاهيم الصوتية الأساسية">Fundamental Audio Concepts</h3>
+                    
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Frequency (Hz)" data-ar="التردد (Hz)">Frequency (Hz)</div>
+                        <div class="term-definition" data-en="Number of sound wave cycles per second, measured in Hertz. Determines pitch: low frequencies (20-200 Hz) produce bass, mid frequencies (200-2000 Hz) carry speech clarity, high frequencies (2000-20000 Hz) provide brightness and definition." data-ar="عدد دورات الموجة الصوتية في الثانية، يُقاس بوحدة Hertz. يحدد النغمة: الترددات المنخفضة (20-200 Hz) تنتج الباس، الترددات الوسطى (200-2000 Hz) تحمل وضوح الكلام، الترددات العالية (2000-20000 Hz) توفر السطوع والتعريف.">
+                            Number of sound wave cycles per second, measured in <span class="technical-term">Hertz</span>. Determines pitch: low frequencies (20-200 Hz) produce bass, mid frequencies (200-2000 Hz) carry speech clarity, high frequencies (2000-20000 Hz) provide brightness and definition.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Amplitude" data-ar="السعة">Amplitude</div>
+                        <div class="term-definition" data-en="Strength or intensity of a sound wave, directly related to perceived loudness. Measured in decibels (dB). Professional audio systems must maintain proper amplitude levels for optimal clarity and equipment protection." data-ar="قوة أو شدة الموجة الصوتية، ترتبط مباشرة بالصوت المُدرَك. تُقاس بوحدة decibel (dB). يجب على أنظمة الصوت المهنية الحفاظ على مستويات السعة المناسبة للوضوح الأمثل وحماية المعدات.">
+                            Strength or intensity of a sound wave, directly related to perceived loudness. Measured in <span class="technical-term">decibels (dB)</span>. Professional audio systems must maintain proper amplitude levels for optimal clarity and equipment protection.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Dynamic Range" data-ar="النطاق الديناميكي">Dynamic Range</div>
+                        <div class="term-definition" data-en="Difference between the loudest and quietest sounds in an audio system, measured in dB. Professional systems require sufficient dynamic range to handle peak signals without distortion while maintaining quiet background noise levels." data-ar="الفرق بين الأصوات الأعلى والأهدأ في نظام الصوت، يُقاس بوحدة dB. الأنظمة المهنية تتطلب نطاق ديناميكي كافٍ للتعامل مع الإشارات العالية بدون تشويه مع الحفاظ على مستويات ضوضاء خلفية هادئة.">
+                            Difference between the loudest and quietest sounds in an audio system, measured in <span class="technical-term">dB</span>. Professional systems require sufficient dynamic range to handle peak signals without distortion while maintaining quiet background noise levels.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Phase" data-ar="الطور">Phase</div>
+                        <div class="term-definition" data-en="The timing relationship between two audio signals. When signals are in phase, they reinforce each other; when out of phase, they can cancel each other out. Critical for microphone placement and speaker alignment." data-ar="العلاقة الزمنية بين إشارتين صوتيتين. عندما تكون الإشارات في الطور، تعزز بعضها البعض؛ عندما تكون خارج الطور، يمكن أن تلغي بعضها البعض. حاسم لوضع Microphone ومحاذاة Speaker.">
+                            The timing relationship between two audio signals. When signals are in phase, they reinforce each other; when out of phase, they can cancel each other out. Critical for <span class="technical-term">microphone</span> placement and <span class="technical-term">speaker</span> alignment.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Audio Equipment -->
+                <div class="glossary-card">
+                    <div class="term-icon">🎛️</div>
+                    <h3 class="term-category" data-en="Professional Audio Equipment" data-ar="المعدات الصوتية المهنية">Professional Audio Equipment</h3>
+                    
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Condenser Microphone" data-ar="Condenser Microphone">Condenser Microphone</div>
+                        <div class="term-definition" data-en="High-sensitivity microphone requiring phantom power (+48V). Uses a capacitor to convert sound waves to electrical signals. Ideal for detailed recording in controlled environments such as conference rooms, studios, and broadcast facilities due to excellent frequency response and sensitivity." data-ar="Microphone عالي الحساسية يتطلب Phantom Power (+48V). يستخدم مكثف لتحويل الموجات الصوتية إلى إشارات كهربائية. مثالي للتسجيل المفصل في البيئات المضبوطة مثل قاعات المؤتمرات والاستوديوهات ومرافق الإذاعة بسبب استجابة التردد والحساسية الممتازة.">
+                            High-sensitivity <span class="technical-term">microphone</span> requiring <span class="technical-term">phantom power (+48V)</span>. Uses a capacitor to convert sound waves to electrical signals. Ideal for detailed recording in controlled environments such as conference rooms, studios, and broadcast facilities due to excellent frequency response and sensitivity.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Dynamic Microphone" data-ar="Dynamic Microphone">Dynamic Microphone</div>
+                        <div class="term-definition" data-en="Robust microphone that doesn't require phantom power. Uses electromagnetic induction to generate signal. Excellent for live sound applications, drums, and high-volume sources. Very durable and handles high sound pressure levels well." data-ar="Microphone قوي لا يتطلب Phantom Power. يستخدم الحث الكهرومغناطيسي لتوليد الإشارة. ممتاز لتطبيقات الصوت المباشر والطبول ومصادر الصوت العالي. متين جداً ويتعامل مع مستويات ضغط الصوت العالية بشكل جيد.">
+                            Robust <span class="technical-term">microphone</span> that doesn't require <span class="technical-term">phantom power</span>. Uses electromagnetic induction to generate signal. Excellent for live sound applications, drums, and high-volume sources. Very durable and handles high sound pressure levels well.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Mixing Console" data-ar="وحدة التحكم في المزج">Mixing Console</div>
+                        <div class="term-definition" data-en="Central control interface for combining, routing, and processing multiple audio signals. Professional consoles feature EQ, dynamics processing, routing capabilities, and often include digital processing, automation features, and comprehensive monitoring systems." data-ar="واجهة التحكم المركزية لدمج وتوجيه ومعالجة إشارات صوتية متعددة. وحدات التحكم المهنية تتميز بـ EQ ومعالجة الديناميكيات وقدرات التوجيه وغالباً ما تشمل المعالجة الرقمية وميزات الأتمتة وأنظمة المراقبة الشاملة.">
+                            Central control interface for combining, routing, and processing multiple audio signals. Professional consoles feature <span class="technical-term">EQ</span>, dynamics processing, routing capabilities, and often include digital processing, automation features, and comprehensive monitoring systems.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Line Array System" data-ar="نظام Line Array">Line Array System</div>
+                        <div class="term-definition" data-en="Speaker configuration using multiple drivers in vertical alignment for enhanced directional control and even coverage. Provides consistent sound levels across large audiences and reduces unwanted reflections. Essential for large venues, government assembly halls, and outdoor events." data-ar="تكوين Speaker يستخدم عدة محركات في التوازي العمودي للتحكم الاتجاهي المحسن والتغطية المتساوية. يوفر مستويات صوت متسقة عبر الجماهير الكبيرة ويقلل الانعكاسات غير المرغوبة. أساسي للأماكن الكبيرة وقاعات الجمعية الحكومية والأحداث الخارجية.">
+                            <span class="technical-term">Speaker</span> configuration using multiple drivers in vertical alignment for enhanced directional control and even coverage. Provides consistent sound levels across large audiences and reduces unwanted reflections. Essential for large venues, government assembly halls, and outdoor events.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Audio Interface" data-ar="واجهة الصوت">Audio Interface</div>
+                        <div class="term-definition" data-en="Device that converts analog audio signals to digital and vice versa, connecting microphones and instruments to computers. Provides phantom power, preamps, and multiple inputs/outputs for professional recording and live sound applications." data-ar="جهاز يحول الإشارات الصوتية التناظرية إلى رقمية والعكس، يربط أجهزة Microphone والآلات بأجهزة الكمبيوتر. يوفر Phantom Power وpreamp ومدخلات/مخرجات متعددة للتسجيل المهني وتطبيقات الصوت المباشر.">
+                            Device that converts analog audio signals to digital and vice versa, connecting <span class="technical-term">microphones</span> and instruments to computers. Provides <span class="technical-term">phantom power</span>, preamps, and multiple inputs/outputs for professional recording and live sound applications.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Audio Technology -->
+                <div class="glossary-card">
+                    <div class="term-icon">💻</div>
+                    <h3 class="term-category" data-en="Digital Audio Technology" data-ar="تقنية الصوت الرقمي">Digital Audio Technology</h3>
+                    
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Sample Rate" data-ar="Sample Rate">Sample Rate</div>
+                        <div class="term-definition" data-en="Number of digital samples captured per second during analog-to-digital conversion, measured in Hz or kHz. Professional standards: 48kHz for broadcast/video synchronization, 44.1kHz for music production, 96kHz+ for high-resolution applications and critical listening." data-ar="عدد العينات الرقمية الملتقطة في الثانية أثناء التحويل التناظري إلى الرقمي، يُقاس بوحدة Hz أو kHz. المعايير المهنية: 48kHz للإذاعة/مزامنة الفيديو، 44.1kHz لإنتاج الموسيقى، 96kHz+ للتطبيقات عالية الدقة والاستماع النقدي.">
+                            Number of digital samples captured per second during analog-to-digital conversion, measured in Hz or kHz. Professional standards: <span class="technical-term">48kHz for broadcast/video synchronization, 44.1kHz for music production, 96kHz+ for high-resolution applications</span> and critical listening.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Bit Depth" data-ar="Bit Depth">Bit Depth</div>
+                        <div class="term-definition" data-en="Number of bits used to represent each audio sample, determining available dynamic range and signal-to-noise ratio. 16-bit provides 96dB dynamic range, 24-bit provides 144dB dynamic range. Professional recording and broadcast typically use 24-bit or higher for maximum quality." data-ar="عدد البتات المستخدمة لتمثيل كل عينة صوتية، يحدد النطاق الديناميكي المتاح ونسبة الإشارة إلى الضوضاء. 16-bit يوفر نطاق ديناميكي 96dB، 24-bit يوفر نطاق ديناميكي 144dB. التسجيل والإذاعة المهنية عادة ما يستخدمان 24-bit أو أعلى للحصول على أقصى جودة.">
+                            Number of <span class="technical-term">bits</span> used to represent each audio sample, determining available dynamic range and signal-to-noise ratio. <span class="technical-term">16-bit provides 96dB dynamic range, 24-bit provides 144dB dynamic range</span>. Professional recording and broadcast typically use 24-bit or higher for maximum quality.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Digital Audio Workstation (DAW)" data-ar="Digital Audio Workstation (DAW)">Digital Audio Workstation (DAW)</div>
+                        <div class="term-definition" data-en="Software application for recording, editing, mixing, and producing digital audio. Provides multi-track recording, non-destructive editing, real-time effects processing, automation, and integration with virtual instruments and plugins." data-ar="تطبيق برمجي لتسجيل وتحرير ومزج وإنتاج الصوت الرقمي. يوفر التسجيل متعدد المسارات والتحرير غير المدمر ومعالجة التأثيرات في الوقت الفعلي والأتمتة والتكامل مع الآلات الافتراضية والـ plugin.">
+                            Software application for recording, editing, mixing, and producing digital audio. Provides multi-track recording, non-destructive editing, real-time effects processing, automation, and integration with virtual instruments and <span class="technical-term">plugins</span>.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Audio Network Protocols" data-ar="بروتوكولات شبكة الصوت">Audio Network Protocols</div>
+                        <div class="term-definition" data-en="Digital audio distribution systems using Ethernet or specialized protocols like Dante, AVB (Audio Video Bridging), or CobraNet. Enable centralized control, flexible routing, and distribution for large institutional installations with reduced cable complexity." data-ar="أنظمة توزيع الصوت الرقمي باستخدام Ethernet أو بروتوكولات متخصصة مثل Dante أو AVB (Audio Video Bridging) أو CobraNet. تمكّن التحكم المركزي والتوجيه المرن والتوزيع للتركيبات المؤسسية الكبيرة مع تقليل تعقيد الكابلات.">
+                            Digital audio distribution systems using <span class="technical-term">Ethernet</span> or specialized protocols like <span class="technical-term">Dante, AVB (Audio Video Bridging), or CobraNet</span>. Enable centralized control, flexible routing, and distribution for large institutional installations with reduced cable complexity.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Latency" data-ar="التأخير">Latency</div>
+                        <div class="term-definition" data-en="Time delay between input and output in digital audio systems, measured in milliseconds. Low latency (under 10ms) is crucial for live monitoring, while higher latency is acceptable for recording. Affected by buffer size, sample rate, and processing complexity." data-ar="التأخير الزمني بين المدخل والمخرج في أنظمة الصوت الرقمي، يُقاس بالملي ثانية. التأخير المنخفض (أقل من 10ms) حاسم للمراقبة المباشرة، بينما التأخير الأعلى مقبول للتسجيل. يتأثر بحجم Buffer وSample Rate وتعقيد المعالجة.">
+                            Time delay between input and output in digital audio systems, measured in milliseconds. Low latency (under 10ms) is crucial for live monitoring, while higher latency is acceptable for recording. Affected by <span class="technical-term">buffer size, sample rate</span>, and processing complexity.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signal Processing -->
+                <div class="glossary-card">
+                    <div class="term-icon">⚡</div>
+                    <h3 class="term-category" data-en="Audio Signal Processing" data-ar="معالجة الإشارة الصوتية">Audio Signal Processing</h3>
+                    
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Equalizer (EQ)" data-ar="Equalizer (EQ)">Equalizer (EQ)</div>
+                        <div class="term-definition" data-en="Tool for adjusting the amplitude of specific frequency ranges in an audio signal. Types include parametric EQ (adjustable frequency, gain, and Q), graphic EQ (fixed frequency bands), and shelving EQ (affecting all frequencies above or below a set point)." data-ar="أداة لتعديل سعة نطاقات ترددية محددة في الإشارة الصوتية. الأنواع تشمل Parametric EQ (تردد وكسب وQ قابل للتعديل) وGraphic EQ (نطاقات ترددية ثابتة) وShelving EQ (يؤثر على جميع الترددات فوق أو تحت نقطة محددة).">
+                            Tool for adjusting the amplitude of specific frequency ranges in an audio signal. Types include <span class="technical-term">parametric EQ</span> (adjustable frequency, gain, and Q), <span class="technical-term">graphic EQ</span> (fixed frequency bands), and <span class="technical-term">shelving EQ</span> (affecting all frequencies above or below a set point).
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Compressor" data-ar="Compressor">Compressor</div>
+                        <div class="term-definition" data-en="Dynamic range processor that reduces the volume of loud sounds or amplifies quiet sounds by narrowing the dynamic range. Key parameters include threshold, ratio, attack time, release time, and makeup gain. Essential for broadcast and live sound consistency." data-ar="معالج النطاق الديناميكي الذي يقلل مستوى الأصوات العالية أو يضخم الأصوات الهادئة عن طريق تضييق النطاق الديناميكي. المعاملات الرئيسية تشمل Threshold وRatio ووقت Attack ووقت Release وMakeup Gain. أساسي لاتساق الإذاعة والصوت المباشر.">
+                            Dynamic range processor that reduces the volume of loud sounds or amplifies quiet sounds by narrowing the dynamic range. Key parameters include <span class="technical-term">threshold, ratio, attack time, release time</span>, and makeup gain. Essential for broadcast and live sound consistency.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Limiter" data-ar="Limiter">Limiter</div>
+                        <div class="term-definition" data-en="Extreme form of compressor with high ratio (typically 10:1 or higher) that prevents audio signals from exceeding a set threshold. Used as protection against clipping and distortion in broadcast systems and live sound applications." data-ar="شكل متطرف من Compressor بنسبة عالية (عادة 10:1 أو أعلى) يمنع الإشارات الصوتية من تجاوز عتبة محددة. يُستخدم كحماية ضد القطع والتشويه في أنظمة الإذاعة وتطبيقات الصوت المباشر.">
+                            Extreme form of <span class="technical-term">compressor</span> with high ratio (typically 10:1 or higher) that prevents audio signals from exceeding a set threshold. Used as protection against clipping and distortion in broadcast systems and live sound applications.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Gate/Noise Gate" data-ar="بوابة الضوضاء">Gate/Noise Gate</div>
+                        <div class="term-definition" data-en="Device that mutes or attenuates audio signals below a set threshold level. Used to eliminate background noise, drum bleed, or unwanted ambient sound when the primary source is not active. Essential for clean live sound mixing." data-ar="جهاز يكتم أو يخفف الإشارات الصوتية تحت مستوى عتبة محدد. يُستخدم للتخلص من ضوضاء الخلفية أو تسرب الطبول أو الصوت المحيط غير المرغوب عندما يكون المصدر الأساسي غير نشط. أساسي لمزج الصوت المباشر النظيف.">
+                            Device that mutes or attenuates audio signals below a set threshold level. Used to eliminate background noise, drum bleed, or unwanted ambient sound when the primary source is not active. Essential for clean live sound mixing.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Reverb" data-ar="الصدى">Reverb</div>
+                        <div class="term-definition" data-en="Acoustic effect created by sound reflections in a space, or artificially reproduced using digital or analog processing. Parameters include pre-delay, decay time, early reflections, and diffusion. Used to create sense of space and ambiance in recordings and live performances." data-ar="تأثير صوتي يُنشأ بواسطة انعكاسات الصوت في المساحة، أو يُعاد إنتاجه اصطناعياً باستخدام المعالجة الرقمية أو التناظرية. المعاملات تشمل Pre-delay ووقت Decay والانعكاسات المبكرة والانتشار. يُستخدم لخلق إحساس بالمساحة والأجواء في التسجيلات والعروض المباشرة.">
+                            Acoustic effect created by sound reflections in a space, or artificially reproduced using digital or analog processing. Parameters include <span class="technical-term">pre-delay, decay time, early reflections</span>, and diffusion. Used to create sense of space and ambiance in recordings and live performances.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Delay/Echo" data-ar="التأخير/الصدى">Delay/Echo</div>
+                        <div class="term-definition" data-en="Time-based effect that repeats the original signal after a specified delay time. Can be used for rhythmic effects, vocal enhancement, or creating sense of space. Parameters include delay time, feedback (number of repeats), and wet/dry mix." data-ar="تأثير مبني على الوقت يكرر الإشارة الأصلية بعد وقت تأخير محدد. يمكن استخدامه للتأثيرات الإيقاعية أو تعزيز الصوت أو خلق إحساس بالمساحة. المعاملات تشمل وقت التأخير وFeedback (عدد التكرارات) ومزج Wet/Dry.">
+                            Time-based effect that repeats the original signal after a specified delay time. Can be used for rhythmic effects, vocal enhancement, or creating sense of space. Parameters include <span class="technical-term">delay time, feedback</span> (number of repeats), and wet/dry mix.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architectural Acoustics -->
+                <div class="glossary-card">
+                    <div class="term-icon">🏗️</div>
+                    <h3 class="term-category" data-en="Architectural Acoustics" data-ar="الصوتيات المعمارية">Architectural Acoustics</h3>
+                    
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Reverberation Time (RT60)" data-ar="وقت الارتداد (RT60)">Reverberation Time (RT60)</div>
+                        <div class="term-definition" data-en="Time required for sound to decay by 60 decibels in a space after the source stops. Critical measurement for room design: speech-focused rooms require ~0.6s, music venues ~1.8s, conference rooms ~0.8s, large government halls ~1.2-1.5s for optimal intelligibility." data-ar="الوقت المطلوب لانحلال الصوت بمقدار 60 decibel في المساحة بعد توقف المصدر. قياس حاسم لتصميم الغرفة: الغرف المركزة على الكلام تتطلب ~0.6s، أماكن الموسيقى ~1.8s، قاعات المؤتمرات ~0.8s، القاعات الحكومية الكبيرة ~1.2-1.5s للوضوح الأمثل.">
+                            Time required for sound to decay by 60 <span class="technical-term">decibels</span> in a space after the source stops. Critical measurement for room design: <span class="technical-term">speech-focused rooms require ~0.6s, music venues ~1.8s, conference rooms ~0.8s</span>, large government halls ~1.2-1.5s for optimal intelligibility.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Speech Intelligibility" data-ar="وضوح الكلام">Speech Intelligibility</div>
+                        <div class="term-definition" data-en="Measure of how clearly spoken words can be understood in a space, quantified by Speech Transmission Index (STI) from 0-1. Values above 0.75 are considered excellent, 0.6-0.75 good. Essential metric for government facilities, courtrooms, and conference centers where clear communication is critical." data-ar="قياس مدى وضوح فهم الكلمات المنطوقة في المساحة، يُقدر بواسطة Speech Transmission Index (STI) من 0-1. القيم فوق 0.75 تُعتبر ممتازة، 0.6-0.75 جيدة. مقياس أساسي للمرافق الحكومية وقاعات المحاكم ومراكز المؤتمرات حيث التواصل الواضح حاسم.">
+                            Measure of how clearly spoken words can be understood in a space, quantified by <span class="technical-term">Speech Transmission Index (STI)</span> from 0-1. Values above 0.75 are considered excellent, 0.6-0.75 good. Essential metric for government facilities, courtrooms, and conference centers where clear communication is critical.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Sound Absorption" data-ar="امتصاص الصوت">Sound Absorption</div>
+                        <div class="term-definition" data-en="Measure of how much sound energy a material absorbs versus reflects, expressed as absorption coefficient from 0-1. Acoustic panels, carpets, and curtains increase absorption to reduce reverberation. Critical for controlling room acoustics in recording studios and meeting rooms." data-ar="قياس مقدار الطاقة الصوتية التي تمتصها المادة مقابل ما تعكسه، يُعبر عنه كمعامل امتصاص من 0-1. الألواح الصوتية والسجاد والستائر تزيد الامتصاص لتقليل الارتداد. حاسم للتحكم في صوتيات الغرفة في استوديوهات التسجيل وغرف الاجتماعات.">
+                            Measure of how much sound energy a material absorbs versus reflects, expressed as absorption coefficient from 0-1. Acoustic panels, carpets, and curtains increase absorption to reduce reverberation. Critical for controlling room acoustics in recording studios and meeting rooms.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Sound Masking" data-ar="إخفاء الصوت">Sound Masking</div>
+                        <div class="term-definition" data-en="Controlled background sound (typically pink noise) used to reduce speech intelligibility in adjacent areas and provide acoustic privacy. Important for government offices, confidential meeting spaces, and open office environments where sensitive conversations occur." data-ar="صوت خلفية مُتحكم فيه (عادة Pink Noise) يُستخدم لتقليل وضوح الكلام في المناطق المجاورة وتوفير الخصوصية الصوتية. مهم للمكاتب الحكومية ومساحات الاجتماعات السرية وبيئات المكاتب المفتوحة حيث تحدث محادثات حساسة.">
+                            Controlled background sound (typically <span class="technical-term">pink noise</span>) used to reduce speech intelligibility in adjacent areas and provide acoustic privacy. Important for government offices, confidential meeting spaces, and open office environments where sensitive conversations occur.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Sound Isolation" data-ar="عزل الصوت">Sound Isolation</div>
+                        <div class="term-definition" data-en="Prevention of sound transmission between spaces using mass, isolation, and absorption principles. Measured in Sound Transmission Class (STC) ratings. Essential for recording studios, government secure facilities, and any application requiring confidentiality or noise control." data-ar="منع انتقال الصوت بين المساحات باستخدام مبادئ الكتلة والعزل والامتصاص. يُقاس بتصنيفات Sound Transmission Class (STC). أساسي لاستوديوهات التسجيل والمرافق الحكومية الآمنة وأي تطبيق يتطلب السرية أو التحكم في الضوضاء.">
+                            Prevention of sound transmission between spaces using mass, isolation, and absorption principles. Measured in <span class="technical-term">Sound Transmission Class (STC)</span> ratings. Essential for recording studios, government secure facilities, and any application requiring confidentiality or noise control.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Critical Distance" data-ar="المسافة الحرجة">Critical Distance</div>
+                        <div class="term-definition" data-en="Distance from a sound source where direct sound and reverberant sound are equal in level. Beyond this distance, room acoustics dominate the sound character. Important for microphone placement and speaker positioning in government assembly halls and large conference rooms." data-ar="المسافة من مصدر الصوت حيث يكون الصوت المباشر والصوت المنعكس متساويين في المستوى. بعد هذه المسافة، تهيمن صوتيات الغرفة على خاصية الصوت. مهم لوضع Microphone وتوضع Speaker في قاعات الجمعية الحكومية وقاعات المؤتمرات الكبيرة.">
+                            Distance from a sound source where direct sound and reverberant sound are equal in level. Beyond this distance, room acoustics dominate the sound character. Important for <span class="technical-term">microphone</span> placement and <span class="technical-term">speaker</span> positioning in government assembly halls and large conference rooms.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Sound & Broadcast -->
+                <div class="glossary-card">
+                    <div class="term-icon">📡</div>
+                    <h3 class="term-category" data-en="Live Sound & Broadcast Technology" data-ar="تقنية الصوت المباشر والإذاعة">Live Sound & Broadcast Technology</h3>
+                    
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Public Address (PA) System" data-ar="نظام الخطابة العامة (PA)">Public Address (PA) System</div>
+                        <div class="term-definition" data-en="Audio system designed to amplify and distribute sound to large audiences. Consists of microphones, mixing console, amplifiers, and loudspeakers. Essential for government buildings, emergency announcements, and public events requiring clear, intelligible communication." data-ar="نظام صوتي مصمم لتضخيم وتوزيع الصوت لجماهير كبيرة. يتكون من أجهزة Microphone ووحدة تحكم المزج ومضخمات ومكبرات صوت. أساسي للمباني الحكومية وإعلانات الطوارئ والأحداث العامة التي تتطلب تواصل واضح ومفهوم.">
+                            Audio system designed to amplify and distribute sound to large audiences. Consists of <span class="technical-term">microphones</span>, mixing console, amplifiers, and <span class="technical-term">loudspeakers</span>. Essential for government buildings, emergency announcements, and public events requiring clear, intelligible communication.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Feedback (Acoustic)" data-ar="التغذية الراجعة الصوتية">Feedback (Acoustic)</div>
+                        <div class="term-definition" data-en="Unwanted high-pitched squeal or howling sound that occurs when amplified sound from speakers is picked up by microphones and re-amplified in a loop. Prevented through proper microphone placement, EQ adjustment, and system gain structure management." data-ar="صوت صرير أو عواء حاد غير مرغوب يحدث عندما يتم التقاط الصوت المضخم من مكبرات الصوت بواسطة أجهزة Microphone وإعادة تضخيمه في حلقة. يُمنع من خلال وضع Microphone المناسب وتعديل EQ وإدارة هيكل كسب النظام.">
+                            Unwanted high-pitched squeal or howling sound that occurs when amplified sound from <span class="technical-term">speakers</span> is picked up by <span class="technical-term">microphones</span> and re-amplified in a loop. Prevented through proper <span class="technical-term">microphone</span> placement, <span class="technical-term">EQ</span> adjustment, and system gain structure management.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Monitor System" data-ar="نظام المراقبة">Monitor System</div>
+                        <div class="term-definition" data-en="Separate audio system that allows performers or speakers to hear themselves and other sources clearly on stage. Types include floor monitors (wedges), in-ear monitors (IEMs), and side-fill systems. Critical for confident presentation and performance quality." data-ar="نظام صوتي منفصل يسمح للمؤدين أو المتحدثين بسماع أنفسهم ومصادر أخرى بوضوح على المسرح. الأنواع تشمل Monitor الأرضي (wedge) وMonitor الأذن (IEMs) وأنظمة الملء الجانبي. حاسم للعرض الواثق وجودة الأداء.">
+                            Separate audio system that allows performers or speakers to hear themselves and other sources clearly on stage. Types include floor monitors (wedges), <span class="technical-term">in-ear monitors (IEMs)</span>, and side-fill systems. Critical for confident presentation and performance quality.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Wireless Microphone System" data-ar="نظام Microphone اللاسلكي">Wireless Microphone System</div>
+                        <div class="term-definition" data-en="Radio frequency system consisting of transmitter (worn or handheld) and receiver that allows freedom of movement without cables. Operating in UHF or digital bands with features like automatic frequency selection, encryption, and battery monitoring. Essential for presentations and mobile speaking applications." data-ar="نظام تردد راديوي يتكون من جهاز إرسال (يُحمل أو محمول باليد) وجهاز استقبال يسمح بحرية الحركة بدون كابلات. يعمل في نطاقات UHF أو رقمية مع ميزات مثل اختيار التردد التلقائي والتشفير ومراقبة البطارية. أساسي للعروض التقديمية وتطبيقات الكلام المتنقلة.">
+                            Radio frequency system consisting of transmitter (worn or handheld) and receiver that allows freedom of movement without cables. Operating in <span class="technical-term">UHF</span> or digital bands with features like automatic frequency selection, encryption, and battery monitoring. Essential for presentations and mobile speaking applications.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Direct Input (DI) Box" data-ar="صندوق المدخل المباشر (DI)">Direct Input (DI) Box</div>
+                        <div class="term-definition" data-en="Device that converts high-impedance, unbalanced instrument signals to low-impedance, balanced signals suitable for mixing consoles and long cable runs. Provides electrical isolation and impedance matching. Essential for connecting electronic instruments, computers, and playback devices to professional audio systems." data-ar="جهاز يحول إشارات الآلات عالية المقاومة وغير المتوازنة إلى إشارات منخفضة المقاومة ومتوازنة مناسبة لوحدات تحكم المزج والكابلات الطويلة. يوفر العزل الكهربائي ومطابقة المقاومة. أساسي لربط الآلات الإلكترونية وأجهزة الكمبيوتر وأجهزة التشغيل بأنظمة الصوت المهنية.">
+                            Device that converts high-impedance, unbalanced instrument signals to low-impedance, balanced signals suitable for mixing consoles and long cable runs. Provides electrical isolation and impedance matching. Essential for connecting electronic instruments, computers, and playback devices to professional audio systems.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Broadcast Delay/Profanity Delay" data-ar="تأخير الإذاعة">Broadcast Delay/Profanity Delay</div>
+                        <div class="term-definition" data-en="Digital delay system (typically 7-10 seconds) that allows broadcast operators to prevent inappropriate content from reaching the audience. Essential for live radio, television, and government press conferences where content control is required for professional standards." data-ar="نظام تأخير رقمي (عادة 7-10 ثوان) يسمح لمشغلي الإذاعة بمنع المحتوى غير المناسب من الوصول للجمهور. أساسي للراديو المباشر والتلفزيون والمؤتمرات الصحفية الحكومية حيث السيطرة على المحتوى مطلوبة للمعايير المهنية.">
+                            Digital delay system (typically 7-10 seconds) that allows broadcast operators to prevent inappropriate content from reaching the audience. Essential for live radio, television, and government press conferences where content control is required for professional standards.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency & Government Systems -->
+                <div class="glossary-card">
+                    <div class="term-icon">🚨</div>
+                    <h3 class="term-category" data-en="Emergency & Government Audio Systems" data-ar="أنظمة الصوت الطارئة والحكومية">Emergency & Government Audio Systems</h3>
+                    
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Emergency Communication System" data-ar="نظام الاتصال الطارئ">Emergency Communication System</div>
+                        <div class="term-definition" data-en="Critical audio infrastructure designed to function during emergencies, providing clear communication for evacuation instructions, emergency announcements, and coordination between response teams. Must have battery backup, multiple activation points, and high intelligibility ratings." data-ar="بنية تحتية صوتية حاسمة مصممة للعمل أثناء الطوارئ، توفر تواصل واضح لتعليمات الإجلاء وإعلانات الطوارئ والتنسيق بين فرق الاستجابة. يجب أن تحتوي على نسخ احتياطي للبطارية ونقاط تفعيل متعددة ومعدلات وضوح عالية.">
+                            Critical audio infrastructure designed to function during emergencies, providing clear communication for evacuation instructions, emergency announcements, and coordination between response teams. Must have battery backup, multiple activation points, and high intelligibility ratings.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Mass Notification System" data-ar="نظام الإخطار الجماعي">Mass Notification System</div>
+                        <div class="term-definition" data-en="Integrated communication platform that delivers emergency messages through multiple channels including audio announcements, digital displays, email, and text messages. Required in many government buildings and large facilities for comprehensive emergency communication coverage." data-ar="منصة اتصال متكاملة تقدم رسائل الطوارئ عبر قنوات متعددة بما في ذلك إعلانات الصوت والشاشات الرقمية والبريد الإلكتروني والرسائل النصية. مطلوب في العديد من المباني الحكومية والمرافق الكبيرة لتغطية شاملة لاتصال الطوارئ.">
+                            Integrated communication platform that delivers emergency messages through multiple channels including audio announcements, digital displays, email, and text messages. Required in many government buildings and large facilities for comprehensive emergency communication coverage.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Redundancy/Backup Systems" data-ar="أنظمة التكرار/النسخ الاحتياطي">Redundancy/Backup Systems</div>
+                        <div class="term-definition" data-en="Multiple layers of backup equipment and power systems to ensure continuous operation during failures. Includes backup amplifiers, secondary signal paths, uninterruptible power supplies (UPS), and generator backup. Critical for government facilities and mission-critical applications." data-ar="طبقات متعددة من معدات النسخ الاحتياطي وأنظمة الطاقة لضمان التشغيل المستمر أثناء الأعطال. يشمل مضخمات احتياطية ومسارات إشارة ثانوية ومصادر طاقة غير منقطعة (UPS) ونسخ احتياطي للمولد. حاسم للمرافق الحكومية والتطبيقات الحاسمة للمهام.">
+                            Multiple layers of backup equipment and power systems to ensure continuous operation during failures. Includes backup amplifiers, secondary signal paths, <span class="technical-term">uninterruptible power supplies (UPS)</span>, and generator backup. Critical for government facilities and mission-critical applications.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Zone Paging System" data-ar="نظام الاستدعاء المنطقي">Zone Paging System</div>
+                        <div class="term-definition" data-en="Audio distribution system that allows selective communication to specific areas or zones within a building or complex. Essential for large government facilities, hospitals, and industrial sites where targeted messaging is required for different departments or security levels." data-ar="نظام توزيع الصوت يسمح بالتواصل الانتقائي لمناطق أو zones محددة داخل مبنى أو مجمع. أساسي للمرافق الحكومية الكبيرة والمستشفيات والمواقع الصناعية حيث الرسائل المستهدفة مطلوبة لأقسام مختلفة أو مستويات أمان.">
+                            Audio distribution system that allows selective communication to specific areas or zones within a building or complex. Essential for large government facilities, hospitals, and industrial sites where targeted messaging is required for different departments or security levels.
+                        </div>
+                    </div>
+
+                    <div class="term-entry">
+                        <div class="term-name" data-en="Security Integration" data-ar="التكامل الأمني">Security Integration</div>
+                        <div class="term-definition" data-en="Integration of audio systems with security infrastructure including access control, surveillance cameras, and alarm systems. Allows coordinated response to security events with automatic audio announcements, lockdown communications, and incident documentation through audio recording." data-ar="تكامل أنظمة الصوت مع البنية التحتية الأمنية بما في ذلك التحكم في الوصول وكاميرات المراقبة وأنظمة الإنذار. يسمح بالاستجابة المنسقة لأحداث الأمان مع إعلانات صوتية تلقائية واتصالات الإغلاق وتوثيق الحوادث من خلال التسجيل الصوتي.">
+                            Integration of audio systems with security infrastructure including access control, surveillance cameras, and alarm systems. Allows coordinated response to security events with automatic audio announcements, lockdown communications, and incident documentation through audio recording.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Training Certification Tiers -->
+        <div id="tiers">
+            <!-- Bronze Tier -->
+            <div class="tier-section bronze">
+                <div class="tier-header">
+                    <div class="tier-icon">🥉</div>
+                    <h2 class="tier-title" data-en="BRONZE LEVEL CERTIFICATION" data-ar="شهادة المستوى البرونزي">BRONZE LEVEL CERTIFICATION</h2>
+                    <p class="tier-subtitle" data-en="Audio Fundamentals & System Basics" data-ar="أساسيات الصوت وأساسيات النظام">Audio Fundamentals & System Basics</p>
+                </div>
+
+                <div class="tier-details">
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Program Duration" data-ar="مدة البرنامج">Program Duration</div>
+                        <div class="detail-value" data-en="4 Weeks (80 Hours Total)" data-ar="4 أسابيع (80 ساعة إجمالي)">4 Weeks (80 Hours Total)</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Training Sessions" data-ar="جلسات التدريب">Training Sessions</div>
+                        <div class="detail-value" data-en="16 Sessions (5 Hours Each)" data-ar="16 جلسة (5 ساعات لكل منها)">16 Sessions (5 Hours Each)</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Hands-On Practice" data-ar="التطبيق العملي">Hands-On Practice</div>
+                        <div class="detail-value" data-en="40 Hours Laboratory Work" data-ar="40 ساعة عمل مختبر">40 Hours Laboratory Work</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Certification Level" data-ar="مستوى الشهادة">Certification Level</div>
+                        <div class="detail-value" data-en="Government-Recognized Foundation" data-ar="أساس معترف به حكومياً">Government-Recognized Foundation</div>
+                    </div>
+                </div>
+
+                <div class="curriculum-section">
+                    <h3 class="curriculum-title" data-en="Core Bronze Curriculum Topics" data-ar="موضوعات منهج البرونز الأساسي">Core Bronze Curriculum Topics</h3>
+                    <ul class="curriculum-list">
+                        <li data-en="Basic Audio Physics & Sound Principles - Understanding frequency, amplitude, and wave propagation" data-ar="فيزياء الصوت الأساسية ومبادئ الصوت - فهم التردد والسعة وانتشار الموجات">Basic Audio Physics & Sound Principles - Understanding frequency, amplitude, and wave propagation</li>
+                        <li data-en="Microphone Types & Selection Criteria - Dynamic, condenser, ribbon microphones and application-specific selection" data-ar="أنواع Microphone ومعايير الاختيار - Dynamic وCondenser وRibbon Microphone واختيار مخصص للتطبيق">Microphone Types & Selection Criteria - Dynamic, condenser, ribbon microphones and application-specific selection</li>
+                        <li data-en="Audio Equipment Operation & Setup - Mixing consoles, amplifiers, speakers, and signal processors" data-ar="تشغيل وإعداد معدات الصوت - وحدات تحكم المزج والمضخمات والمكبرات ومعالجات الإشارة">Audio Equipment Operation & Setup - Mixing consoles, amplifiers, speakers, and signal processors</li>
+                        <li data-en="Signal Flow & System Architecture - Understanding how audio travels through professional systems" data-ar="تدفق الإشارة وهندسة النظام - فهم كيفية انتقال الصوت عبر الأنظمة المهنية">Signal Flow & System Architecture - Understanding how audio travels through professional systems</li>
+                        <li data-en="Digital Audio Fundamentals - Sample rates, bit depth, and digital conversion concepts" data-ar="أساسيات الصوت الرقمي - Sample Rate وBit Depth ومفاهيم التحويل الرقمي">Digital Audio Fundamentals - Sample rates, bit depth, and digital conversion concepts</li>
+                        <li data-en="Live Sound System Basics - Setup procedures for small to medium PA systems" data-ar="أساسيات نظام Live Sound - إجراءات الإعداد لأنظمة PA صغيرة إلى متوسطة">Live Sound System Basics - Setup procedures for small to medium PA systems</li>
+                        <li data-en="Installation & Safety Protocols - Electrical safety, cable management, and equipment handling" data-ar="بروتوكولات التركيب والسلامة - الأمان الكهربائي وإدارة الكابلات والتعامل مع المعدات">Installation & Safety Protocols - Electrical safety, cable management, and equipment handling</li>
+                        <li data-en="Basic Troubleshooting Techniques - Identifying and resolving common audio system problems" data-ar="تقنيات استكشاف الأخطاء الأساسية - تحديد وحل مشاكل نظام الصوت الشائعة">Basic Troubleshooting Techniques - Identifying and resolving common audio system problems</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Silver Tier -->
+            <div class="tier-section silver">
+                <div class="tier-header">
+                    <div class="tier-icon">🥈</div>
+                    <h2 class="tier-title" data-en="SILVER LEVEL CERTIFICATION" data-ar="شهادة المستوى الفضي">SILVER LEVEL CERTIFICATION</h2>
+                    <p class="tier-subtitle" data-en="Intermediate Techniques & Professional Applications" data-ar="التقنيات المتوسطة والتطبيقات المهنية">Intermediate Techniques & Professional Applications</p>
+                </div>
+
+                <div class="tier-details">
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Program Duration" data-ar="مدة البرنامج">Program Duration</div>
+                        <div class="detail-value" data-en="6 Weeks (120 Hours Total)" data-ar="6 أسابيع (120 ساعة إجمالي)">6 Weeks (120 Hours Total)</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Training Sessions" data-ar="جلسات التدريب">Training Sessions</div>
+                        <div class="detail-value" data-en="24 Sessions (5 Hours Each)" data-ar="24 جلسة (5 ساعات لكل منها)">24 Sessions (5 Hours Each)</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Advanced Labs" data-ar="المختبرات المتقدمة">Advanced Labs</div>
+                        <div class="detail-value" data-en="60 Hours Practical Work" data-ar="60 ساعة عمل عملي">60 Hours Practical Work</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Prerequisites" data-ar="المتطلبات المسبقة">Prerequisites</div>
+                        <div class="detail-value" data-en="Bronze Level Certification" data-ar="شهادة المستوى البرونزي">Bronze Level Certification</div>
+                    </div>
+                </div>
+
+                <div class="curriculum-section">
+                    <h3 class="curriculum-title" data-en="Advanced Silver Curriculum Topics" data-ar="موضوعات منهج الفضة المتقدم">Advanced Silver Curriculum Topics</h3>
+                    <ul class="curriculum-list">
+                        <li data-en="Professional Mixing Techniques - Advanced console operation, channel processing, and mix methodology" data-ar="تقنيات المزج المهنية - تشغيل وحدة التحكم المتقدم ومعالجة القناة ومنهجية المزج">Professional Mixing Techniques - Advanced console operation, channel processing, and mix methodology</li>
+                        <li data-en="Digital Audio Workstation Mastery - Pro Tools, Logic Pro, and other professional DAW platforms" data-ar="إتقان Digital Audio Workstation - Pro Tools وLogic Pro ومنصات DAW مهنية أخرى">Digital Audio Workstation Mastery - Pro Tools, Logic Pro, and other professional DAW platforms</li>
+                        <li data-en="Audio Processing & Effects - Compression, EQ, reverb, delay, and advanced signal processing" data-ar="معالجة الصوت والتأثيرات - Compression وEQ وreverb وdelay ومعالجة الإشارة المتقدمة">Audio Processing & Effects - Compression, EQ, reverb, delay, and advanced signal processing</li>
+                        <li data-en="Multi-track Recording Systems - Studio recording techniques and large format console operation" data-ar="أنظمة تسجيل متعددة المسارات - تقنيات تسجيل Studio وتشغيل وحدة التحكم ذات الشكل الكبير">Multi-track Recording Systems - Studio recording techniques and large format console operation</li>
+                        <li data-en="Broadcast Audio Standards - Radio and television audio production, compliance, and quality control" data-ar="معايير الصوت الإذاعي - إنتاج الصوت الإذاعي والتلفزيوني والامتثال وضبط الجودة">Broadcast Audio Standards - Radio and television audio production, compliance, and quality control</li>
+                        <li data-en="Conference Room Audio Design - Government meeting spaces, boardrooms, and presentation systems" data-ar="تصميم الصوت لقاعات المؤتمرات - مساحات الاجتماعات الحكومية وغرف الاجتماعات وأنظمة العرض">Conference Room Audio Design - Government meeting spaces, boardrooms, and presentation systems</li>
+                        <li data-en="Remote Audio Management - Network audio systems, remote control, and distributed processing" data-ar="إدارة الصوت عن بُعد - أنظمة Audio Network والتحكم عن بُعد والمعالجة الموزعة">Remote Audio Management - Network audio systems, remote control, and distributed processing</li>
+                        <li data-en="Network Audio Systems - Dante, AVB, and other professional audio networking protocols" data-ar="أنظمة Audio Network - Dante وAVB وبروتوكولات شبكة الصوت المهنية الأخرى">Network Audio Systems - Dante, AVB, and other professional audio networking protocols</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gold Tier -->
+            <div class="tier-section gold">
+                <div class="tier-header">
+                    <div class="tier-icon">🥇</div>
+                    <h2 class="tier-title" data-en="GOLD LEVEL CERTIFICATION" data-ar="شهادة المستوى الذهبي">GOLD LEVEL CERTIFICATION</h2>
+                    <p class="tier-subtitle" data-en="Expert Mastery & Consultant-Level Expertise" data-ar="الإتقان المتخصص وخبرة مستوى الاستشاري">Expert Mastery & Consultant-Level Expertise</p>
+                </div>
+
+                <div class="tier-details">
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Program Duration" data-ar="مدة البرنامج">Program Duration</div>
+                        <div class="detail-value" data-en="8 Weeks (160 Hours Total)" data-ar="8 أسابيع (160 ساعة إجمالي)">8 Weeks (160 Hours Total)</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Training Sessions" data-ar="جلسات التدريب">Training Sessions</div>
+                        <div class="detail-value" data-en="32 Sessions (5 Hours Each)" data-ar="32 جلسة (5 ساعات لكل منها)">32 Sessions (5 Hours Each)</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Expert Projects" data-ar="مشاريع الخبراء">Expert Projects</div>
+                        <div class="detail-value" data-en="80 Hours Advanced Applications" data-ar="80 ساعة تطبيقات متقدمة">80 Hours Advanced Applications</div>
+                    </div>
+                    <div class="detail-box">
+                        <div class="detail-label" data-en="Prerequisites" data-ar="المتطلبات المسبقة">Prerequisites</div>
+                        <div class="detail-value" data-en="Silver Level Certification" data-ar="شهادة المستوى الفضي">Silver Level Certification</div>
+                    </div>
+                </div>
+
+                <div class="curriculum-section">
+                    <h3 class="curriculum-title" data-en="Expert Gold Curriculum Topics" data-ar="موضوعات منهج الذهب المتخصص">Expert Gold Curriculum Topics</h3>
+                    <ul class="curriculum-list">
+                        <li data-en="Architectural Acoustics & Room Design - Advanced acoustic modeling, treatment design, and optimization" data-ar="الصوتيات المعمارية وتصميم الغرف - النمذجة الصوتية المتقدمة وتصميم المعالجة والتحسين">Architectural Acoustics & Room Design - Advanced acoustic modeling, treatment design, and optimization</li>
+                        <li data-en="Large Scale System Design - Stadium, arena, and government facility audio infrastructure planning" data-ar="تصميم أنظمة واسعة النطاق - تخطيط البنية التحتية الصوتية للملاعب والساحات والمرافق الحكومية">Large Scale System Design - Stadium, arena, and government facility audio infrastructure planning</li>
+                        <li data-en="Advanced Measurement & Analysis - Acoustic measurement tools, SMAART analysis, and system optimization" data-ar="القياس والتحليل المتقدم - أدوات القياس الصوتي وتحليل SMAART وتحسين النظام">Advanced Measurement & Analysis - Acoustic measurement tools, SMAART analysis, and system optimization</li>
+                        <li data-en="Custom System Integration - Specialized government and institutional audio system requirements" data-ar="تكامل الأنظمة المخصصة - متطلبات أنظمة الصوت الحكومية والمؤسسية المتخصصة">Custom System Integration - Specialized government and institutional audio system requirements</li>
+                        <li data-en="Project Management & Leadership - Team coordination, budget management, and client relations" data-ar="إدارة المشاريع والقيادة - تنسيق الفريق وإدارة الميزانية وعلاقات العملاء">Project Management & Leadership - Team coordination, budget management, and client relations</li>
+                        <li data-en="Advanced Troubleshooting - Complex system diagnosis, repair strategies, and preventive maintenance" data-ar="استكشاف الأخطاء المتقدم - تشخيص النظام المعقد واستراتيجيات الإصلاح والصيانة الوقائية">Advanced Troubleshooting - Complex system diagnosis, repair strategies, and preventive maintenance</li>
+                        <li data-en="Budget Planning & Procurement - Cost estimation, vendor relations, and equipment specification" data-ar="تخطيط الميزانية والمشتريات - تقدير التكلفة وعلاقات البائعين ومواصفات المعدات">Budget Planning & Procurement - Cost estimation, vendor relations, and equipment specification</li>
+                        <li data-en="Team Training & Management - Staff development, training program design, and knowledge transfer" data-ar="تدريب وإدارة الفريق - تطوير الموظفين وتصميم برامج التدريب ونقل المعرفة">Team Training & Management - Staff development, training program design, and knowledge transfer</li>
+                        <li data-en="Quality Assurance Systems - Testing protocols, documentation standards, and compliance verification" data-ar="أنظمة ضمان الجودة - بروتوكولات الاختبار ومعايير التوثيق والتحقق من الامتثال">Quality Assurance Systems - Testing protocols, documentation standards, and compliance verification</li>
+                        <li data-en="International Standards Compliance - AES, ISO, and government regulatory requirements" data-ar="الامتثال للمعايير الدولية - متطلبات AES وISO واللوائح الحكومية">International Standards Compliance - AES, ISO, and government regulatory requirements</li>
+                        <li data-en="Consultant-Level Expertise - Independent assessment, system recommendations, and expert testimony" data-ar="خبرة على مستوى الاستشاري - تقييم مستقل وتوصيات النظام وشهادة الخبير">Consultant-Level Expertise - Independent assessment, system recommendations, and expert testimony</li>
+                        <li data-en="Independent Project Delivery - Complete project lifecycle management from conception to commissioning" data-ar="تسليم المشاريع المستقلة - إدارة دورة حياة المشروع الكاملة من التصور إلى التشغيل">Independent Project Delivery - Complete project lifecycle management from conception to commissioning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Consultation -->
+        <div class="contact-section" id="contact">
+            <h2 class="section-title" style="color: var(--primary-navy); border-color: var(--primary-navy);" data-en="Professional Training Consultation" data-ar="استشارة التدريب المهني">Professional Training Consultation</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px; color: var(--primary-orange);" data-en="Transform your institutional audio capabilities with expert training and consultation" data-ar="حوّل قدرات الصوت المؤسسية الخاصة بك مع التدريب والاستشارة المتخصصة">Transform your institutional audio capabilities with expert training and consultation</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3 style="font-size: 1.3em; font-weight: bold; margin-bottom: 15px; color: var(--primary-navy);" data-en="Custom Program Design" data-ar="تصميم البرنامج المخصص">Custom Program Design</h3>
+                    <p data-en="Tailored training programs designed specifically for your government institution's requirements, existing equipment, and staff capabilities. Comprehensive curriculum development with practical, hands-on components." data-ar="برامج تدريبية مخصصة مصممة خصيصاً لمتطلبات مؤسستك الحكومية والمعدات الموجودة وقدرات الموظفين. تطوير منهج شامل مع مكونات عملية وعملية.">Tailored training programs designed specifically for your government institution's requirements, existing equipment, and staff capabilities. Comprehensive curriculum development with practical, hands-on components.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🔍</div>
+                    <h3 style="font-size: 1.3em; font-weight: bold; margin-bottom: 15px; color: var(--primary-navy);" data-en="Technical Assessment" data-ar="التقييم التقني">Technical Assessment</h3>
+                    <p data-en="Professional evaluation of your current audio infrastructure, equipment condition, and system performance. Detailed recommendations for upgrades, training focus areas, and long-term development strategies." data-ar="تقييم مهني لبنيتك التحتية الصوتية الحالية وحالة المعدات وأداء النظام. توصيات مفصلة للترقيات ومجالات التركيز التدريبية واستراتيجيات التطوير طويلة المدى.">Professional evaluation of your current audio infrastructure, equipment condition, and system performance. Detailed recommendations for upgrades, training focus areas, and long-term development strategies.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🎓</div>
+                    <h3 style="font-size: 1.3em; font-weight: bold; margin-bottom: 15px; color: var(--primary-navy);" data-en="Certification Development" data-ar="تطوير الشهادات">Certification Development</h3>
+                    <p data-en="Government-recognized certification programs that align with international standards and career advancement requirements. Bronze, Silver, and Gold tier progression with comprehensive skills validation." data-ar="برامج شهادات معترف بها حكومياً تتماشى مع المعايير الدولية ومتطلبات التطوير المهني. تقدم مستوى البرونز والفضة والذهب مع التحقق الشامل من المهارات.">Government-recognized certification programs that align with international standards and career advancement requirements. Bronze, Silver, and Gold tier progression with comprehensive skills validation.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🤝</div>
+                    <h3 style="font-size: 1.3em; font-weight: bold; margin-bottom: 15px; color: var(--primary-navy);" data-en="Ongoing Support" data-ar="الدعم المستمر">Ongoing Support</h3>
+                    <p data-en="Continuous professional consultation, technical support, and system optimization services. Long-term partnership approach ensuring sustained success and advanced capability development for your institution." data-ar="استشارة مهنية مستمرة ودعم تقني وخدمات تحسين النظام. نهج شراكة طويلة الأمد يضمن النجاح المستدام وتطوير القدرات المتقدمة لمؤسستك.">Continuous professional consultation, technical support, and system optimization services. Long-term partnership approach ensuring sustained success and advanced capability development for your institution.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; padding: 40px; background: var(--primary-navy); border-radius: var(--border-radius); color: var(--white);">
+                <h3 style="margin-bottom: 20px; text-align: center; font-size: 1.6em;" data-en="Ready to Transform Your Audio Capabilities?" data-ar="مستعد لتحويل قدراتك الصوتية؟">Ready to Transform Your Audio Capabilities?</h3>
+                <div style="text-align: center;">
+                    <p style="font-size: 1.2em; margin-bottom: 15px;">
+                        <span data-en="Contact Syria's Leading Audio Engineering Expert" data-ar="تواصل مع خبير هندسة الصوت الرائد في سوريا">Contact Syria's Leading Audio Engineering Expert</span>
+                    </p>
+                    <p style="font-size: 1.4em; font-weight: bold; color: var(--primary-orange);">
+                        <span data-en="Obai Sukar • 25+ Years of Professional Excellence" data-ar="Obai Sukar • خبرة +25 سنة من التميز المهني">Obai Sukar • 25+ Years of Professional Excellence</span>
+                    </p>
+                    <p style="font-size: 1.1em; margin-top: 15px; color: var(--primary-cyan);">
+                        <span data-en="Professional Audio Engineering Training & Consultation" data-ar="تدريب واستشارة هندسة الصوت المهنية">Professional Audio Engineering Training & Consultation</span>
+                    </p>
+                    <p style="font-size: 1.2em; margin-top: 20px;">
+                        <a href="mailto:obai@obaisukar.com" style="color: var(--primary-orange); text-decoration: none; font-weight: bold; padding: 10px 20px; border: 2px solid var(--primary-orange); border-radius: 25px; display: inline-block; transition: all 0.3s ease;" onmouseover="this.style.background='var(--primary-orange)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--primary-orange)';">
+                            <span data-en="📧 Contact: obai@obaisukar.com" data-ar="📧 التواصل: obai@obaisukar.com">📧 Contact: obai@obaisukar.com</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update document direction
+            if (lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+                document.documentElement.lang = 'ar';
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+                document.documentElement.lang = 'en';
+            }
+
+            // Update all text content
+            document.querySelectorAll('[data-en][data-ar]').forEach(element => {
+                if (lang === 'ar' && element.getAttribute('data-ar')) {
+                    element.textContent = element.getAttribute('data-ar');
+                } else if (lang === 'en' && element.getAttribute('data-en')) {
+                    element.textContent = element.getAttribute('data-en');
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glossary-card, .tier-section, .experience-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language content
+            switchLanguage('en');
+        });
+    </script>
+</body>
+</html>

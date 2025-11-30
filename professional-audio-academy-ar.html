@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="main-content">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية Obai Sukar المهنية لهندسة الصوت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-cyan: #00AEEF;
+            --primary-orange: #FBB04C;
+            --primary-navy: #292663;
+            --primary-magenta: #EC008C;
+            --primary-purple: #92278F;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #f5f7fa;
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--white);
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary-cyan);
+            background: var(--white);
+            color: var(--primary-cyan);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary-cyan);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: var(--white);
+            padding: 20px 0;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 70px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-img {
+            height: 65px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-size: 1.9em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .brand-subtext {
+            font-size: 0.8em;
+            color: var(--primary-cyan);
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-cyan);
+            color: white;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 3.2em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .main-title .highlight {
+            color: var(--primary-cyan);
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            color: var(--primary-magenta);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .credentials {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: var(--shadow);
+        }
+
+        /* Professional Qualifications */
+        .qualifications {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .qualifications-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+        }
+
+        .qualifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .qualification-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--primary-cyan);
+        }
+
+        .qualification-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .qualification-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .qualification-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Course Overview */
+        .course-overview {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .overview-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+        }
+
+        .course-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .course-type-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--primary-magenta);
+        }
+
+        .course-type-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .course-type-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            border: 2px solid var(--primary-cyan);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            background: var(--white);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .course-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .course-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .bronze .course-icon { filter: sepia(1) saturate(2) hue-rotate(15deg); }
+        .silver .course-icon { filter: grayscale(0.3) brightness(1.1); }
+        .gold .course-icon { filter: sepia(1) saturate(3) hue-rotate(35deg) brightness(1.2); }
+
+        .course-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .course-subtitle {
+            color: var(--primary-cyan);
+            font-weight: 500;
+        }
+
+        .course-details {
+            margin: 20px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .detail-value {
+            color: var(--primary-magenta);
+            font-weight: 600;
+        }
+
+        .curriculum-section {
+            margin-top: 20px;
+        }
+
+        .curriculum-title {
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .curriculum-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .curriculum-list li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            top: 6px;
+            color: var(--primary-cyan);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Professional Glossary */
+        .glossary {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .glossary-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+        }
+
+        .glossary-category {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border-right: 4px solid var(--primary-cyan);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-cyan);
+        }
+
+        .category-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+        .category-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .glossary-term {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: var(--white);
+            border-radius: 8px;
+            border-right: 3px solid var(--primary-magenta);
+        }
+
+        .term-name {
+            font-weight: bold;
+            color: var(--primary-magenta);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .term-definition {
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .technical-term {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: var(--primary-cyan);
+            background: rgba(0, 174, 239, 0.1);
+            padding: 1px 4px;
+            border-radius: 3px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.3em;
+            margin-bottom: 30px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--primary-orange);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+
+        .contact-card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-title {
+                font-size: 2.2em;
+            }
+
+            .course-grid,
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-toggle {
+                position: static;
+                margin: 20px auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <a href="professional-audio-academy.html" class="lang-btn">English</a>
+        <a href="#" class="lang-btn active">العربية</a>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <img src="../assets/logo/obai_sukar_logo.png" alt="Obai Sukar Logo" class="logo-img">
+                <div>
+                    <div class="brand-text">أكاديمية الصوت المهنية</div>
+                    <div class="brand-subtext">تدريب حكومي وخاص</div>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#qualifications" class="nav-link">المؤهلات</a>
+                <a href="#courses" class="nav-link">برامج التدريب</a>
+                <a href="#glossary" class="nav-link">المرجع التقني</a>
+                <a href="#contact" class="nav-link">التواصل</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">
+                أكاديمية <span class="highlight">Obai Sukar</span><br>
+                المهنية لهندسة الصوت
+            </h1>
+            <div class="subtitle">تدريب متخصص للمؤسسات الحكومية والخاصة</div>
+            <div class="credentials">
+                خبرة +25 سنة • كبير مهندسي الصوت في سوريا
+            </div>
+        </div>
+
+        <!-- Professional Qualifications -->
+        <div class="qualifications" id="qualifications">
+            <h2 class="qualifications-title">الخبرة والمؤهلات المهنية</h2>
+            
+            <div class="qualifications-grid">
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/certificate.png" alt="25+ Years Experience" class="qualification-icon">
+                    <h3 class="qualification-title">خبرة مهنية تزيد عن 25 سنة</h3>
+                    <p class="qualification-description">
+                        خبرة واسعة في هندسة الصوت المهنية وتصميم الأنظمة والاستشارات الصوتية عبر صناعات متنوعة ومقاييس مشاريع مختلفة.
+                    </p>
+                </div>
+
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/globe.png" alt="International Projects" class="qualification-icon">
+                    <h3 class="qualification-title">خبرة في المشاريع الدولية</h3>
+                    <p class="qualification-description">
+                        تنفيذ ناجح لمشاريع هندسة الصوت دولياً، جلب أفضل الممارسات والمعايير العالمية للتطبيقات المحلية.
+                    </p>
+                </div>
+
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/audio-wave.png" alt="Technical Audio Systems" class="qualification-icon">
+                    <h3 class="qualification-title">خبرة في الأنظمة التقنية</h3>
+                    <p class="qualification-description">
+                        خبرة متخصصة في أنظمة الصوت المعقدة والصوتيات المعمارية وتكامل المعدات المهنية للتطبيقات المؤسسية.
+                    </p>
+                </div>
+
+                <div class="qualification-card">
+                    <img src="https://img.icons8.com/fluency/96/training.png" alt="Professional Training" class="qualification-icon">
+                    <h3 class="qualification-title">التدريب والاستشارات</h3>
+                    <p class="qualification-description">
+                        قدرة مثبتة على تصميم وتقديم برامج تدريبية مهنية مصممة خصيصاً لتلبية احتياجات المؤسسات والمتطلبات التقنية.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Overview -->
+        <div class="course-overview" id="courses">
+            <h2 class="overview-title">برامج التدريب المهنية</h2>
+            
+            <!-- Course Types -->
+            <div class="course-types">
+                <div class="course-type-card">
+                    <img src="https://img.icons8.com/fluency/96/government-building.png" alt="Government Training" class="course-type-icon">
+                    <h3 class="course-type-title">تدريب المؤسسات الحكومية</h3>
+                    <p>برامج متخصصة مصممة للمرافق الحكومية وقاعات الاجتماعات ومراكز الصحافة وأنظمة الخطابة العامة. المنهج يركز على احتياجات المؤسسات والبروتوكولات الرسمية والمعايير المهنية المطلوبة للعمليات الحكومية.</p>
+                </div>
+
+                <div class="course-type-card">
+                    <img src="https://img.icons8.com/fluency/96/business-building.png" alt="Private Sector Training" class="course-type-icon">
+                    <h3 class="course-type-title">تدريب القطاع الخاص</h3>
+                    <p>تعليم شامل لهندسة الصوت للشركات الخاصة والمؤسسات التعليمية والمرافق التجارية. يغطي تصميم <span class="technical-term">Studio</span> والصوت المباشر وتطبيقات الإذاعة والحلول الصوتية المركزة على الأعمال.</p>
+                </div>
+            </div>
+
+            <!-- Course Levels -->
+            <div class="course-grid">
+                <!-- Bronze Level -->
+                <div class="course-card bronze">
+                    <div class="course-header">
+                        <img src="https://img.icons8.com/fluency/96/3rd-place-ribbon.png" alt="Bronze Level" class="course-icon">
+                        <h3 class="course-title">المستوى البرونزي</h3>
+                        <p class="course-subtitle">أساسيات الصوت</p>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-row">
+                            <span class="detail-value">4 أسابيع (80 ساعة)</span>
+                            <span class="detail-label">المدة:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">16 جلسة (5 ساعات لكل منها)</span>
+                            <span class="detail-label">الجلسات:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">40 ساعة عمل عملي</span>
+                            <span class="detail-label">العمل التطبيقي:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">شهادة مهنية</span>
+                            <span class="detail-label">الشهادة:</span>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-section">
+                        <div class="curriculum-title">المنهج الأساسي:</div>
+                        <ul class="curriculum-list">
+                            <li>فيزياء الصوت الأساسية ومبادئ الصوت</li>
+                            <li>أنواع <span class="technical-term">Microphone</span> ومعايير الاختيار</li>
+                            <li>تشغيل وإعداد معدات الصوت</li>
+                            <li>تدفق الإشارة وهندسة النظام</li>
+                            <li>أساسيات الصوت الرقمي</li>
+                            <li>أساسيات نظام <span class="technical-term">Live Sound</span></li>
+                            <li>بروتوكولات التركيب والسلامة</li>
+                            <li>تقنيات استكشاف الأخطاء الأساسية</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Silver Level -->
+                <div class="course-card silver">
+                    <div class="course-header">
+                        <img src="https://img.icons8.com/fluency/96/2nd-place-ribbon.png" alt="Silver Level" class="course-icon">
+                        <h3 class="course-title">المستوى الفضي</h3>
+                        <p class="course-subtitle">التقنيات المتوسطة</p>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-row">
+                            <span class="detail-value">6 أسابيع (120 ساعة)</span>
+                            <span class="detail-label">المدة:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">24 جلسة (5 ساعات لكل منها)</span>
+                            <span class="detail-label">الجلسات:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">60 ساعة مختبرات متقدمة</span>
+                            <span class="detail-label">العمل التطبيقي:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">شهادة المستوى البرونزي</span>
+                            <span class="detail-label">المتطلب المسبق:</span>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-section">
+                        <div class="curriculum-title">المنهج المتقدم:</div>
+                        <ul class="curriculum-list">
+                            <li>تقنيات المزج المهنية</li>
+                            <li>إتقان <span class="technical-term">Digital Audio Workstation</span></li>
+                            <li>معالجة الصوت والتأثيرات</li>
+                            <li>أنظمة تسجيل متعددة المسارات</li>
+                            <li>معايير الصوت الإذاعي</li>
+                            <li>تصميم الصوت لقاعات المؤتمرات</li>
+                            <li>إدارة الصوت عن بُعد</li>
+                            <li>أنظمة <span class="technical-term">Audio Network</span></li>
+                            <li>مراقبة الجودة والاختبار</li>
+                            <li>مشاريع تكامل الأنظمة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Gold Level -->
+                <div class="course-card gold">
+                    <div class="course-header">
+                        <img src="https://img.icons8.com/fluency/96/1st-place-ribbon.png" alt="Gold Level" class="course-icon">
+                        <h3 class="course-title">المستوى الذهبي</h3>
+                        <p class="course-subtitle">الإتقان المتخصص</p>
+                    </div>
+                    
+                    <div class="course-details">
+                        <div class="detail-row">
+                            <span class="detail-value">8 أسابيع (160 ساعة)</span>
+                            <span class="detail-label">المدة:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">32 جلسة (5 ساعات لكل منها)</span>
+                            <span class="detail-label">الجلسات:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">80 ساعة مشاريع متخصصة</span>
+                            <span class="detail-label">العمل التطبيقي:</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">شهادة المستوى الفضي</span>
+                            <span class="detail-label">المتطلب المسبق:</span>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-section">
+                        <div class="curriculum-title">المنهج المتخصص:</div>
+                        <ul class="curriculum-list">
+                            <li>الصوتيات المعمارية وتصميم الغرف</li>
+                            <li>تصميم أنظمة واسعة النطاق</li>
+                            <li>القياس والتحليل المتقدم</li>
+                            <li>تكامل الأنظمة المخصصة</li>
+                            <li>إدارة المشاريع والقيادة</li>
+                            <li>استكشاف الأخطاء المتقدم</li>
+                            <li>تخطيط الميزانية والمشتريات</li>
+                            <li>تدريب وإدارة الفريق</li>
+                            <li>أنظمة ضمان الجودة</li>
+                            <li>الامتثال للمعايير الدولية</li>
+                            <li>خبرة على مستوى الاستشاري</li>
+                            <li>تسليم مشاريع مستقلة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Glossary -->
+        <div class="glossary" id="glossary">
+            <h2 class="glossary-title">مرجع هندسة الصوت المهنية</h2>
+            
+            <div class="glossary-grid">
+                <!-- Basic Audio Concepts -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/speaker.png" alt="Audio Fundamentals" class="category-icon">
+                        <h3 class="category-title">المفاهيم الأساسية</h3>
+                    </div>
+                    
+                    <div class="glossary-term">
+                        <div class="term-name">Frequency (Hz)</div>
+                        <div class="term-definition">
+                            عدد دورات الموجة الصوتية في الثانية، يُقاس بـ <span class="technical-term">Hertz</span>. 
+                            يحدد النبرة: الترددات المنخفضة (20-200 Hz) تنتج الجهير، الترددات المتوسطة (200-2000 Hz) تحمل وضوح الكلام، 
+                            الترددات العالية (2000-20000 Hz) توفر الإشراق والتعريف.
+                        </div>
+                    </div>
+                    
+                    <div class="glossary-term">
+                        <div class="term-name">Amplitude</div>
+                        <div class="term-definition">
+                            قوة أو شدة الموجة الصوتية، ترتبط مباشرة بالصوت المدرك. 
+                            تُقاس بـ <span class="technical-term">decibels (dB)</span>. أنظمة الصوت المهنية 
+                            يجب أن تحافظ على مستويات <span class="technical-term">amplitude</span> مناسبة للوضوح الأمثل وحماية المعدات.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Dynamic Range</div>
+                        <div class="term-definition">
+                            الفرق بين أعلى وأهدأ الأصوات في نظام صوتي، يُقاس بـ <span class="technical-term">dB</span>. 
+                            الأنظمة المهنية تتطلب <span class="technical-term">dynamic range</span> كافي للتعامل مع إشارات الذروة بدون تشويه 
+                            مع الحفاظ على مستويات ضوضاء خلفية هادئة.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Equipment -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/audio-console.png" alt="Professional Equipment" class="category-icon">
+                        <h3 class="category-title">المعدات المهنية</h3>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Condenser Microphone</div>
+                        <div class="term-definition">
+                            <span class="technical-term">Microphone</span> عالي الحساسية يتطلب 
+                            <span class="technical-term">phantom power (+48V)</span>. مثالي للتسجيل التفصيلي 
+                            في البيئات المتحكم بها مثل قاعات المؤتمرات و<span class="technical-term">Studios</span> ومرافق الإذاعة.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Mixing Console</div>
+                        <div class="term-definition">
+                            واجهة التحكم المركزية لدمج وتوجيه ومعالجة إشارات صوتية متعددة. 
+                            <span class="technical-term">Console</span> مهنية تتميز بـ <span class="technical-term">EQ</span> ومعالجة الديناميكيات 
+                            وقدرات التوجيه، وغالباً ما تتضمن المعالجة الرقمية وميزات الأتمتة.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Line Array System</div>
+                        <div class="term-definition">
+                            تكوين <span class="technical-term">Speaker</span> يستخدم محركات متعددة 
+                            في محاذاة عمودية للتحكم الاتجاهي المحسن والتغطية المتساوية. 
+                            أساسي للأماكن الكبيرة وقاعات الجمعية الحكومية.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Audio Technology -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/laptop.png" alt="Digital Audio Technology" class="category-icon">
+                        <h3 class="category-title">تقنية الصوت الرقمي</h3>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Sample Rate</div>
+                        <div class="term-definition">
+                            عدد العينات الرقمية المسجلة في الثانية أثناء التحويل من تماثلي إلى رقمي. 
+                            المعايير المهنية: <span class="technical-term">48kHz للإذاعة/الفيديو، 
+                            44.1kHz للموسيقى، 96kHz+ للتطبيقات عالية الدقة</span>.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Bit Depth</div>
+                        <div class="term-definition">
+                            عدد <span class="technical-term">Bits</span> المستخدمة لتمثيل كل عينة صوتية، 
+                            يحدد <span class="technical-term">dynamic range</span> المتاح. <span class="technical-term">16-bit يوفر نطاق 96dB، 
+                            24-bit يوفر نطاق 144dB</span>. التسجيل المهني يستخدم عادة 24-bit أو أعلى.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Audio Network</div>
+                        <div class="term-definition">
+                            نظام توزيع الصوت الرقمي باستخدام <span class="technical-term">Ethernet</span> أو 
+                            بروتوكولات متخصصة مثل <span class="technical-term">Dante, AVB, أو CobraNet</span>. 
+                            يمكّن التحكم والتوزيع المركزي للمنشآت المؤسسية الكبيرة.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architectural Acoustics -->
+                <div class="glossary-category">
+                    <div class="category-header">
+                        <img src="https://img.icons8.com/fluency/96/blueprint.png" alt="Architectural Acoustics" class="category-icon">
+                        <h3 class="category-title">الصوتيات المعمارية</h3>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Reverberation Time (RT60)</div>
+                        <div class="term-definition">
+                            الوقت المطلوب للصوت لينحدر بـ 60 <span class="technical-term">decibel</span> 
+                            في مساحة. أساسي لتصميم الغرف: <span class="technical-term">غرف الكلام تتطلب 
+                            ~0.6s، أماكن الموسيقى ~1.8s، قاعات المؤتمرات ~0.8s</span>.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Speech Intelligibility</div>
+                        <div class="term-definition">
+                            مقياس وضوح الكلمات المنطوقة في مساحة، يُقاس بـ 
+                            <span class="technical-term">Speech Transmission Index (STI)</span> من 0-1. 
+                            أساسي للمرافق الحكومية حيث التواصل الواضح أمر بالغ الأهمية.
+                        </div>
+                    </div>
+
+                    <div class="glossary-term">
+                        <div class="term-name">Sound Masking</div>
+                        <div class="term-definition">
+                            صوت خلفية متحكم به يُستخدم لتقليل وضوح الكلام في المناطق المجاورة. 
+                            مهم للخصوصية في المكاتب الحكومية ومساحات الاجتماعات السرية.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="contact">
+            <h2 class="contact-title">استشارة التدريب المهني</h2>
+            <p class="contact-subtitle">اكتشف كيف يمكن للتدريب الصوتي المهني تعزيز قدرات مؤسستك</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/consultation.png" alt="Program Consultation" class="contact-icon">
+                    <h3 class="contact-card-title">استشارة البرنامج</h3>
+                    <p>تصميم برنامج تدريبي مخصص بناءً على متطلباتك المؤسسية المحددة والاحتياجات التقنية.</p>
+                </div>
+
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/inspection.png" alt="Technical Assessment" class="contact-icon">
+                    <h3 class="contact-card-title">التقييم التقني</h3>
+                    <p>تقييم مهني لأنظمة الصوت الحالية وتوصيات لمجالات التركيز التدريبية.</p>
+                </div>
+
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/diploma.png" alt="Certification Programs" class="contact-icon">
+                    <h3 class="contact-card-title">برامج الشهادات</h3>
+                    <p>تطوير شهادات مهنية متوافقة مع معايير المؤسسات واحتياجات التطوير المهني.</p>
+                </div>
+
+                <div class="contact-card">
+                    <img src="https://img.icons8.com/fluency/96/support.png" alt="Ongoing Support" class="contact-icon">
+                    <h3 class="contact-card-title">الدعم المستمر</h3>
+                    <p>خدمات الاستشارة المهنية والدعم التقني لضمان النجاح المستمر بعد إتمام التدريب.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius);">
+                <h3 style="margin-bottom: 15px;">تواصل مع Obai Sukar</h3>
+                <p style="font-size: 1.1em;">
+                    استشارة هندسة الصوت المهنية<br>
+                    <strong style="color: var(--primary-orange);">خبرة +25 سنة من التميز التقني</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            if (lang === 'en') {
+                window.location.href = 'professional-audio-academy.html';
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.qualification-card, .course-card, .glossary-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

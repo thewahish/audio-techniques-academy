@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" id="main-content">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obai Sukar Professional Audio Engineering Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-cyan: #00AEEF;
+            --primary-orange: #FBB04C;
+            --primary-navy: #292663;
+            --primary-magenta: #EC008C;
+            --primary-purple: #92278F;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #f5f7fa;
+            min-height: 100vh;
+            transition: direction 0.3s ease;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--white);
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 5px;
+            transition: left 0.3s ease, right 0.3s ease;
+        }
+
+        body[dir="rtl"] .language-toggle {
+            left: 20px;
+            right: auto;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary-cyan);
+            background: var(--white);
+            color: var(--primary-cyan);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary-cyan);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: var(--white);
+            padding: 20px 0;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            margin-top: 70px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        body[dir="rtl"] .nav-content {
+            flex-direction: row-reverse;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        body[dir="rtl"] .logo-section {
+            flex-direction: row-reverse;
+        }
+
+        .logo-img {
+            height: 65px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-size: 1.9em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .brand-subtext {
+            font-size: 0.8em;
+            color: var(--primary-cyan);
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        body[dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+
+        .nav-link {
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-cyan);
+            color: white;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 3.2em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .main-title .highlight {
+            color: var(--primary-cyan);
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            color: var(--primary-magenta);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .credentials {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: var(--shadow);
+        }
+
+        /* Content sections */
+        .content-section {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--primary-navy);
+            margin-bottom: 40px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-cyan);
+            transition: transform 0.3s ease;
+        }
+
+        body[dir="rtl"] .card {
+            border-left: none;
+            border-right: 4px solid var(--primary-cyan);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Course cards */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            border: 2px solid var(--primary-cyan);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            background: var(--white);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .course-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .course-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .bronze .course-icon {
+            background: #cd7f32;
+            color: white;
+        }
+        
+        .silver .course-icon {
+            background: #c0c0c0;
+            color: #333;
+        }
+        
+        .gold .course-icon {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .course-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+
+        .course-subtitle {
+            color: var(--primary-cyan);
+            font-weight: 500;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        body[dir="rtl"] .detail-row {
+            flex-direction: row-reverse;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .detail-value {
+            color: var(--primary-magenta);
+            font-weight: 600;
+        }
+
+        .curriculum-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        body[dir="rtl"] .curriculum-list li {
+            padding: 6px 20px 6px 0;
+        }
+
+        .curriculum-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: var(--primary-cyan);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        body[dir="rtl"] .curriculum-list li::before {
+            right: 0;
+            left: auto;
+        }
+
+        /* Technical terms highlighting */
+        .technical-term {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: var(--primary-cyan);
+            background: rgba(0, 174, 239, 0.1);
+            padding: 1px 4px;
+            border-radius: 3px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* Contact section */
+        .contact-section {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: white;
+        }
+
+        /* Language switching */
+        .lang-content {
+            display: block;
+        }
+
+        .lang-content.hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .main-title {
+                font-size: 2.2em;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-toggle {
+                position: static;
+                margin: 20px auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <img src="../assets/logo/obai_sukar_logo.png" alt="Obai Sukar Logo" class="logo-img">
+                <div>
+                    <div class="brand-text" data-en="Professional Audio Academy" data-ar="أكاديمية الصوت المهنية">Professional Audio Academy</div>
+                    <div class="brand-subtext" data-en="Government & Private Training" data-ar="تدريب حكومي وخاص">Government & Private Training</div>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#qualifications" class="nav-link" data-en="Qualifications" data-ar="المؤهلات">Qualifications</a>
+                <a href="#courses" class="nav-link" data-en="Training Programs" data-ar="برامج التدريب">Training Programs</a>
+                <a href="#glossary" class="nav-link" data-en="Technical Reference" data-ar="المرجع التقني">Technical Reference</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-ar="التواصل">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">
+                <span class="highlight">Obai Sukar</span><br>
+                <span data-en="Professional Audio Engineering Academy" data-ar="أكاديمية هندسة الصوت المهنية">Professional Audio Engineering Academy</span>
+            </h1>
+            <div class="subtitle" data-en="Specialized Training for Government & Private Institutions" data-ar="تدريب متخصص للمؤسسات الحكومية والخاصة">Specialized Training for Government & Private Institutions</div>
+            <div class="credentials" data-en="25+ Years Experience • Syria's Leading Audio Engineer" data-ar="خبرة +25 سنة • كبير مهندسي الصوت في سوريا">25+ Years Experience • Syria's Leading Audio Engineer</div>
+        </div>
+
+        <!-- Professional Qualifications -->
+        <div class="content-section" id="qualifications">
+            <h2 class="section-title" data-en="Professional Expertise & Experience" data-ar="الخبرة والمؤهلات المهنية">Professional Expertise & Experience</h2>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3 class="card-title" data-en="25+ Years Professional Experience" data-ar="خبرة مهنية تزيد عن 25 سنة">25+ Years Professional Experience</h3>
+                    <p class="card-description" data-en="Extensive experience in professional audio engineering, system design, and acoustic consultation across various industries and project scales." data-ar="خبرة واسعة في هندسة الصوت المهنية وتصميم الأنظمة والاستشارات الصوتية عبر صناعات متنوعة ومقاييس مشاريع مختلفة.">
+                        Extensive experience in professional audio engineering, system design, and acoustic consultation across various industries and project scales.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3 class="card-title" data-en="International Project Experience" data-ar="خبرة في المشاريع الدولية">International Project Experience</h3>
+                    <p class="card-description" data-en="Successfully completed audio engineering projects internationally, bringing global best practices and standards to local implementations." data-ar="تنفيذ ناجح لمشاريع هندسة الصوت دولياً، جلب أفضل الممارسات والمعايير العالمية للتطبيقات المحلية.">
+                        Successfully completed audio engineering projects internationally, bringing global best practices and standards to local implementations.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎵</div>
+                    <h3 class="card-title" data-en="Technical Systems Expertise" data-ar="خبرة في الأنظمة التقنية">Technical Systems Expertise</h3>
+                    <p class="card-description" data-en="Specialized expertise in complex audio systems, architectural acoustics, and professional equipment integration for institutional applications." data-ar="خبرة متخصصة في أنظمة الصوت المعقدة والصوتيات المعمارية وتكامل المعدات المهنية للتطبيقات المؤسسية.">
+                        Specialized expertise in complex audio systems, architectural acoustics, and professional equipment integration for institutional applications.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title" data-en="Training & Consultation" data-ar="التدريب والاستشارات">Training & Consultation</h3>
+                    <p class="card-description" data-en="Proven ability to design and deliver professional training programs tailored to institutional needs and technical requirements." data-ar="قدرة مثبتة على تصميم وتقديم برامج تدريبية مهنية مصممة خصيصاً لتلبية احتياجات المؤسسات والمتطلبات التقنية.">
+                        Proven ability to design and deliver professional training programs tailored to institutional needs and technical requirements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Overview -->
+        <div class="content-section" id="courses">
+            <h2 class="section-title" data-en="Professional Training Programs" data-ar="برامج التدريب المهنية">Professional Training Programs</h2>
+            
+            <!-- Course Types -->
+            <div class="grid-container" style="margin-bottom: 50px;">
+                <div class="card">
+                    <div class="card-icon">🏛️</div>
+                    <h3 class="card-title" data-en="Government Institution Training" data-ar="تدريب المؤسسات الحكومية">Government Institution Training</h3>
+                    <p class="card-description" data-en="Specialized programs designed for government facilities, meeting rooms, press centers, and public address systems. Curriculum focuses on institutional needs, official protocols, and professional standards required for government operations." data-ar="برامج متخصصة مصممة للمرافق الحكومية وقاعات الاجتماعات ومراكز الصحافة وأنظمة الخطابة العامة. المنهج يركز على احتياجات المؤسسات والبروتوكولات الرسمية والمعايير المهنية المطلوبة للعمليات الحكومية.">
+                        Specialized programs designed for government facilities, meeting rooms, press centers, and public address systems. Curriculum focuses on institutional needs, official protocols, and professional standards required for government operations.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title" data-en="Private Sector Training" data-ar="تدريب القطاع الخاص">Private Sector Training</h3>
+                    <p class="card-description" data-en="Comprehensive audio engineering education for private companies, educational institutions, and commercial facilities. Covers studio design, live sound, broadcast applications, and business-focused audio solutions." data-ar="تعليم شامل لهندسة الصوت للشركات الخاصة والمؤسسات التعليمية والمرافق التجارية. يغطي تصميم Studio والصوت المباشر وتطبيقات الإذاعة والحلول الصوتية المركزة على الأعمال.">
+                        Comprehensive audio engineering education for private companies, educational institutions, and commercial facilities. Covers studio design, live sound, broadcast applications, and business-focused audio solutions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Course Levels -->
+            <div class="course-grid">
+                <!-- Bronze Level -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon bronze">🥉</div>
+                        <h3 class="course-title" data-en="BRONZE LEVEL" data-ar="المستوى البرونزي">BRONZE LEVEL</h3>
+                        <p class="course-subtitle" data-en="Audio Fundamentals" data-ar="أساسيات الصوت">Audio Fundamentals</p>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Duration:" data-ar="المدة:">Duration:</span>
+                            <span class="detail-value" data-en="4 Weeks (80 Hours)" data-ar="4 أسابيع (80 ساعة)">4 Weeks (80 Hours)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Sessions:" data-ar="الجلسات:">Sessions:</span>
+                            <span class="detail-value" data-en="16 Sessions (5h each)" data-ar="16 جلسة (5 ساعات لكل منها)">16 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Practical Work:" data-ar="العمل التطبيقي:">Practical Work:</span>
+                            <span class="detail-value" data-en="40 Hours Hands-On" data-ar="40 ساعة عمل عملي">40 Hours Hands-On</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div style="font-weight: bold; color: var(--primary-navy); margin-bottom: 10px;" data-en="Core Curriculum:" data-ar="المنهج الأساسي:">Core Curriculum:</div>
+                        <ul class="curriculum-list">
+                            <li data-en="Basic Audio Physics & Sound Principles" data-ar="فيزياء الصوت الأساسية ومبادئ الصوت">Basic Audio Physics & Sound Principles</li>
+                            <li data-en="Microphone Types & Selection Criteria" data-ar="أنواع Microphone ومعايير الاختيار">Microphone Types & Selection Criteria</li>
+                            <li data-en="Audio Equipment Operation & Setup" data-ar="تشغيل وإعداد معدات الصوت">Audio Equipment Operation & Setup</li>
+                            <li data-en="Signal Flow & System Architecture" data-ar="تدفق الإشارة وهندسة النظام">Signal Flow & System Architecture</li>
+                            <li data-en="Digital Audio Fundamentals" data-ar="أساسيات الصوت الرقمي">Digital Audio Fundamentals</li>
+                            <li data-en="Live Sound System Basics" data-ar="أساسيات نظام Live Sound">Live Sound System Basics</li>
+                            <li data-en="Installation & Safety Protocols" data-ar="بروتوكولات التركيب والسلامة">Installation & Safety Protocols</li>
+                            <li data-en="Basic Troubleshooting Techniques" data-ar="تقنيات استكشاف الأخطاء الأساسية">Basic Troubleshooting Techniques</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Silver Level -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon silver">🥈</div>
+                        <h3 class="course-title" data-en="SILVER LEVEL" data-ar="المستوى الفضي">SILVER LEVEL</h3>
+                        <p class="course-subtitle" data-en="Intermediate Techniques" data-ar="التقنيات المتوسطة">Intermediate Techniques</p>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Duration:" data-ar="المدة:">Duration:</span>
+                            <span class="detail-value" data-en="6 Weeks (120 Hours)" data-ar="6 أسابيع (120 ساعة)">6 Weeks (120 Hours)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Sessions:" data-ar="الجلسات:">Sessions:</span>
+                            <span class="detail-value" data-en="24 Sessions (5h each)" data-ar="24 جلسة (5 ساعات لكل منها)">24 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Prerequisite:" data-ar="المتطلب المسبق:">Prerequisite:</span>
+                            <span class="detail-value" data-en="Bronze Level Certification" data-ar="شهادة المستوى البرونزي">Bronze Level Certification</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div style="font-weight: bold; color: var(--primary-navy); margin-bottom: 10px;" data-en="Advanced Curriculum:" data-ar="المنهج المتقدم:">Advanced Curriculum:</div>
+                        <ul class="curriculum-list">
+                            <li data-en="Professional Mixing Techniques" data-ar="تقنيات المزج المهنية">Professional Mixing Techniques</li>
+                            <li data-en="Digital Audio Workstation Mastery" data-ar="إتقان Digital Audio Workstation">Digital Audio Workstation Mastery</li>
+                            <li data-en="Audio Processing & Effects" data-ar="معالجة الصوت والتأثيرات">Audio Processing & Effects</li>
+                            <li data-en="Multi-track Recording Systems" data-ar="أنظمة تسجيل متعددة المسارات">Multi-track Recording Systems</li>
+                            <li data-en="Broadcast Audio Standards" data-ar="معايير الصوت الإذاعي">Broadcast Audio Standards</li>
+                            <li data-en="Conference Room Audio Design" data-ar="تصميم الصوت لقاعات المؤتمرات">Conference Room Audio Design</li>
+                            <li data-en="Remote Audio Management" data-ar="إدارة الصوت عن بُعد">Remote Audio Management</li>
+                            <li data-en="Network Audio Systems" data-ar="أنظمة Audio Network">Network Audio Systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Gold Level -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon gold">🥇</div>
+                        <h3 class="course-title" data-en="GOLD LEVEL" data-ar="المستوى الذهبي">GOLD LEVEL</h3>
+                        <p class="course-subtitle" data-en="Expert Mastery" data-ar="الإتقان المتخصص">Expert Mastery</p>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Duration:" data-ar="المدة:">Duration:</span>
+                            <span class="detail-value" data-en="8 Weeks (160 Hours)" data-ar="8 أسابيع (160 ساعة)">8 Weeks (160 Hours)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Sessions:" data-ar="الجلسات:">Sessions:</span>
+                            <span class="detail-value" data-en="32 Sessions (5h each)" data-ar="32 جلسة (5 ساعات لكل منها)">32 Sessions (5h each)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label" data-en="Prerequisite:" data-ar="المتطلب المسبق:">Prerequisite:</span>
+                            <span class="detail-value" data-en="Silver Level Certification" data-ar="شهادة المستوى الفضي">Silver Level Certification</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div style="font-weight: bold; color: var(--primary-navy); margin-bottom: 10px;" data-en="Expert Curriculum:" data-ar="المنهج المتخصص:">Expert Curriculum:</div>
+                        <ul class="curriculum-list">
+                            <li data-en="Architectural Acoustics & Room Design" data-ar="الصوتيات المعمارية وتصميم الغرف">Architectural Acoustics & Room Design</li>
+                            <li data-en="Large Scale System Design" data-ar="تصميم أنظمة واسعة النطاق">Large Scale System Design</li>
+                            <li data-en="Advanced Measurement & Analysis" data-ar="القياس والتحليل المتقدم">Advanced Measurement & Analysis</li>
+                            <li data-en="Custom System Integration" data-ar="تكامل الأنظمة المخصصة">Custom System Integration</li>
+                            <li data-en="Project Management & Leadership" data-ar="إدارة المشاريع والقيادة">Project Management & Leadership</li>
+                            <li data-en="Advanced Troubleshooting" data-ar="استكشاف الأخطاء المتقدم">Advanced Troubleshooting</li>
+                            <li data-en="Budget Planning & Procurement" data-ar="تخطيط الميزانية والمشتريات">Budget Planning & Procurement</li>
+                            <li data-en="Team Training & Management" data-ar="تدريب وإدارة الفريق">Team Training & Management</li>
+                            <li data-en="Quality Assurance Systems" data-ar="أنظمة ضمان الجودة">Quality Assurance Systems</li>
+                            <li data-en="International Standards Compliance" data-ar="الامتثال للمعايير الدولية">International Standards Compliance</li>
+                            <li data-en="Consultant-Level Expertise" data-ar="خبرة على مستوى الاستشاري">Consultant-Level Expertise</li>
+                            <li data-en="Independent Project Delivery" data-ar="تسليم المشاريع المستقلة">Independent Project Delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Glossary -->
+        <div class="content-section" id="glossary">
+            <h2 class="section-title" data-en="Professional Audio Engineering Reference" data-ar="مرجع هندسة الصوت المهنية">Professional Audio Engineering Reference</h2>
+            
+            <div class="grid-container">
+                <!-- Basic Audio Concepts -->
+                <div class="card">
+                    <div class="card-icon">🎵</div>
+                    <h3 class="card-title" data-en="Fundamental Concepts" data-ar="المفاهيم الأساسية">Fundamental Concepts</h3>
+                    <div style="margin-top: 15px;">
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Frequency (Hz)" data-ar="التردد (Hz)">Frequency (Hz)</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="Number of sound wave cycles per second, measured in Hertz. Determines pitch: low frequencies (20-200 Hz) produce bass, mid frequencies (200-2000 Hz) carry speech clarity." data-ar="عدد دورات الموجة الصوتية في الثانية، يُقاس بوحدة Hertz. يحدد النغمة: الترددات المنخفضة (20-200 Hz) تنتج الباس، الترددات الوسطى (200-2000 Hz) تحمل وضوح الكلام.">
+                                Number of sound wave cycles per second, measured in <span class="technical-term">Hertz</span>. Determines pitch: low frequencies (20-200 Hz) produce bass, mid frequencies (200-2000 Hz) carry speech clarity.
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Dynamic Range" data-ar="النطاق الديناميكي">Dynamic Range</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="Difference between the loudest and quietest sounds in an audio system, measured in dB. Professional systems require sufficient dynamic range for peak signals without distortion." data-ar="الفرق بين الأصوات الأعلى والأهدأ في نظام الصوت، يُقاس بوحدة dB. الأنظمة المهنية تتطلب نطاق ديناميكي كافٍ للإشارات العالية بدون تشويه.">
+                                Difference between the loudest and quietest sounds in an audio system, measured in <span class="technical-term">dB</span>. Professional systems require sufficient dynamic range for peak signals without distortion.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Equipment -->
+                <div class="card">
+                    <div class="card-icon">🎛️</div>
+                    <h3 class="card-title" data-en="Professional Equipment" data-ar="المعدات المهنية">Professional Equipment</h3>
+                    <div style="margin-top: 15px;">
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Condenser Microphone" data-ar="Condenser Microphone">Condenser Microphone</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="High-sensitivity microphone requiring phantom power (+48V). Ideal for detailed recording in controlled environments such as conference rooms and studios." data-ar="Microphone عالي الحساسية يتطلب Phantom Power (+48V). مثالي للتسجيل المفصل في البيئات المضبوطة مثل قاعات المؤتمرات والاستوديوهات.">
+                                High-sensitivity <span class="technical-term">microphone</span> requiring <span class="technical-term">phantom power (+48V)</span>. Ideal for detailed recording in controlled environments such as conference rooms and studios.
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Line Array System" data-ar="نظام Line Array">Line Array System</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="Speaker configuration using multiple drivers in vertical alignment for enhanced directional control and even coverage. Essential for large venues and government assembly halls." data-ar="تكوين Speaker يستخدم عدة محركات في التوازي العمودي للتحكم الاتجاهي المحسن والتغطية المتساوية. أساسي للأماكن الكبيرة وقاعات الجمعية الحكومية.">
+                                <span class="technical-term">Speaker</span> configuration using multiple drivers in vertical alignment for enhanced directional control and even coverage. Essential for large venues and government assembly halls.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Audio Technology -->
+                <div class="card">
+                    <div class="card-icon">💻</div>
+                    <h3 class="card-title" data-en="Digital Audio Technology" data-ar="تقنية الصوت الرقمي">Digital Audio Technology</h3>
+                    <div style="margin-top: 15px;">
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Sample Rate" data-ar="Sample Rate">Sample Rate</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="Number of digital samples captured per second during analog-to-digital conversion. Professional standards: 48kHz for broadcast/video, 44.1kHz for music." data-ar="عدد العينات الرقمية الملتقطة في الثانية أثناء التحويل التناظري إلى الرقمي. المعايير المهنية: 48kHz للإذاعة/الفيديو، 44.1kHz للموسيقى.">
+                                Number of digital samples captured per second during analog-to-digital conversion. Professional standards: <span class="technical-term">48kHz for broadcast/video, 44.1kHz for music</span>.
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Audio Network" data-ar="شبكة Audio">Audio Network</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="Digital audio distribution system using Ethernet or specialized protocols like Dante, AVB. Enables centralized control for large institutional installations." data-ar="نظام توزيع الصوت الرقمي باستخدام Ethernet أو بروتوكولات متخصصة مثل Dante، AVB. يمكّن التحكم المركزي للتركيبات المؤسسية الكبيرة.">
+                                Digital audio distribution system using <span class="technical-term">Ethernet</span> or specialized protocols like <span class="technical-term">Dante, AVB</span>. Enables centralized control for large institutional installations.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Architectural Acoustics -->
+                <div class="card">
+                    <div class="card-icon">🏗️</div>
+                    <h3 class="card-title" data-en="Architectural Acoustics" data-ar="الصوتيات المعمارية">Architectural Acoustics</h3>
+                    <div style="margin-top: 15px;">
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Reverberation Time (RT60)" data-ar="وقت الارتداد (RT60)">Reverberation Time (RT60)</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="Time required for sound to decay by 60 decibels in a space. Critical for room design: speech rooms require ~0.6s, conference rooms ~0.8s." data-ar="الوقت المطلوب لانحلال الصوت بمقدار 60 decibel في المساحة. حاسم لتصميم الغرفة: غرف الكلام تتطلب ~0.6s، قاعات المؤتمرات ~0.8s.">
+                                Time required for sound to decay by 60 <span class="technical-term">decibels</span> in a space. Critical for room design: <span class="technical-term">speech rooms require ~0.6s, conference rooms ~0.8s</span>.
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding: 12px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--primary-magenta);">
+                            <div style="font-weight: bold; color: var(--primary-magenta); font-size: 1.1em; margin-bottom: 5px;" data-en="Speech Intelligibility" data-ar="وضوح الكلام">Speech Intelligibility</div>
+                            <div style="color: var(--text-dark); line-height: 1.5;" data-en="Measure of spoken word clarity in a space, quantified by Speech Transmission Index (STI). Essential for government facilities where clear communication is critical." data-ar="قياس وضوح الكلام المنطوق في المساحة، يُقدر بواسطة Speech Transmission Index (STI). أساسي للمرافق الحكومية حيث التواصل الواضح حاسم.">
+                                Measure of spoken word clarity in a space, quantified by <span class="technical-term">Speech Transmission Index (STI)</span>. Essential for government facilities where clear communication is critical.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="contact">
+            <h2 style="font-size: 2.3em; margin-bottom: 30px;" data-en="Professional Training Consultation" data-ar="استشارة التدريب المهني">Professional Training Consultation</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px; color: var(--primary-orange);" data-en="Discover how professional audio training can enhance your institutional capabilities" data-ar="اكتشف كيف يمكن للتدريب الصوتي المهني تعزيز قدرات مؤسستك">Discover how professional audio training can enhance your institutional capabilities</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3 style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;" data-en="Program Consultation" data-ar="استشارة البرنامج">Program Consultation</h3>
+                    <p data-en="Custom training program design based on your specific institutional requirements and technical needs." data-ar="تصميم برنامج تدريبي مخصص بناءً على متطلباتك المؤسسية المحددة والاحتياجات التقنية.">Custom training program design based on your specific institutional requirements and technical needs.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🔍</div>
+                    <h3 style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;" data-en="Technical Assessment" data-ar="التقييم التقني">Technical Assessment</h3>
+                    <p data-en="Professional evaluation of your current audio systems and recommendations for training focus areas." data-ar="تقييم مهني لأنظمة الصوت الحالية وتوصيات لمجالات التركيز التدريبية.">Professional evaluation of your current audio systems and recommendations for training focus areas.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🎓</div>
+                    <h3 style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;" data-en="Certification Programs" data-ar="برامج الشهادات">Certification Programs</h3>
+                    <p data-en="Professional certification development aligned with institutional standards and career advancement needs." data-ar="تطوير شهادات مهنية متوافقة مع معايير المؤسسات واحتياجات التطوير المهني.">Professional certification development aligned with institutional standards and career advancement needs.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🤝</div>
+                    <h3 style="font-size: 1.2em; font-weight: bold; margin-bottom: 10px;" data-en="Ongoing Support" data-ar="الدعم المستمر">Ongoing Support</h3>
+                    <p data-en="Professional consultation and technical support services to ensure continued success after training completion." data-ar="خدمات الاستشارة المهنية والدعم التقني لضمان النجاح المستمر بعد إتمام التدريب.">Professional consultation and technical support services to ensure continued success after training completion.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius);">
+                <h3 style="margin-bottom: 15px;" data-en="Contact Obai Sukar" data-ar="تواصل مع Obai Sukar">Contact Obai Sukar</h3>
+                <p style="font-size: 1.1em;">
+                    <span data-en="Professional Audio Engineering Consultation" data-ar="استشارة هندسة الصوت المهنية">Professional Audio Engineering Consultation</span><br>
+                    <strong style="color: var(--primary-orange);" data-en="25+ Years of Technical Excellence" data-ar="خبرة +25 سنة من التميز التقني">25+ Years of Technical Excellence</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update document direction
+            if (lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+                document.documentElement.lang = 'ar';
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+                document.documentElement.lang = 'en';
+            }
+
+            // Update all text content
+            document.querySelectorAll('[data-en][data-ar]').forEach(element => {
+                if (lang === 'ar' && element.getAttribute('data-ar')) {
+                    element.textContent = element.getAttribute('data-ar');
+                } else if (lang === 'en' && element.getAttribute('data-en')) {
+                    element.textContent = element.getAttribute('data-en');
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .course-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
